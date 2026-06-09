@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="tr" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dünyası — Türkiye'nin Spor Dünyası</title>
+<meta name="description" content="Dünyası — sporun dijital evi. Haberler, canlı skorlar, maç yayınları, istatistik ve fanların buluşma noktası. Türkiye'nin spor dünyası tek çatı altında." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script>
+  document.documentElement.classList.replace('no-js','js');
+  window.__motionReady = false;
+  setTimeout(function(){ if(!window.__motionReady) document.documentElement.classList.add('reveal-all'); }, 1500);
+</script>
+
+<style>
+/* ===== ТОКЕНЫ (реальная палитра Dünyası — тёмный editorial spor-medya) ===== */
+:root{
+  --bg:#0E1626;            /* основной editorial-фон */
+  --bg-2:#0D1320;          /* глубже */
+  --panel:#15203A;         /* светлая (относительно) панель */
+  --panel-2:#1B2944;       /* панель ховер/вложенная */
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(255,255,255,.14);
+  --ink:#F4F7FC;           /* основной текст (белый) */
+  --ink-2:#C5D0E2;         /* вторичный */
+  --muted:#7E8DA8;         /* приглушённый */
+  --blue:#2A87E0;          /* основной бренд-синий */
+  --blue-2:#4BA0F2;        /* светлый синий (ховер/акцент) */
+  --blue-deep:#1C5FA8;     /* тёмный синий */
+  --red:#E23B3B;           /* акцент-красный */
+  --red-2:#FF5A52;         /* светлый красный */
+  --font-display:'Archivo',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --shadow:0 30px 60px -32px rgba(0,0,0,.7);
+  --shadow-blue:0 24px 50px -24px rgba(42,135,224,.45);
+  --maxw:1220px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;font-weight:500;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+svg{display:block}
+ul{list-style:none}
+img{display:block;max-width:100%}
+::selection{background:var(--blue);color:#fff}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px;border-radius:6px}
+
+/* атмосфера — грейн тайл (data-URI) + glow radial без blur */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.glow{position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+.glow--blue{width:62vw;height:62vw;background:radial-gradient(circle,rgba(42,135,224,.18),transparent 68%);top:-22vw;right:-14vw}
+.glow--red{width:48vw;height:48vw;background:radial-gradient(circle,rgba(226,59,59,.12),transparent 70%);bottom:-14vw;left:-12vw}
+
+/* типографика */
+h1,h2,h3{font-family:var(--font-display);font-weight:900;line-height:1.0;letter-spacing:-.02em}
+.display{font-size:clamp(2.8rem,8vw,6.6rem)}
+.h2{font-size:clamp(2rem,4.8vw,3.6rem)}
+.eyebrow{font-family:var(--font-body);font-weight:800;font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue-2)}
+.eyebrow--red{color:var(--red-2)}
+.blue-text{color:var(--blue-2)}
+.red-text{color:var(--red-2)}
+.lead{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--ink-2);max-width:56ch}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+section{position:relative;padding:clamp(64px,9vw,130px) 0}
+.section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:48px;max-width:64ch}
+.section-head--row{flex-direction:row;align-items:flex-end;justify-content:space-between;max-width:none;flex-wrap:wrap;gap:22px}
+.section-head--row .col{display:flex;flex-direction:column;gap:12px;max-width:60ch}
+
+/* кнопки */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:13px;font-weight:800;font-size:.95rem;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s,background .4s}
+.btn--primary{background:var(--blue);color:#fff;box-shadow:0 16px 32px -14px rgba(42,135,224,.75)}
+.btn--primary::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transform:translateX(-130%);transition:transform .7s var(--ease)}
+.btn--primary:hover{transform:translateY(-3px);box-shadow:0 22px 42px -12px rgba(42,135,224,.9)}
+.btn--primary:hover::after{transform:translateX(130%)}
+.btn--ghost{border:1.5px solid var(--line-2);color:var(--ink);background:rgba(255,255,255,.03)}
+.btn--ghost:hover{border-color:var(--blue-2);color:var(--blue-2);transform:translateY(-3px)}
+.btn--red{background:var(--red);color:#fff;box-shadow:0 16px 32px -14px rgba(226,59,59,.7)}
+.btn--red:hover{transform:translateY(-3px);box-shadow:0 22px 42px -12px rgba(226,59,59,.85)}
+.btn--lg{padding:18px 36px;font-size:1.04rem}
+.btn .arr{transition:transform .4s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* лого-знак: «D со стрелкой/play» — финальный вектор позже */
+.mark{flex:none}
+/* СЮДА позже финальный вектор/PNG: <img src="logo.svg" class="mark"> */
+
+/* НАВ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(13,19,32,.82);backdrop-filter:blur(16px);border-color:var(--line)}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:78px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .mark{width:42px;height:42px}
+.logo__text{font-family:var(--font-display);font-weight:900;font-size:1.5rem;letter-spacing:-.02em;line-height:1;color:#fff}
+.logo__sub{display:block;font-family:var(--font-body);font-weight:700;font-size:.5rem;letter-spacing:.3em;color:var(--muted);margin-top:4px}
+.nav__links{display:flex;gap:30px}
+.nav__links a{font-size:.92rem;font-weight:700;color:var(--ink-2);position:relative;transition:color .3s}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;background:var(--blue);transition:width .35s var(--ease)}
+.nav__links a:hover{color:#fff}
+.nav__links a:hover::after{width:100%}
+.nav__cta{display:flex;align-items:center;gap:16px}
+.nav__login{font-weight:800;font-size:.92rem;color:var(--ink)}
+.nav__login:hover{color:var(--blue-2)}
+.nav__burger{display:none;flex-direction:column;gap:5px;padding:8px}
+.nav__burger span{width:24px;height:2px;background:var(--ink);border-radius:2px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:78px;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;width:100%}
+.hero__badge{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border:1px solid var(--line-2);border-radius:999px;background:rgba(255,255,255,.03);font-size:.8rem;font-weight:800;color:var(--ink-2);margin-bottom:26px;letter-spacing:.02em}
+.hero__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(226,59,59,.5);animation:pulse 2s infinite}
+.hero h1{margin:6px 0 24px}
+.hero h1 .line{display:block}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.hero__trust{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.hero__trust div{display:flex;align-items:center;gap:9px;font-size:.86rem;font-weight:700;color:var(--ink-2)}
+.hero__trust .tick{width:20px;height:20px;border-radius:50%;background:var(--blue);display:grid;place-items:center;flex:none}
+
+/* HERO art — editorial медиа-коллаж */
+.hero__art{position:relative;height:clamp(380px,46vw,560px);display:flex;align-items:center;justify-content:center}
+.hero__panel{position:absolute;inset:6% 2%;border-radius:24px;background:linear-gradient(150deg,var(--panel),var(--bg-2));border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.hero__panel::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 18%,rgba(42,135,224,.28),transparent 55%),radial-gradient(circle at 16% 88%,rgba(226,59,59,.2),transparent 55%)}
+.hero__bigmark{position:relative;width:46%;max-width:240px;filter:drop-shadow(0 18px 34px rgba(42,135,224,.4))}
+.hero__chip{position:absolute;background:var(--panel);border:1px solid var(--line-2);border-radius:15px;padding:13px 16px;box-shadow:var(--shadow);font-weight:800;font-size:.86rem;display:flex;align-items:center;gap:11px;z-index:2}
+.hero__chip small{display:block;font-weight:600;font-size:.72rem;color:var(--muted)}
+.hero__chip--1{top:11%;right:-2%}
+.hero__chip--2{bottom:13%;left:-3%}
+.chip-ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:none}
+.chip-ico--blue{background:rgba(42,135,224,.16)}
+.chip-ico--red{background:rgba(226,59,59,.16)}
+/* мини-«прямой эфир» полоска внутри панели */
+.hero__live{position:absolute;top:16px;left:16px;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(226,59,59,.16);border:1px solid rgba(226,59,59,.4);font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--red-2);z-index:2}
+.hero__live .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.4s infinite}
+.hero__bars{position:absolute;bottom:18px;left:16px;right:16px;display:flex;align-items:flex-end;gap:5px;height:54px;z-index:2;opacity:.85}
+.hero__bars i{flex:1;background:linear-gradient(180deg,var(--blue-2),var(--blue-deep));border-radius:3px 3px 0 0;height:30%}
+
+/* LIVE SCORES TICKER (бегущая лента счётов) */
+.ticker{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;position:relative;z-index:1}
+.ticker__label{position:absolute;left:0;top:0;bottom:0;z-index:3;display:flex;align-items:center;gap:8px;padding:0 18px 0 24px;background:var(--red);color:#fff;font-weight:900;font-family:var(--font-display);font-size:.82rem;letter-spacing:.08em;clip-path:polygon(0 0,100% 0,86% 100%,0 100%)}
+.ticker__label .dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse-w 1.4s infinite}
+.ticker__viewport{overflow:hidden;padding:14px 0 14px 168px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 92%,transparent)}
+.ticker__track{display:flex;gap:14px;width:max-content;animation:marquee 38s linear infinite}
+.ticker:hover .ticker__track{animation-play-state:paused}
+.score{display:inline-flex;align-items:center;gap:12px;padding:8px 16px;border:1px solid var(--line);border-radius:11px;background:var(--panel);white-space:nowrap;font-size:.86rem}
+.score .lg{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.score .tm{font-weight:700;color:var(--ink-2)}
+.score .sc{font-family:var(--font-display);font-weight:800;color:#fff;font-size:.96rem;padding:0 2px}
+.score .min{font-size:.7rem;font-weight:800;color:var(--red-2);display:inline-flex;align-items:center;gap:5px}
+.score .min .d{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 1.4s infinite}
+.score .ft{font-size:.68rem;font-weight:800;color:var(--muted)}
+
+/* СТАТЫ-полоса (count-up) */
+.stripe{background:linear-gradient(180deg,var(--panel),var(--bg-2));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stripe__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{text-align:center;padding:8px;position:relative}
+.stat::after{content:"";position:absolute;right:0;top:18%;height:64%;width:1px;background:var(--line)}
+.stat:last-child::after{display:none}
+.stat__num{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1;color:#fff}
+.stat__num span{color:var(--blue-2)}
+.stat__label{font-size:.82rem;color:var(--muted);margin-top:9px;font-weight:600;letter-spacing:.04em}
+
+/* HABERLER — editorial новостная сетка */
+.news{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-auto-rows:1fr;gap:18px}
+.card{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;transition:transform .5s var(--ease),border-color .45s,box-shadow .45s;will-change:transform}
+.card:hover{border-color:rgba(42,135,224,.4);box-shadow:var(--shadow)}
+.card__media{position:relative;overflow:hidden;aspect-ratio:16/10}
+.card__img{position:absolute;inset:0;transition:transform .7s var(--ease)}
+.card:hover .card__img{transform:scale(1.07)}
+.card__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(8,12,22,.78))}
+.card__cat{position:absolute;top:13px;left:13px;z-index:2;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 11px;border-radius:8px;background:rgba(13,19,32,.6);backdrop-filter:blur(6px);border:1px solid var(--line-2)}
+.card__cat.is-blue{color:var(--blue-2)}
+.card__cat.is-red{color:var(--red-2)}
+.card__body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
+.card__meta{font-size:.74rem;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:8px}
+.card__meta .dt{width:3px;height:3px;border-radius:50%;background:var(--muted)}
+.card h3{font-family:var(--font-display);font-weight:800;line-height:1.12;letter-spacing:-.01em}
+.card__excerpt{color:var(--ink-2);font-size:.9rem;line-height:1.55}
+.card__more{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:800;color:var(--blue-2);padding-top:6px}
+.card__more .arr{transition:transform .4s var(--ease)}
+.card:hover .card__more .arr{transform:translateX(4px)}
+/* лид-карта (большая) */
+.card--lead{grid-row:span 2;grid-column:1}
+.card--lead .card__media{aspect-ratio:auto;flex:1;min-height:240px}
+.card--lead h3{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.card--lead .card__body{padding:24px 26px 28px}
+.card h3{font-size:1.12rem}
+/* градиентные плейсхолдеры-картинки (БЕЗ эмодзи) */
+.ph-1{background:linear-gradient(150deg,#13325c,#2A87E0 60%,#1C5FA8)}
+.ph-2{background:linear-gradient(150deg,#3a1422,#E23B3B 65%,#9a1f1f)}
+.ph-3{background:linear-gradient(150deg,#102a44,#1C5FA8 60%,#0d1c30)}
+.ph-4{background:linear-gradient(150deg,#1a2540,#4BA0F2 60%,#1C5FA8)}
+.ph-5{background:linear-gradient(150deg,#2a1530,#7a2a86 55%,#E23B3B)}
+.ph-6{background:linear-gradient(150deg,#0f2a2a,#1B7A6B 55%,#2A87E0)}
+/* лёгкая «спортивная» геометрия поверх плейсхолдера */
+.ph-lines{position:absolute;inset:0;opacity:.16;background-image:linear-gradient(120deg,transparent 46%,rgba(255,255,255,.7) 47%,rgba(255,255,255,.7) 48%,transparent 49%),linear-gradient(120deg,transparent 66%,rgba(255,255,255,.5) 67%,transparent 68%)}
+
+/* MAÇLAR & YAYINLAR — табы */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.tab{padding:11px 20px;border-radius:11px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);font-weight:800;font-size:.88rem;color:var(--ink-2);transition:.3s}
+.tab:hover{color:#fff;border-color:var(--blue-2)}
+.tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 12px 26px -14px rgba(42,135,224,.7)}
+.panel[hidden]{display:none}
+.fixtures{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.fix{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;transition:transform .45s var(--ease),border-color .45s,box-shadow .45s;will-change:transform}
+.fix:hover{border-color:rgba(42,135,224,.4);box-shadow:var(--shadow)}
+.fix__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-size:.76rem;font-weight:700;color:var(--muted)}
+.fix__lg{display:inline-flex;align-items:center;gap:7px}
+.fix__lg .pip{width:7px;height:7px;border-radius:2px;background:var(--blue)}
+.tag-live{display:inline-flex;align-items:center;gap:6px;color:var(--red-2);font-weight:800;font-size:.74rem;letter-spacing:.04em}
+.tag-live .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.4s infinite}
+.tag-soon{font-weight:800;color:var(--ink-2);font-size:.74rem}
+.fix__teams{display:flex;flex-direction:column;gap:13px;margin-bottom:18px}
+.team{display:flex;align-items:center;gap:12px;font-weight:700}
+.crest{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:.8rem;color:#fff;flex:none}
+.team .sc{margin-left:auto;font-family:var(--font-display);font-weight:800;font-size:1.2rem;color:#fff}
+.fix__foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid var(--line)}
+.fix__watch{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.84rem;color:var(--blue-2);transition:.3s}
+.fix__watch:hover{color:var(--blue-2);gap:11px}
+.fix__watch .pl{width:26px;height:26px;border-radius:8px;background:rgba(42,135,224,.16);display:grid;place-items:center;flex:none;transition:.3s}
+.fix__watch:hover .pl{background:var(--blue);}
+.fix__watch:hover .pl svg{stroke:#fff;fill:#fff}
+.fix__stat{font-size:.76rem;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
+
+/* İSTATİSTİKLER */
+.stats-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:22px}
+.standings{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:8px 8px 14px;overflow:hidden}
+.standings__head{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 14px}
+.standings__head b{font-family:var(--font-display);font-weight:800;font-size:1.05rem}
+.standings__head span{font-size:.74rem;font-weight:700;color:var(--muted)}
+.table{width:100%;border-collapse:collapse;font-size:.9rem}
+.table th{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800;text-align:right;padding:10px 12px}
+.table th:nth-child(2){text-align:left}
+.table td{padding:11px 12px;border-top:1px solid var(--line);text-align:right;font-weight:700;color:var(--ink-2)}
+.table td:nth-child(2){text-align:left;color:#fff}
+.table tr{transition:background .3s}
+.table tbody tr:hover{background:var(--panel-2)}
+.table .pos{font-family:var(--font-display);font-weight:800;color:var(--muted);width:28px}
+.table tr.is-top .pos{color:var(--blue-2)}
+.table .pts{color:#fff;font-family:var(--font-display);font-weight:800}
+.table .tm-cell{display:flex;align-items:center;gap:10px}
+.table .crest{width:24px;height:24px;border-radius:6px;font-size:.62rem}
+.leaders{display:flex;flex-direction:column;gap:16px}
+.leader{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:16px;flex:1;justify-content:center}
+.leader__head{display:flex;align-items:center;justify-content:space-between}
+.leader__head b{font-family:var(--font-display);font-weight:800;font-size:1rem}
+.leader__head .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center}
+.bar-row{display:flex;align-items:center;gap:12px}
+.bar-row .nm{width:96px;font-weight:700;font-size:.84rem;color:var(--ink-2);flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-row .track{flex:1;height:9px;border-radius:5px;background:var(--bg-2);overflow:hidden;position:relative}
+.bar-row .fill{position:absolute;inset:0;width:0;border-radius:5px;background:linear-gradient(90deg,var(--blue-deep),var(--blue-2));transition:width 1.1s var(--ease)}
+.bar-row .fill.is-red{background:linear-gradient(90deg,#9a1f1f,var(--red-2))}
+.bar-row .vl{width:34px;text-align:right;font-family:var(--font-display);font-weight:800;font-size:.92rem;color:#fff;flex:none}
+
+/* TOPLULUK — фан-сообщество/форум */
+.community{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.threads{display:flex;flex-direction:column;gap:12px}
+.thread{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 18px;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;will-change:transform}
+.thread:hover{border-color:rgba(42,135,224,.4);box-shadow:var(--shadow)}
+.thread__av{width:42px;height:42px;border-radius:12px;flex:none;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:.9rem;color:#fff}
+.thread__body{flex:1;min-width:0}
+.thread__tag{font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-2)}
+.thread h4{font-family:var(--font-body);font-weight:800;font-size:.98rem;margin:3px 0 6px;color:#fff;line-height:1.25}
+.thread__meta{display:flex;align-items:center;gap:14px;font-size:.78rem;color:var(--muted);font-weight:600}
+.thread__meta span{display:inline-flex;align-items:center;gap:6px}
+.community__feats{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.cchip{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid var(--line-2);border-radius:12px;font-weight:700;font-size:.88rem;background:rgba(255,255,255,.03)}
+.cchip .d{width:8px;height:8px;border-radius:50%;background:var(--blue-2)}
+.cchip .d.r{background:var(--red-2)}
+
+/* BAHİS — вторичная секция ставок */
+.betband{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(150deg,var(--panel),var(--bg-2))}
+.betband::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 12%,rgba(226,59,59,.16),transparent 50%)}
+.betband__grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:clamp(32px,5vw,56px)}
+.betband__note{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.04em;color:var(--muted);margin-top:18px}
+.coupon{background:var(--bg-2);border:1px solid var(--line-2);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+.coupon__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;font-size:.76rem;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.coupon__head .tag-live{font-size:.72rem}
+.coupon__row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.coupon__row:last-of-type{border-bottom:none}
+.coupon__mt{font-weight:700;font-size:.9rem;color:var(--ink-2)}
+.coupon__mt small{display:block;color:var(--muted);font-size:.72rem;font-weight:600;margin-top:2px}
+.odd{min-width:64px;text-align:center;padding:10px 8px;border-radius:11px;background:var(--panel);border:1px solid var(--line-2);transition:.3s;cursor:pointer}
+.odd small{display:block;font-size:.66rem;color:var(--muted);font-weight:700}
+.odd b{font-family:var(--font-display);font-size:1.04rem;font-weight:800;color:#fff}
+.odd:hover,.odd.is-on{background:var(--blue);border-color:var(--blue)}
+.odd:hover small,.odd.is-on small,.odd:hover b,.odd.is-on b{color:#fff}
+.coupon__foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line-2)}
+.coupon__foot small{font-size:.74rem;color:var(--muted);font-weight:700}
+.coupon__foot b{font-family:var(--font-display);font-size:1.2rem;color:var(--blue-2)}
+
+/* BÜLTEN — рассылка */
+.newsletter{position:relative;border-radius:26px;overflow:hidden;text-align:center;background:linear-gradient(150deg,var(--blue-deep),var(--bg-2) 70%);border:1px solid var(--line-2);padding:clamp(44px,6vw,72px) 24px}
+.newsletter::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% -10%,rgba(75,160,242,.3),transparent 55%)}
+.newsletter>*{position:relative}
+.newsletter h2{color:#fff}
+.newsletter .lead{margin:16px auto 30px;color:rgba(244,247,252,.82)}
+.nl-form{display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap}
+.nl-form input{flex:1;min-width:200px;padding:16px 20px;border-radius:13px;border:1px solid var(--line-2);background:rgba(13,19,32,.5);color:#fff;font-family:inherit;font-size:.95rem;font-weight:600}
+.nl-form input::placeholder{color:var(--muted)}
+.nl-form input:focus{outline:none;border-color:var(--blue-2);background:rgba(13,19,32,.7)}
+.nl-form .btn{flex:none}
+.nl-note{font-size:.78rem;color:rgba(244,247,252,.6);margin-top:16px;font-weight:600}
+
+/* SSS */
+.faq{max-width:800px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px 4px;text-align:left;font-family:var(--font-display);font-weight:800;font-size:1.08rem;transition:color .3s;color:var(--ink)}
+.faq-q:hover{color:var(--blue-2)}
+.faq-q .plus{flex:none;width:26px;height:26px;position:relative;transition:transform .4s var(--ease)}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--blue-2);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-q .plus::before{width:14px;height:2px}.faq-q .plus::after{width:2px;height:14px;transition:transform .4s var(--ease)}
+.faq-item.open .plus{transform:rotate(180deg)}.faq-item.open .plus::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{overflow:hidden;height:0}
+.faq-a p{padding:0 4px 23px;color:var(--ink-2);max-width:68ch}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--line);padding:66px 0 40px;background:var(--bg-2)}
+.footer__grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:42px;margin-bottom:46px}
+.footer__brand p{color:var(--muted);font-size:.92rem;margin:16px 0;max-width:36ch}
+.footer h4{font-family:var(--font-body);font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:18px}
+.footer__col a{display:block;color:var(--muted);font-size:.92rem;padding:6px 0;transition:color .3s}
+.footer__col a:hover{color:var(--blue-2)}
+.pays{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pay{padding:7px 12px;background:var(--panel);border:1px solid var(--line);border-radius:9px;font-size:.74rem;font-weight:800;color:var(--ink-2)}
+.socials{display:flex;gap:10px;margin-top:20px}
+.social{width:40px;height:40px;border-radius:11px;border:1px solid var(--line-2);display:grid;place-items:center;transition:.3s;color:var(--ink-2)}
+.social:hover{border-color:var(--blue-2);color:var(--blue-2);transform:translateY(-2px)}
+.footer__bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.age{display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:.84rem;max-width:60ch}
+.age b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:2px solid var(--red);color:var(--red-2);font-weight:800;font-size:.76rem;flex:none}
+.copyright{color:var(--muted);font-size:.84rem}
+
+/* BACK PILL */
+.back{position:fixed;left:18px;bottom:18px;z-index:1001;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(21,32,58,.85);backdrop-filter:blur(10px);border:1px solid var(--line-2);font-size:.82rem;font-weight:800;color:var(--ink-2);transition:.3s;box-shadow:0 8px 20px -10px rgba(0,0,0,.6)}
+.back:hover{color:var(--blue-2);border-color:var(--blue-2);transform:translateY(-2px)}
+
+/* keyframes */
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(226,59,59,.5)}70%{box-shadow:0 0 0 9px rgba(226,59,59,0)}100%{box-shadow:0 0 0 0 rgba(226,59,59,0)}}
+@keyframes pulse-w{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}70%{box-shadow:0 0 0 7px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* reveal */
+.js [data-reveal]{opacity:0}
+.js.reveal-all [data-reveal]{opacity:1;transform:none;transition:opacity .6s,transform .6s}
+
+/* адаптив */
+@media (max-width:980px){
+  .nav__links{display:none}.nav__burger{display:flex}
+  .hero__grid{grid-template-columns:1fr;text-align:center;gap:10px}
+  .hero__art{order:-1;height:330px}.hero__cta,.hero__trust{justify-content:center}
+  .lead{margin-left:auto;margin-right:auto}
+  .news{grid-template-columns:1fr 1fr}
+  .card--lead{grid-row:span 1;grid-column:span 2}
+  .card--lead .card__media{min-height:200px}
+  .stats-grid{grid-template-columns:1fr}
+  .community{grid-template-columns:1fr;gap:34px}
+  .betband__grid{grid-template-columns:1fr;gap:32px}
+  .betband .coupon{order:-1}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media (max-width:620px){
+  .stripe__grid{grid-template-columns:repeat(2,1fr);gap:30px 16px}
+  .stat:nth-child(2)::after{display:none}
+  .news{grid-template-columns:1fr}
+  .card--lead{grid-column:span 1}
+  .nav__login{display:none}
+  .footer__grid{grid-template-columns:1fr}
+  .footer__bottom{flex-direction:column;align-items:flex-start}
+  .hero__chip{display:none}
+  .ticker__viewport{padding-left:150px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .js [data-reveal]{opacity:1!important;transform:none!important}html{scroll-behavior:auto}
+  .ticker__track{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="glow glow--blue"></div>
+<div class="glow glow--red"></div>
+
+<!-- ===== ОБЩИЕ SVG-ЗНАКИ ===== -->
+<!-- «D со стрелкой/play» — фирменная монограмма (движение вперёд). Финальный вектор позже. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <!-- синяя версия (основная) -->
+  <g id="dunyasi-mark">
+    <rect x="4" y="4" width="92" height="92" rx="24" fill="#2A87E0"/>
+    <rect x="4" y="4" width="92" height="92" rx="24" fill="url(#dn-grad)"/>
+    <!-- буква D как «открытая дуга» + стрелка вперёд (play) -->
+    <path d="M30 26 H50 C66 26 78 38 78 54 C78 70 66 82 50 82 H30 Z" fill="#fff"/>
+    <path d="M44 40 H51 C58 40 63 46 63 54 C63 62 58 68 51 68 H44 Z" fill="#2A87E0"/>
+    <!-- стрелка/play, прорывающая дугу вправо (динамика «вперёд») -->
+    <path d="M55 44 L74 54 L55 64 Z" fill="#E23B3B"/>
+  </g>
+  <linearGradient id="dn-grad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4BA0F2"/><stop offset="1" stop-color="#1C5FA8"/>
+  </linearGradient>
+  <!-- красная версия (акцент) -->
+  <g id="dunyasi-mark-red">
+    <rect x="4" y="4" width="92" height="92" rx="24" fill="#E23B3B"/>
+    <rect x="4" y="4" width="92" height="92" rx="24" fill="url(#dn-grad-r)"/>
+    <path d="M30 26 H50 C66 26 78 38 78 54 C78 70 66 82 50 82 H30 Z" fill="#fff"/>
+    <path d="M44 40 H51 C58 40 63 46 63 54 C63 62 58 68 51 68 H44 Z" fill="#E23B3B"/>
+    <path d="M55 44 L74 54 L55 64 Z" fill="#2A87E0"/>
+  </g>
+  <linearGradient id="dn-grad-r" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FF5A52"/><stop offset="1" stop-color="#9a1f1f"/>
+  </linearGradient>
+</defs></svg>
+
+<!-- НАВ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="logo" href="#" aria-label="Dünyası ana sayfa">
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#dunyasi-mark"/></svg>
+      <span>
+        <span class="logo__text">Dünyası</span>
+        <span class="logo__sub">TÜRKİYE'NİN SPOR DÜNYASI</span>
+      </span>
+    </a>
+    <nav class="nav__links" aria-label="Ana menü">
+      <a href="#haberler">Haberler</a><a href="#maclar">Maçlar</a><a href="#istatistik">İstatistik</a>
+      <a href="#topluluk">Topluluk</a><a href="#bahis">Bahis</a><a href="#sss">SSS</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="nav__login" href="#">Giriş</a>
+      <a class="btn btn--primary" href="#bulten">Üye Ol</a>
+      <button class="nav__burger" aria-label="Menüyü aç"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="hero__badge" data-reveal><span class="dot"></span>Sporun buluşma noktası · Canlı yayında</span>
+      <h1 class="display">
+        <span class="line" data-reveal>Türkiye'nin</span>
+        <span class="line blue-text" data-reveal>spor dünyası.</span>
+      </h1>
+      <p class="lead" data-reveal>Haberler, canlı skorlar, maç yayınları, istatistik ve milyonlarca fanın buluştuğu nokta — hepsi tek çatı altında. Dünyası, sporun dijital evi.</p>
+      <div class="hero__cta" data-reveal>
+        <a class="btn btn--primary btn--lg" href="#haberler">Keşfetmeye Başla <span class="arr">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="#maclar">Canlı Yayınlar</a>
+      </div>
+      <div class="hero__trust" data-reveal>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> Bağımsız spor medyası</div>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> 7/24 canlı skor</div>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> Aktif topluluk</div>
+      </div>
+    </div>
+    <div class="hero__art" data-reveal>
+      <div class="hero__panel">
+        <span class="hero__live"><span class="dot"></span>CANLI YAYIN</span>
+        <div class="hero__bars" aria-hidden="true">
+          <i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:78%"></i><i style="height:55%"></i><i style="height:88%"></i><i style="height:60%"></i><i style="height:72%"></i><i style="height:45%"></i><i style="height:66%"></i><i style="height:52%"></i><i style="height:80%"></i>
+        </div>
+      </div>
+      <svg class="hero__bigmark" viewBox="0 0 100 100" aria-hidden="true"><use href="#dunyasi-mark"/></svg>
+      <div class="hero__chip hero__chip--1">
+        <span class="chip-ico chip-ico--blue"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="#4BA0F2" stroke-width="2.4"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span>
+        <span>Canlı skor<small>1.200+ maç / hafta</small></span>
+      </div>
+      <div class="hero__chip hero__chip--2">
+        <span class="chip-ico chip-ico--red"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="#FF5A52" stroke-width="2.4"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span>
+        <span>2.5M fan<small>Aktif topluluk</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE SCORES TICKER -->
+<div class="ticker" aria-label="Canlı skorlar">
+  <span class="ticker__label"><span class="dot"></span>CANLI</span>
+  <div class="ticker__viewport">
+    <div class="ticker__track" id="ticker">
+      <span class="score"><span class="lg">SÜPER LİG</span><span class="tm">Galatasaray</span><span class="sc">2</span><span class="sc">—</span><span class="sc">1</span><span class="tm">Fenerbahçe</span><span class="min"><span class="d"></span>67'</span></span>
+      <span class="score"><span class="lg">SÜPER LİG</span><span class="tm">Beşiktaş</span><span class="sc">1</span><span class="sc">—</span><span class="sc">1</span><span class="tm">Trabzonspor</span><span class="min"><span class="d"></span>54'</span></span>
+      <span class="score"><span class="lg">ŞAMPİYONLAR L.</span><span class="tm">Real Madrid</span><span class="sc">3</span><span class="sc">—</span><span class="sc">2</span><span class="tm">Man City</span><span class="ft">DA</span></span>
+      <span class="score"><span class="lg">NBA</span><span class="tm">Lakers</span><span class="sc">98</span><span class="sc">—</span><span class="sc">102</span><span class="tm">Celtics</span><span class="min"><span class="d"></span>4.Ç</span></span>
+      <span class="score"><span class="lg">PREMIER L.</span><span class="tm">Arsenal</span><span class="sc">0</span><span class="sc">—</span><span class="sc">0</span><span class="tm">Liverpool</span><span class="min"><span class="d"></span>22'</span></span>
+      <span class="score"><span class="lg">EUROLEAGUE</span><span class="tm">Anadolu Efes</span><span class="sc">81</span><span class="sc">—</span><span class="sc">79</span><span class="tm">Fener Beko</span><span class="ft">BİTTİ</span></span>
+      <span class="score"><span class="lg">LA LIGA</span><span class="tm">Barcelona</span><span class="sc">2</span><span class="sc">—</span><span class="sc">0</span><span class="tm">Sevilla</span><span class="min"><span class="d"></span>71'</span></span>
+      <span class="score"><span class="lg">SERIE A</span><span class="tm">Inter</span><span class="sc">1</span><span class="sc">—</span><span class="sc">2</span><span class="tm">Juventus</span><span class="min"><span class="d"></span>83'</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- СТАТЫ-полоса -->
+<section class="stripe" style="padding:52px 0">
+  <div class="wrap stripe__grid">
+    <div class="stat" data-reveal><div class="stat__num" data-count="2500000" data-mode="m">0</div><div class="stat__label">Aylık okuyucu</div></div>
+    <div class="stat" data-reveal><div class="stat__num" data-count="1200" data-mode="plus">0</div><div class="stat__label">Haftalık canlı maç</div></div>
+    <div class="stat" data-reveal><div class="stat__num" data-count="45000" data-mode="k">0</div><div class="stat__label">Topluluk üyesi</div></div>
+    <div class="stat" data-reveal><div class="stat__num" data-mode="support">7/24</div><div class="stat__label">Canlı skor merkezi</div></div>
+  </div>
+</section>
+
+<!-- HABERLER -->
+<section id="haberler">
+  <div class="wrap">
+    <div class="section-head section-head--row">
+      <div class="col">
+        <span class="eyebrow" data-reveal>Haberler</span>
+        <h2 class="h2" data-reveal>Günün spor gündemi</h2>
+        <p class="lead" data-reveal>Transfer haberleri, maç analizleri ve sahadan son dakika — Dünyası editörlerinden.</p>
+      </div>
+      <a class="btn btn--ghost" href="#" data-reveal>Tüm Haberler <span class="arr">→</span></a>
+    </div>
+    <div class="news">
+      <!-- лид-карта -->
+      <article class="card card--lead" data-reveal>
+        <a href="#" class="card__media">
+          <span class="card__img ph-1"><span class="ph-lines"></span></span>
+          <span class="card__cat is-blue">Manşet</span>
+        </a>
+        <div class="card__body">
+          <div class="card__meta"><span>Transfer</span><span class="dt"></span><span>2 saat önce</span></div>
+          <h3>Derbi öncesi sürpriz: yıldız oyuncu kadroya geri döndü</h3>
+          <p class="card__excerpt">Sakatlığını atlatan kaptanın derbi kadrosuna dahil edilmesi taraftarı heyecanlandırdı. Teknik direktörün açıklamaları ve muhtemel 11 haberimizde.</p>
+          <a href="#" class="card__more">Haberi oku <span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <a href="#" class="card__media">
+          <span class="card__img ph-2"><span class="ph-lines"></span></span>
+          <span class="card__cat is-red">Son Dakika</span>
+        </a>
+        <div class="card__body">
+          <div class="card__meta"><span>Süper Lig</span><span class="dt"></span><span>35 dk önce</span></div>
+          <h3>Şampiyonluk yarışı kızıştı: zirvede dev randevu</h3>
+          <a href="#" class="card__more">Haberi oku <span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <a href="#" class="card__media">
+          <span class="card__img ph-3"><span class="ph-lines"></span></span>
+          <span class="card__cat is-blue">Analiz</span>
+        </a>
+        <div class="card__body">
+          <div class="card__meta"><span>Taktik</span><span class="dt"></span><span>1 saat önce</span></div>
+          <h3>Rakamlarla derbi: kim, nerede üstün?</h3>
+          <a href="#" class="card__more">Haberi oku <span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <a href="#" class="card__media">
+          <span class="card__img ph-4"><span class="ph-lines"></span></span>
+          <span class="card__cat is-blue">Basketbol</span>
+        </a>
+        <div class="card__body">
+          <div class="card__meta"><span>EuroLeague</span><span class="dt"></span><span>3 saat önce</span></div>
+          <h3>Türk takımları Avrupa'da rüzgâr gibi esiyor</h3>
+          <a href="#" class="card__more">Haberi oku <span class="arr">→</span></a>
+        </div>
+      </article>
+
+      <article class="card" data-reveal>
+        <a href="#" class="card__media">
+          <span class="card__img ph-5"><span class="ph-lines"></span></span>
+          <span class="card__cat is-red">Röportaj</span>
+        </a>
+        <div class="card__body">
+          <div class="card__meta"><span>Özel</span><span class="dt"></span><span>Dün</span></div>
+          <h3>"Hedefimiz net" — teknik direktörle özel söyleşi</h3>
+          <a href="#" class="card__more">Haberi oku <span class="arr">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MAÇLAR & YAYINLAR -->
+<section id="maclar">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Maçlar &amp; Yayınlar</span>
+      <h2 class="h2" data-reveal>Bugün sahada ne var?</h2>
+      <p class="lead" data-reveal>Canlı maçları takip et, yayın programını kaçırma. İstediğin ligi seç, gündemi yakala.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Maç kategorileri">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="tab-live" id="t-live" data-reveal>Canlı</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="tab-today" id="t-today" data-reveal>Bugün</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="tab-stream" id="t-stream" data-reveal>Yayınlar</button>
+    </div>
+
+    <!-- CANLI -->
+    <div class="panel" id="tab-live" role="tabpanel" aria-labelledby="t-live">
+      <div class="fixtures">
+        <article class="fix" data-reveal>
+          <div class="fix__top"><span class="fix__lg"><span class="pip"></span>Süper Lig</span><span class="tag-live"><span class="dot"></span>CANLI · 67'</span></div>
+          <div class="fix__teams">
+            <div class="team"><span class="crest" style="background:#A90432">GS</span> Galatasaray <span class="sc">2</span></div>
+            <div class="team"><span class="crest" style="background:#0A2D6E">FB</span> Fenerbahçe <span class="sc">1</span></div>
+          </div>
+          <div class="fix__foot"><a class="fix__watch" href="#"><span class="pl"><svg width="12" viewBox="0 0 24 24" fill="#4BA0F2" stroke="#4BA0F2"><path d="M6 4l14 8-14 8z"/></svg></span>Canlı izle</a><span class="fix__stat">%64 topla oynama</span></div>
+        </article>
+
+        <article class="fix" data-reveal>
+          <div class="fix__top"><span class="fix__lg"><span class="pip"></span>Süper Lig</span><span class="tag-live"><span class="dot"></span>CANLI · 54'</span></div>
+          <div class="fix__teams">
+            <div class="team"><span class="crest" style="background:#111">BJK</span> Beşiktaş <span class="sc">1</span></div>
+            <div class="team"><span class="crest" style="background:#7A0F1B">TS</span> Trabzonspor <span class="sc">1</span></div>
+          </div>
+          <div class="fix__foot"><a class="fix__watch" href="#"><span class="pl"><svg width="12" viewBox="0 0 24 24" fill="#4BA0F2" stroke="#4BA0F2"><path d="M6 4l14 8-14 8z"/></svg></span>Canlı izle</a><span class="fix__stat">14 şut · 6 isabet</span></div>
+        </article>
+
+        <article class="fix" data-reveal>
+          <div class="fix__top"><span class="fix__lg"><span class="pip"></span>Şampiyonlar Ligi</span><span class="tag-live"><span class="dot"></span>CANLI · 71'</span></div>
+          <div class="fix__teams">
+            <div class="team"><span class="crest" style="background:#1E3FA0">RM</span> Real Madrid <span class="sc">3</span></div>
+            <div class="team"><span class="crest" style="background:#6C9BD2">MC</span> Man City <span class="sc">2</span></div>
+          </div>
+          <div class="fix__foot"><a class="fix__watch" href="#"><span class="pl"><svg width="12" viewBox="0 0 24 24" fill="#4BA0F2" stroke="#4BA0F2"><path d="M6 4l14 8-14 8z"/></svg></span>Canlı izle</a><span class="fix__stat">5 gol · klasik</span></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- BUGÜN -->
+    <div class="panel" id="tab-today" role="tabpanel" aria-labelledby="t-today" hidden>
+      <div class="fixtures">
+        <article class="fix" data-reveal>
+          <div class="fix__top"><span class="fix__lg"><span class="pip"></span>Süper Lig</span><span class="tag-soon">Bugün 21:45</span></div>
+          <div class="fix__teams">
+            <div class="team"><span class="crest" style="background:#0E5A2B">KON</span> Konyaspor</div>
+            <div class="team"><span class="crest" style="background:#C8102E">ADS</span> Adana Demirspor</div>
+          </div>
+          <div class="fix__foot"><a class="fix__watch" href="#"><span class="pl"><svg width="12" viewBox="0 0 24 24" fill="#4BA0F2" stroke="#4BA0F2"><path d="M6 4l14 8-14 8z"/></svg></span>Hatırlat</a><span class="fix__stat">Önizleme hazır</span></div>
+        </article>
+
+        <article class="fix" data-reveal>
+          <div class="fix__top"><span class="fix__lg"><span class="pip"></span>Premier Lig</span><span class="tag-soon">Bugün 22:00</span></div>
+          <div class="fix__teams">
+            <div class="team"><span class="crest" style="background:#C8102E">ARS</span> Arsenal</div>
+            <div class="team"><span class="crest" style="background:#C8102E">LIV</span> Liverpool</div>
+          </div>
+          <div class="fix__foot"><a class="fix__watch" href="#"><span class="pl"><svg width="12" viewBox="0 0 24 24" fill="#4BA0F2" stroke="#4BA0F2"><path d="M6 4l14 8-14 8z"/></svg></span>Hatırlat</a><span class="fix__stat">Dev randevu</span></div>
+        </article>
+
+        <article class="fix" data-reveal>
+          <div class="fix__top"><span class="fix__lg"><span class="pip"></span>EuroLeague</span><span class="tag-soon">Bugün 20:30</span></div>
+          <div class="fix__teams">
+            <div class="team"><span class="crest" style="background:#0A2D6E">EFES</span> Anadolu Efes</div>
+            <div class="team"><span class="crest" style="background:#7A0F1B">OLY</span> Olympiacos</div>
+          </div>
+          <div class="fix__foot"><a class="fix__watch" href="#"><span class="pl"><svg width="12" viewBox="0 0 24 24" fill="#4BA0F2" stroke="#4BA0F2"><path d="M6 4l14 8-14 8z"/></svg></span>Hatırlat</a><span class="fix__stat">Basketbol</span></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- YAYINLAR -->
+    <div class="panel" id="tab-stream" role="tabpanel" aria-labelledby="t-stream" hidden>
+      <div class="fixtures">
+        <article class="fix" data-reveal>
+          <div class="fix__top"><span class="fix__lg"><span class="pip"></span>Dünyası TV</span><span class="tag-live"><span class="dot"></span>YAYINDA</span></div>
+          <div class="fix__teams">
+            <div class="team"><span class="crest" style="background:#1C5FA8">TV</span> Derbi Özel: Maç Önü</div>
+          </div>
+          <div class="fix__foot"><a class="fix__watch" href="#"><span class="pl"><svg width="12" viewBox="0 0 24 24" fill="#4BA0F2" stroke="#4BA0F2"><path d="M6 4l14 8-14 8z"/></svg></span>Yayını aç</a><span class="fix__stat">12.4K izleyici</span></div>
+        </article>
+
+        <article class="fix" data-reveal>
+          <div class="fix__top"><span class="fix__lg"><span class="pip"></span>Podcast</span><span class="tag-soon">Yeni bölüm</span></div>
+          <div class="fix__teams">
+            <div class="team"><span class="crest" style="background:#E23B3B">P</span> Saha Sesi · 42. Bölüm</div>
+          </div>
+          <div class="fix__foot"><a class="fix__watch" href="#"><span class="pl"><svg width="12" viewBox="0 0 24 24" fill="#4BA0F2" stroke="#4BA0F2"><path d="M6 4l14 8-14 8z"/></svg></span>Dinle</a><span class="fix__stat">58 dk</span></div>
+        </article>
+
+        <article class="fix" data-reveal>
+          <div class="fix__top"><span class="fix__lg"><span class="pip"></span>Özet</span><span class="tag-soon">Dün</span></div>
+          <div class="fix__teams">
+            <div class="team"><span class="crest" style="background:#0E5A2B">HD</span> Haftanın En İyi Golleri</div>
+          </div>
+          <div class="fix__foot"><a class="fix__watch" href="#"><span class="pl"><svg width="12" viewBox="0 0 24 24" fill="#4BA0F2" stroke="#4BA0F2"><path d="M6 4l14 8-14 8z"/></svg></span>İzle</a><span class="fix__stat">8 dk özet</span></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- İSTATİSTİKLER -->
+<section id="istatistik">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>İstatistikler</span>
+      <h2 class="h2" data-reveal>Rakamlar konuşuyor</h2>
+      <p class="lead" data-reveal>Puan durumları, gol kralları ve form grafiklerini canlı takip et. Sporun ardındaki veriyi Dünyası ile keşfet.</p>
+    </div>
+    <div class="stats-grid">
+      <!-- puan durumu -->
+      <div class="standings" data-reveal>
+        <div class="standings__head"><b>Süper Lig — Puan Durumu</b><span>34. Hafta</span></div>
+        <table class="table">
+          <thead><tr><th class="pos">#</th><th>Takım</th><th>O</th><th>AV</th><th>P</th></tr></thead>
+          <tbody>
+            <tr class="is-top"><td class="pos">1</td><td><span class="tm-cell"><span class="crest" style="background:#A90432">GS</span>Galatasaray</span></td><td>34</td><td>+58</td><td class="pts">87</td></tr>
+            <tr class="is-top"><td class="pos">2</td><td><span class="tm-cell"><span class="crest" style="background:#0A2D6E">FB</span>Fenerbahçe</span></td><td>34</td><td>+54</td><td class="pts">84</td></tr>
+            <tr><td class="pos">3</td><td><span class="tm-cell"><span class="crest" style="background:#7A0F1B">TS</span>Trabzonspor</span></td><td>34</td><td>+31</td><td class="pts">68</td></tr>
+            <tr><td class="pos">4</td><td><span class="tm-cell"><span class="crest" style="background:#111">BJK</span>Beşiktaş</span></td><td>34</td><td>+24</td><td class="pts">62</td></tr>
+            <tr><td class="pos">5</td><td><span class="tm-cell"><span class="crest" style="background:#0E5A2B">KON</span>Konyaspor</span></td><td>34</td><td>+12</td><td class="pts">55</td></tr>
+            <tr><td class="pos">6</td><td><span class="tm-cell"><span class="crest" style="background:#C8102E">ADS</span>A. Demirspor</span></td><td>34</td><td>+8</td><td class="pts">51</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- лидеры (bar charts) -->
+      <div class="leaders">
+        <div class="leader" data-reveal>
+          <div class="leader__head"><b>Gol Krallığı</b><span class="ic chip-ico--blue"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="#4BA0F2" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></div>
+          <div class="bar-row"><span class="nm">Osimhen</span><span class="track"><span class="fill" data-fill="92"></span></span><span class="vl">24</span></div>
+          <div class="bar-row"><span class="nm">Dzeko</span><span class="track"><span class="fill" data-fill="76"></span></span><span class="vl">19</span></div>
+          <div class="bar-row"><span class="nm">Onuachu</span><span class="track"><span class="fill" data-fill="60"></span></span><span class="vl">15</span></div>
+        </div>
+        <div class="leader" data-reveal>
+          <div class="leader__head"><b>Asist Lideri</b><span class="ic chip-ico--red"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="#FF5A52" stroke-width="2.2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+          <div class="bar-row"><span class="nm">Tadic</span><span class="track"><span class="fill is-red" data-fill="88"></span></span><span class="vl">14</span></div>
+          <div class="bar-row"><span class="nm">Icardi</span><span class="track"><span class="fill is-red" data-fill="70"></span></span><span class="vl">11</span></div>
+          <div class="bar-row"><span class="nm">Visca</span><span class="track"><span class="fill is-red" data-fill="56"></span></span><span class="vl">9</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPLULUK -->
+<section id="topluluk">
+  <div class="wrap">
+    <div class="community">
+      <div>
+        <span class="eyebrow eyebrow--red" data-reveal>Topluluk</span>
+        <h2 class="h2" data-reveal style="margin:12px 0 16px">Tribün burada</h2>
+        <p class="lead" data-reveal>Maçı yalnız izleme. Binlerce fanla canlı yorum yap, anketlere katıl, tahminini paylaş. Dünyası topluluğu, sporun gerçek atmosferi.</p>
+        <div class="community__feats">
+          <span class="cchip" data-reveal><span class="d"></span>Canlı maç sohbeti</span>
+          <span class="cchip" data-reveal><span class="d r"></span>Taraftar anketleri</span>
+          <span class="cchip" data-reveal><span class="d"></span>Tahmin ligi</span>
+          <span class="cchip" data-reveal><span class="d r"></span>Forum &amp; rozetler</span>
+        </div>
+        <div class="hero__cta" data-reveal style="margin-top:30px">
+          <a class="btn btn--primary" href="#bulten">Topluluğa Katıl <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="threads">
+        <article class="thread" data-reveal>
+          <span class="thread__av" style="background:linear-gradient(150deg,#2A87E0,#1C5FA8)">MK</span>
+          <div class="thread__body">
+            <span class="thread__tag">Derbi Sohbeti</span>
+            <h4>Bu kadro ile derbiyi alırız, var mısınız?</h4>
+            <div class="thread__meta">
+              <span><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>342</span>
+              <span><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-6 0v4"/><path d="M5 9h14l1 11H4z"/></svg>1.2K</span>
+              <span>12 dk önce</span>
+            </div>
+          </div>
+        </article>
+        <article class="thread" data-reveal>
+          <span class="thread__av" style="background:linear-gradient(150deg,#E23B3B,#9a1f1f)">AY</span>
+          <div class="thread__body">
+            <span class="thread__tag">Anket</span>
+            <h4>Sezonun en iyi transferi sizce kim?</h4>
+            <div class="thread__meta">
+              <span><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>198</span>
+              <span><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-6 0v4"/><path d="M5 9h14l1 11H4z"/></svg>3.4K</span>
+              <span>38 dk önce</span>
+            </div>
+          </div>
+        </article>
+        <article class="thread" data-reveal>
+          <span class="thread__av" style="background:linear-gradient(150deg,#1B7A6B,#0d3b34)">SD</span>
+          <div class="thread__body">
+            <span class="thread__tag">Tahmin Ligi</span>
+            <h4>Haftanın tahminlerini paylaştım, puanım 87!</h4>
+            <div class="thread__meta">
+              <span><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>76</span>
+              <span><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-6 0v4"/><path d="M5 9h14l1 11H4z"/></svg>540</span>
+              <span>1 saat önce</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAHİS (вторичная секция) -->
+<section id="bahis">
+  <div class="wrap">
+    <div class="betband" data-reveal>
+      <div class="betband__grid">
+        <div>
+          <span class="eyebrow eyebrow--red">Bahis</span>
+          <h2 class="h2" style="margin:12px 0 16px">Tahminini oyuna dök</h2>
+          <p class="lead">Maçı takip ederken keyfini katlamak isteyenler için güvenilir bahis ortaklarımızdan canlı oranlar. Ana odağımız spor — bahis tamamen senin tercihin.</p>
+          <div class="hero__cta" style="margin-top:28px">
+            <a class="btn btn--red" href="#">Oranları Gör <span class="arr">→</span></a>
+            <a class="btn btn--ghost" href="#sss">Nasıl Çalışır?</a>
+          </div>
+          <span class="betband__note"><svg width="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>18+ · Sorumlu oyun · Bahis ikincil bir özelliktir</span>
+        </div>
+        <div class="coupon">
+          <div class="coupon__head"><span>Günün Kuponu</span><span class="tag-live"><span class="dot"></span>CANLI</span></div>
+          <div class="coupon__row">
+            <span class="coupon__mt">Galatasaray — Fenerbahçe<small>Maç Sonucu · 67'</small></span>
+            <button class="odd is-on"><small>1</small><b>1.85</b></button>
+          </div>
+          <div class="coupon__row">
+            <span class="coupon__mt">Real Madrid — Man City<small>Üst/Alt 2.5 · 71'</small></span>
+            <button class="odd"><small>Üst</small><b>1.42</b></button>
+          </div>
+          <div class="coupon__row">
+            <span class="coupon__mt">Arsenal — Liverpool<small>Karşılıklı Gol · 22'</small></span>
+            <button class="odd"><small>Var</small><b>1.70</b></button>
+          </div>
+          <div class="coupon__foot"><small>Toplam Oran</small><b>4.46</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BÜLTEN -->
+<section id="bulten">
+  <div class="wrap">
+    <div class="newsletter" data-reveal>
+      <span class="eyebrow" style="color:rgba(244,247,252,.85)">Bülten</span>
+      <h2 class="h2" style="margin-top:14px;font-size:clamp(2rem,5vw,3.4rem)">Spor gündemi gelen kutunda</h2>
+      <p class="lead">Her sabah günün maçları, transfer haberleri ve öne çıkan analizler — tek bir e-postada. Reklam yok, sadece spor.</p>
+      <form class="nl-form" onsubmit="return false">
+        <label for="nl-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-posta adresiniz</label>
+        <input id="nl-email" type="email" placeholder="E-posta adresin" autocomplete="email" />
+        <button class="btn btn--primary btn--lg" type="submit">Abone Ol</button>
+      </form>
+      <p class="nl-note">İstediğin zaman tek tıkla çıkabilirsin. Gizliliğine saygı duyuyoruz.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SSS -->
+<section id="sss">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;align-items:center;margin:0 auto 48px">
+      <span class="eyebrow" data-reveal>Sıkça Sorulan Sorular</span>
+      <h2 class="h2" data-reveal>Merak ettiklerin</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Dünyası tam olarak nedir?<span class="plus"></span></button><div class="faq-a"><p>Dünyası, Türkiye'nin spor medyası ve fan topluluğu platformudur. Haberler, canlı skorlar, maç yayınları, istatistik ve tartışma — sporun dijital evi. Bahis ikincil bir özelliktir, ana odağımız spor içeriği ve topluluktur.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Canlı skorları nasıl takip ederim?<span class="plus"></span></button><div class="faq-a"><p>Ana sayfadaki canlı skor şeridi ve "Maçlar" bölümünden tüm liglerdeki maçları gerçek zamanlı izleyebilirsin. Süper Lig'den Şampiyonlar Ligi'ne, EuroLeague'den NBA'e kadar geniş kapsama sunuyoruz.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Topluluğa katılmak ücretli mi?<span class="plus"></span></button><div class="faq-a"><p>Hayır. Üyelik tamamen ücretsiz. Üye olduktan sonra canlı maç sohbetine katılabilir, anketlerde oy kullanabilir, tahmin liginde yarışabilir ve forumda yorum yapabilirsin.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Maç yayınlarını nereden izlerim?<span class="plus"></span></button><div class="faq-a"><p>"Maçlar &amp; Yayınlar" bölümündeki "Yayınlar" sekmesinden Dünyası TV içeriklerine, podcast bölümlerine ve maç özetlerine ulaşabilirsin. Bu bir konsept tasarımdır; yayın bağlantıları örnek amaçlıdır.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Bahis özelliği nasıl çalışıyor?<span class="plus"></span></button><div class="faq-a"><p>Bahis, platformun ikincil bir özelliğidir ve güvenilir ortaklar üzerinden canlı oran bilgisi olarak sunulur. 18 yaş sınırı geçerlidir ve sorumlu oyun ilkelerini destekliyoruz. Spor içeriğini bahis olmadan da sonuna kadar kullanabilirsin.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="#">
+          <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#dunyasi-mark"/></svg>
+          <span><span class="logo__text">Dünyası</span><span class="logo__sub">TÜRKİYE'NİN SPOR DÜNYASI</span></span>
+        </a>
+        <p>Sporun dijital evi — haberler, canlı skorlar, yayınlar, istatistik ve fan topluluğu tek çatı altında.</p>
+        <div class="pays"><span class="pay">Apple Pay</span><span class="pay">Google Pay</span><span class="pay">Havale</span><span class="pay">Visa</span></div>
+        <div class="socials">
+          <a class="social" href="#" aria-label="Instagram"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="social" href="#" aria-label="X"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6z"/></svg></a>
+          <a class="social" href="#" aria-label="YouTube"><svg width="18" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="var(--bg-2)"/></svg></a>
+          <a class="social" href="#" aria-label="Telegram"><svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 3L2 11l6 2 2 7 3-4 5 4 4-17z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>İçerik</h4><a href="#haberler">Haberler</a><a href="#maclar">Maçlar</a><a href="#maclar">Yayınlar</a><a href="#istatistik">İstatistik</a></div>
+      <div class="footer__col"><h4>Topluluk</h4><a href="#topluluk">Forum</a><a href="#topluluk">Tahmin Ligi</a><a href="#topluluk">Anketler</a><a href="#bulten">Bülten</a></div>
+      <div class="footer__col"><h4>Kurumsal</h4><a href="#">Hakkımızda</a><a href="#">İletişim</a><a href="#">Gizlilik</a><a href="#sss">SSS</a></div>
+    </div>
+    <div class="footer__bottom">
+      <span class="age"><b>18+</b> Bahis içeriği yalnızca 18 yaş ve üzeri içindir. Sorumlu oyun oynayın. Kumar bağımlılık yapabilir.</span>
+      <span class="copyright">© 2026 Dünyası — Konsept tasarım.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="back" href="../../" aria-label="Konsept galerisine dön">← Galeri</a>
+
+<script type="module">
+  import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+  window.__motionReady = true;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* навбар scrolled */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 30);
+  onScroll(); addEventListener('scroll', onScroll, { passive:true });
+
+  /* бесконечная лента: дублируем контент для бесшовного marquee */
+  const ticker = document.getElementById('ticker');
+  if (ticker) ticker.innerHTML += ticker.innerHTML;
+
+  if (!reduce) {
+    /* reveal по группам со stagger */
+    const groups = new Map();
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      const k = el.parentElement;
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(el);
+    });
+    groups.forEach(items => items.forEach((el, i) => {
+      inView(el, () => {
+        animate(el, { opacity:[0,1], transform:['translateY(26px)','translateY(0)'] },
+          { duration:.7, delay: Math.min(i*0.07,.4), ease:[.22,1,.36,1] });
+      }, { amount:.15, margin:'0px 0px -8% 0px' });
+    }));
+
+    /* count-up */
+    const fmt = (v, el) => {
+      const m = el.dataset.mode;
+      if (m === 'm') return (v/1000000).toFixed(1).replace('.0','') + 'M';
+      if (m === 'k') return Math.round(v/1000) + 'K+';
+      if (m === 'plus') return Math.round(v) + '+';
+      return Math.round(v);
+    };
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const t = +el.dataset.count;
+      inView(el, () => animate(0, t, { duration:1.8, ease:'easeOut', onUpdate:v => {
+        el.textContent = fmt(v, el);
+        if (el.dataset.mode === 'plus' || el.dataset.mode === 'k') {
+          el.innerHTML = el.textContent.replace(/(\D+)$/, '<span>$1</span>');
+        }
+      }}), { amount:.6 });
+    });
+
+    /* bar-charts в статистике */
+    document.querySelectorAll('.fill[data-fill]').forEach(el => {
+      inView(el, () => { el.style.width = el.dataset.fill + '%'; }, { amount:.4 });
+    });
+  } else {
+    /* reduced-motion: бары сразу на месте */
+    document.querySelectorAll('.fill[data-fill]').forEach(el => el.style.width = el.dataset.fill + '%');
+  }
+
+  /* hover-спринги для карточек/плиток */
+  const spring = { type:'spring', stiffness:320, damping:22 };
+  document.querySelectorAll('.card, .fix, .thread').forEach(el => {
+    el.addEventListener('pointerenter', () => { if(!reduce) animate(el, { scale:1.015 }, spring); });
+    el.addEventListener('pointerleave', () => { if(!reduce) animate(el, { scale:1 }, spring); });
+  });
+
+  /* табы Maçlar & Yayınlar */
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', on);
+        const p = document.getElementById(t.getAttribute('aria-controls'));
+        if (on) {
+          p.hidden = false;
+          if (!reduce) {
+            const cards = p.querySelectorAll('.fix');
+            animate(cards, { opacity:[0,1], transform:['translateY(16px)','translateY(0)'] },
+              { duration:.5, delay: stagger(0.06), ease:[.22,1,.36,1] });
+          }
+        } else {
+          p.hidden = true;
+        }
+      });
+    });
+  });
+
+  /* купон — переключение выбранного исхода (демо-интерактив) */
+  document.querySelectorAll('.coupon .odd').forEach(odd => {
+    odd.addEventListener('click', () => {
+      const row = odd.closest('.coupon__row');
+      row.querySelectorAll('.odd').forEach(o => o.classList.remove('is-on'));
+      odd.classList.add('is-on');
+      if (!reduce) animate(odd, { scale:[1,1.12,1] }, { duration:.35 });
+    });
+  });
+
+  /* FAQ-аккордеон на Motion */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open);
+      if (reduce){ a.style.height = open ? 'auto' : '0'; return; }
+      a.style.height = 'auto';
+      const h = a.offsetHeight;
+      if (open) animate(a, { height:[0,h] }, { duration:.45, ease:[.22,1,.36,1] }).finished.then(()=>a.style.height='auto');
+      else animate(a, { height:[h,0] }, { duration:.35, ease:[.22,1,.36,1] });
+    });
+  });
+
+  /* бургер — лёгкая анимация (меню-демо) */
+  document.querySelector('.nav__burger')?.addEventListener('click', e => animate(e.currentTarget, { rotate:[0,90,0] }, { duration:.5 }));
+</script>
+</body>
+</html>

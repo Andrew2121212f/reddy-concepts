@@ -1,0 +1,14 @@
+# GitLab Pages — статический деплой набора концептов.
+# Сборки нет: просто публикуем готовую папку public/ как артефакт.
+# Pages URL: https://teroser23.gitlab.io/reddy-concepts/
+pages:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "Static concepts — nothing to build. Publishing public/"
+  artifacts:
+    paths:
+      - public
+  rules:
+    # Деплоим только с дефолтной ветки (main)
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

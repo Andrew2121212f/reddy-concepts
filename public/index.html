@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="tr" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reddy — Türkiye için yerel marka konseptleri</title>
+<meta name="description" content="Türkiye için 8 yerel bahis & casino marka konsepti. Tıkla ve keşfet." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Exo+2:wght@700;800&family=Saira+Condensed:ital,wght@0,700;0,800;1,800&family=Playfair+Display:wght@700;800;900&family=Archivo:wght@800;900&family=Baloo+2:wght@700;800&family=Cinzel:wght@600;700&family=Space+Grotesk:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script>
+  document.documentElement.classList.replace('no-js','js');
+  window.__motionReady = false;
+  setTimeout(function(){ if(!window.__motionReady) document.documentElement.classList.add('reveal-all'); }, 1500);
+</script>
+
+<style>
+:root{
+  --bg:#F1F0EA; --bg-2:#E7E5DB; --ink:#15140F; --ink-2:#4A4740; --muted:#73706A;
+  --line:rgba(21,20,15,.12); --line-2:rgba(21,20,15,.2);
+  --font:'Manrope',system-ui,sans-serif; --display:'Sora',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1); --maxw:1240px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+::selection{background:var(--ink);color:var(--bg)}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:8px}
+
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* TOP BAR */
+.top{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
+.brand .dots{display:flex;gap:5px}
+.brand .dots i{width:9px;height:9px;display:block}
+.brand .dots .t{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:9px solid #C32027}
+.brand .dots .c{border-radius:50%;background:#16284B}
+.brand .dots .s{background:#0E5663}
+.brand .dots .x{background:transparent;position:relative}
+.brand .dots .x::before,.brand .dots .x::after{content:"";position:absolute;inset:0;margin:auto;width:11px;height:2px;background:var(--ink);transform:rotate(45deg)}
+.brand .dots .x::after{transform:rotate(-45deg)}
+.top__meta{font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+/* HERO */
+.hero{padding:clamp(40px,9vw,120px) 0 clamp(40px,6vw,70px)}
+.hero .eyebrow{font-weight:800;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,8vw,7rem);line-height:.98;letter-spacing:-.03em;max-width:16ch}
+.hero h1 em{font-style:normal;position:relative;white-space:nowrap}
+.hero h1 .mk{display:inline-flex;gap:14px;vertical-align:middle;margin-left:18px}
+.hero h1 .mk span{width:clamp(20px,3vw,34px);height:clamp(20px,3vw,34px)}
+.mk .t{width:0!important;border-left:calc(clamp(20px,3vw,34px)/2) solid transparent;border-right:calc(clamp(20px,3vw,34px)/2) solid transparent;border-bottom:clamp(20px,3vw,34px) solid #C32027}
+.mk .c{border-radius:50%;background:#16284B}
+.mk .s{background:#0E5663}
+.mk .x{position:relative}
+.mk .x::before,.mk .x::after{content:"";position:absolute;inset:0;margin:auto;width:100%;height:14%;background:var(--ink);transform:rotate(45deg)}
+.mk .x::after{transform:rotate(-45deg)}
+.hero p{margin-top:30px;max-width:54ch;font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--ink-2)}
+.hero p b{color:var(--ink);font-weight:800}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;padding-bottom:90px}
+.card{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:300px;padding:30px;border-radius:24px;overflow:hidden;background:var(--c-bg);color:var(--c-fg);isolation:isolate;border:1px solid var(--c-line,transparent);transition:transform .5s var(--ease),box-shadow .5s var(--ease);will-change:transform}
+.card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(255,255,255,.10),transparent 55%);opacity:0;transition:opacity .5s}
+.card:hover{transform:translateY(-8px);box-shadow:0 40px 70px -36px rgba(0,0,0,.55)}
+.card:hover::after{opacity:1}
+.card__sheen{position:absolute;top:0;left:0;width:60%;height:100%;z-index:-1;background:linear-gradient(110deg,transparent,rgba(255,255,255,.18),transparent);transform:translateX(-160%) skewX(-12deg);transition:transform .9s var(--ease);pointer-events:none}
+.card:hover .card__sheen{transform:translateX(320%) skewX(-12deg)}
+.card__top{display:flex;align-items:center;justify-content:space-between}
+.card__idx{font-family:var(--display);font-weight:800;font-size:.86rem;opacity:.55;letter-spacing:.05em}
+.card__marker{width:18px;height:18px;opacity:.85}
+.card__wm{margin:22px 0 0;font-size:clamp(2rem,4.6vw,3.2rem);line-height:1;letter-spacing:-.01em}
+.card__tagline{margin-top:12px;font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.card__bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:26px}
+.card__desc{font-size:.96rem;font-weight:600;max-width:30ch;opacity:.92}
+.card__go{flex:none;display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.92rem;white-space:nowrap}
+.card__go .arr{display:inline-block;transition:transform .4s var(--ease)}
+.card:hover .card__go .arr{transform:translateX(6px)}
+.card__badge{position:absolute;top:30px;right:30px;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border-radius:999px;border:1px solid currentColor;opacity:.6}
+
+/* wordmark helpers */
+.wm-ankabet{font-family:'Sora';font-weight:800}
+.wm-meydan{font-family:'Exo 2';font-weight:800;letter-spacing:.02em}
+.wm-riskal{font-family:'Saira Condensed';font-weight:800;font-style:italic;letter-spacing:.01em}
+.wm-altin{font-family:'Playfair Display';font-weight:800}
+.wm-dunyasi{font-family:'Archivo';font-weight:900;letter-spacing:-.02em}
+.wm-betsepeti{font-family:'Baloo 2';font-weight:800}
+.wm-roman{font-family:'Cinzel';font-weight:700;letter-spacing:.04em;font-size:clamp(1.5rem,3.4vw,2.4rem)!important}
+.wm-bigfix{font-family:'Space Grotesk';font-weight:700;letter-spacing:-.01em;text-shadow:0 0 18px rgba(21,245,163,.55)}
+
+/* FOOTER */
+.foot{border-top:1px solid var(--line);padding:34px 0 60px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot p{font-size:.84rem;color:var(--muted);max-width:60ch}
+.foot .age{display:inline-flex;align-items:center;gap:9px;font-size:.82rem;color:var(--muted)}
+.foot .age b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:2px solid var(--ink-2);font-weight:800;font-size:.72rem}
+
+.js [data-reveal]{opacity:0}
+.js.reveal-all [data-reveal]{opacity:1;transform:none;transition:opacity .6s,transform .6s}
+
+@media (max-width:760px){
+  .grid{grid-template-columns:1fr;gap:16px}
+  .hero h1 .mk{display:none}
+  .card{min-height:260px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .js [data-reveal]{opacity:1!important;transform:none!important}html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="dots"><i class="t"></i><i class="c"></i><i class="s"></i><i class="x"></i></span>
+      Reddy
+    </div>
+    <div class="top__meta">Türkiye · 2026 · 8 Konsept</div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow" data-reveal>Yerel Marka Konseptleri</div>
+    <h1 data-reveal>Türkiye için yeni yerel markalar<span class="mk"><span class="t"></span><span class="c"></span><span class="s"></span><span class="x"></span></span></h1>
+    <p data-reveal>Sekiz bahis &amp; casino markası — her biri kendi kimliği, rengi ve animasyonlarıyla. <b>Bir markaya tıkla, konsepti aç.</b> <span style="color:var(--muted)">/ Кликни на бренд, чтобы открыть концепт.</span></p>
+  </section>
+
+  <main class="grid">
+    <!-- 1 Ankabet -->
+    <a class="card" href="brands/ankabet/" data-reveal
+       style="--c-bg:#F4F0E9;--c-fg:#171513;--c-line:rgba(23,21,19,.12)">
+      <span class="card__sheen"></span>
+      <div class="card__top"><span class="card__idx">01</span>
+        <svg class="card__marker" viewBox="0 0 24 24"><path d="M12 2l10 20H2z" fill="#C32027"/></svg></div>
+      <div>
+        <div class="card__wm wm-ankabet">ANKA<span style="color:#C32027">BET</span></div>
+        <div class="card__tagline">Bahis · Casino · Güven</div>
+      </div>
+      <div class="card__bottom">
+        <span class="card__desc">Anadolu'nun gücü — premium bahis &amp; casino, maskot Kanka.</span>
+        <span class="card__go">Aç <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- 2 Meydan -->
+    <a class="card" href="brands/meydan/" data-reveal
+       style="--c-bg:#16284B;--c-fg:#FFFFFF">
+      <span class="card__sheen"></span>
+      <div class="card__top"><span class="card__idx">02</span>
+        <svg class="card__marker" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#D72D2A"/></svg></div>
+      <div>
+        <div class="card__wm wm-meydan">MEYDAN</div>
+        <div class="card__tagline" style="color:#D72D2A;opacity:1">Spor · Canlı · Casino</div>
+      </div>
+      <div class="card__bottom">
+        <span class="card__desc">Arena senin — canlı bahis ve taraftar topluluğu.</span>
+        <span class="card__go">Aç <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- 3 Risk Al -->
+    <a class="card" href="brands/takearisk/" data-reveal
+       style="--c-bg:#0E5663;--c-fg:#FFFFFF">
+      <span class="card__sheen"></span>
+      <div class="card__top"><span class="card__idx">03</span>
+        <svg class="card__marker" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="#F0871D"/></svg></div>
+      <div>
+        <div class="card__wm wm-riskal">RISK<span style="color:#F0871D">'</span>AL</div>
+        <div class="card__tagline" style="color:#F0871D;opacity:1">Cesaret · Karar · Zafer</div>
+      </div>
+      <div class="card__bottom">
+        <span class="card__desc">Hayat, cesaret edenleri ödüllendirir.</span>
+        <span class="card__go">Aç <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- 4 Altın Günü -->
+    <a class="card" href="brands/altingunu/" data-reveal
+       style="--c-bg:#0E1B3A;--c-fg:#F7EFD8">
+      <span class="card__sheen"></span>
+      <div class="card__top"><span class="card__idx">04</span>
+        <svg class="card__marker" viewBox="0 0 24 24" fill="none"><path d="M16 4a8 8 0 100 16 7 7 0 110-16z" fill="#E0A82E"/><path d="M19 8l1 2 2 .3-1.5 1.4.4 2-1.9-1-1.9 1 .4-2L16.5 10.3 19 10z" fill="#E0A82E"/></svg></div>
+      <div>
+        <div class="card__wm wm-altin" style="color:#fff">Altın<span style="color:#E0A82E">Günü</span></div>
+        <div class="card__tagline" style="color:#E0A82E;opacity:1">Türkiye'nin Altın Dünyası</div>
+      </div>
+      <div class="card__bottom">
+        <span class="card__desc">Altın, Türkiye'yi birleştirir — değer, birikim, güven.</span>
+        <span class="card__go">Aç <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- 5 Dünyası -->
+    <a class="card" href="brands/dunyasi/" data-reveal
+       style="--c-bg:#0E1626;--c-fg:#FFFFFF">
+      <span class="card__sheen"></span>
+      <div class="card__top"><span class="card__idx">05</span>
+        <svg class="card__marker" viewBox="0 0 24 24"><path d="M5 4h8a6 6 0 110 12H9v4H5z" fill="#2A87E0"/><path d="M11 8l4 2-4 2z" fill="#fff"/></svg></div>
+      <div>
+        <div class="card__wm wm-dunyasi">Dünya<span style="color:#2A87E0">sı</span></div>
+        <div class="card__tagline" style="color:#2A87E0;opacity:1">Türkiye'nin Spor Dünyası</div>
+      </div>
+      <div class="card__bottom">
+        <span class="card__desc">Sporun dijital evi — haber, maç, istatistik, topluluk.</span>
+        <span class="card__go">Aç <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- 6 BetSepeti -->
+    <a class="card" href="brands/betsepeti/" data-reveal
+       style="--c-bg:#FFFFFF;--c-fg:#1B1F2A;--c-line:rgba(27,31,42,.12)">
+      <span class="card__sheen"></span>
+      <div class="card__top"><span class="card__idx">06</span>
+        <svg class="card__marker" viewBox="0 0 24 24"><path d="M4 7h16l-1.5 10.5a2 2 0 01-2 1.5H7.5a2 2 0 01-2-1.5z" fill="#2FA84F"/><path d="M8 7a4 4 0 018 0" fill="none" stroke="#2FA84F" stroke-width="2"/></svg></div>
+      <div>
+        <div class="card__wm wm-betsepeti">Bet<span style="color:#2FA84F">Sepeti</span></div>
+        <div class="card__tagline" style="color:#2FA84F;opacity:1">Türkiye'nin Bahis Sepeti</div>
+      </div>
+      <div class="card__bottom">
+        <span class="card__desc">Tüm bonuslar tek sepette — karşılaştır, seç, kazan.</span>
+        <span class="card__go">Aç <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- 7 The Roman Bet -->
+    <a class="card" href="brands/romanbet/" data-reveal
+       style="--c-bg:#161210;--c-fg:#EDE6D6">
+      <span class="card__sheen"></span>
+      <span class="card__badge">Özgün konsept</span>
+      <div class="card__top"><span class="card__idx">07</span>
+        <svg class="card__marker" viewBox="0 0 24 24" fill="none" stroke="#C8A24B" stroke-width="2"><path d="M5 20c-2-6 0-12 7-12s9 6 7 12"/><path d="M5 20h14"/></svg></div>
+      <div>
+        <div class="card__wm wm-roman" style="color:#C8A24B">THE ROMAN BET</div>
+        <div class="card__tagline" style="color:#C8A24B;opacity:1">Veni · Vidi · Vici</div>
+      </div>
+      <div class="card__bottom">
+        <span class="card__desc">Kazanmak için doğdun — imparatorluk arenası.</span>
+        <span class="card__go">Aç <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- 8 The Big Fix -->
+    <a class="card" href="brands/bigfix/" data-reveal
+       style="--c-bg:#07090C;--c-fg:#EAFBF4;--c-line:rgba(21,245,163,.25)">
+      <span class="card__sheen"></span>
+      <span class="card__badge" style="color:#15F5A3">Özgün konsept</span>
+      <div class="card__top"><span class="card__idx" style="color:#15F5A3">08</span>
+        <svg class="card__marker" viewBox="0 0 24 24"><path d="M12 2l3 7 7 .5-5.5 4.5 2 7L12 17l-6.5 4 2-7L2 9.5 9 9z" fill="#FF2E97"/></svg></div>
+      <div>
+        <div class="card__wm wm-bigfix" style="color:#15F5A3">THE BIG <span style="color:#FF2E97;text-shadow:0 0 18px rgba(255,46,151,.6)">FIX</span></div>
+        <div class="card__tagline" style="color:#21D4FD;opacity:1">Slot · Casino · Jackpot</div>
+      </div>
+      <div class="card__bottom">
+        <span class="card__desc">Büyük vuruş seni bekliyor — neon jackpot dünyası.</span>
+        <span class="card__go">Aç <span class="arr">→</span></span>
+      </div>
+    </a>
+  </main>
+
+  <footer class="foot">
+    <p>Konsept tasarım seti — statik HTML şablonları, animasyonlar <a href="https://motion.dev" style="text-decoration:underline">Motion</a> ile. Logolar geçici (wordmark); final vektör/PNG sonra eklenecek. · Логотипы временные, заменим на финальные PNG.</p>
+    <span class="age"><b>18+</b> Sorumlu oyun · Reddy © 2026</span>
+  </footer>
+</div>
+
+<script type="module">
+  import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+  window.__motionReady = true;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce) {
+    // hero
+    document.querySelectorAll('.hero [data-reveal]').forEach((el,i)=>{
+      inView(el, ()=>animate(el,{opacity:[0,1],transform:['translateY(22px)','translateY(0)']},{duration:.7,delay:i*0.08,ease:[.22,1,.36,1]}),{amount:.3});
+    });
+    // cards stagger
+    document.querySelectorAll('.grid [data-reveal]').forEach((el,i)=>{
+      inView(el, ()=>animate(el,{opacity:[0,1],transform:['translateY(30px) scale(.98)','translateY(0) scale(1)']},{duration:.65,delay:(i%2)*0.08,ease:[.22,1,.36,1]}),{amount:.12,margin:'0px 0px -6% 0px'});
+    });
+    // hover spring on cards
+    const spring={type:'spring',stiffness:300,damping:24};
+    document.querySelectorAll('.card').forEach(c=>{
+      c.addEventListener('pointerenter',()=>animate(c,{scale:1.015},spring));
+      c.addEventListener('pointerleave',()=>animate(c,{scale:1},spring));
+    });
+  }
+</script>
+</body>
+</html>

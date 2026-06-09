@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="tr" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BetSepeti — Tüm bonuslar, tek sepette</title>
+<meta name="description" content="BetSepeti — Türkiye'nin bahis sepeti. En iyi bahis siteleri, bonuslar ve kampanyalar tek sepette: karşılaştır, seç, kazan." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script>
+  document.documentElement.classList.replace('no-js','js');
+  window.__motionReady = false;
+  setTimeout(function(){ if(!window.__motionReady) document.documentElement.classList.add('reveal-all'); }, 1500);
+</script>
+
+<style>
+/* ===== ТОКЕНЫ (палитра маркетплейса BetSepeti, реальный паттерн «…Sepeti») ===== */
+:root{
+  --bg:#F4F7F3; --bg-2:#FFFFFF; --panel:#FFFFFF; --panel-2:#EEF4EC;
+  --ink:#1B1F2A; --ink-2:#3A4150; --muted:#6B7384;
+  --green:#2FA84F; --green-2:#268C42; --green-soft:#E7F4EA;
+  --orange:#FF8A1F; --orange-soft:#FFF1E2;
+  --star:#FFB020;
+  --line:rgba(27,31,42,.10); --line-2:rgba(27,31,42,.16);
+  --font-display:'Baloo 2',system-ui,sans-serif;
+  --font-body:'Nunito',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --shadow:0 24px 50px -28px rgba(27,31,42,.30);
+  --shadow-soft:0 12px 30px -22px rgba(27,31,42,.30);
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;font-weight:500;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font-family:inherit}
+svg{display:block}
+ul{list-style:none}
+::selection{background:var(--green);color:#fff}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:8px}
+
+/* атмосфера — на светлой теме грейн очень лёгкий, glow без filter:blur */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.022;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.glow{position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+.glow--green{width:52vw;height:52vw;background:radial-gradient(circle,rgba(47,168,79,.14),transparent 70%);top:-16vw;right:-10vw}
+.glow--orange{width:42vw;height:42vw;background:radial-gradient(circle,rgba(255,138,31,.12),transparent 70%);bottom:-12vw;left:-10vw}
+
+/* типографика */
+h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.04;letter-spacing:-.01em}
+.display{font-size:clamp(2.6rem,7vw,5.4rem)}
+.h2{font-size:clamp(1.9rem,4.4vw,3.2rem)}
+.eyebrow{font-family:var(--font-body);font-weight:800;font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green-2)}
+.green-text{color:var(--green)}
+.lead{font-size:clamp(1.02rem,1.5vw,1.18rem);color:var(--muted);max-width:56ch}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+section{position:relative;padding:clamp(58px,8.5vw,120px) 0}
+.section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:46px;max-width:64ch}
+
+/* кнопки */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:14px;font-family:var(--font-display);font-weight:700;font-size:.98rem;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s,border-color .3s}
+.btn--primary{background:var(--green);color:#fff;box-shadow:0 14px 28px -12px rgba(47,168,79,.65)}
+.btn--primary::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transform:translateX(-130%);transition:transform .7s var(--ease)}
+.btn--primary:hover{transform:translateY(-3px);box-shadow:0 20px 38px -10px rgba(47,168,79,.75)}
+.btn--primary:hover::after{transform:translateX(130%)}
+.btn--ghost{border:1.5px solid var(--line-2);color:var(--ink);background:rgba(255,255,255,.6)}
+.btn--ghost:hover{border-color:var(--green);color:var(--green-2);transform:translateY(-3px)}
+.btn--orange{background:var(--orange);color:#fff;box-shadow:0 14px 28px -12px rgba(255,138,31,.6)}
+.btn--orange:hover{transform:translateY(-3px);box-shadow:0 20px 38px -10px rgba(255,138,31,.7)}
+.btn--lg{padding:17px 34px;font-size:1.04rem}
+.btn--sm{padding:11px 18px;font-size:.9rem;border-radius:12px}
+
+/* лого-знак: корзина покупок (Sepeti) + мяч-товар — стиль дека */
+.mark{flex:none}
+/* СЮДА позже финальный вектор/PNG корзины: <img src="logo.svg" class="mark"> */
+
+/* НАВ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(244,247,243,.86);backdrop-filter:blur(14px);border-color:var(--line)}
+.nav__inner{display:flex;align-items:center;gap:20px;height:74px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.logo{display:flex;align-items:center;gap:11px;flex:none}
+.logo .mark{width:40px;height:40px}
+.logo__text{font-family:var(--font-display);font-weight:800;font-size:1.46rem;letter-spacing:-.01em;line-height:1;color:var(--ink)}
+.logo__text b{color:var(--green);font-weight:800}
+.logo__sub{display:block;font-family:var(--font-body);font-weight:800;font-size:.5rem;letter-spacing:.3em;color:var(--muted);margin-top:3px}
+/* поиск в навбаре */
+.nav__search{flex:1;max-width:340px;margin-left:8px;display:flex;align-items:center;gap:9px;padding:10px 16px;border-radius:12px;background:var(--panel);border:1.5px solid var(--line);transition:border-color .3s,box-shadow .3s}
+.nav__search:focus-within{border-color:var(--green);box-shadow:0 0 0 4px var(--green-soft)}
+.nav__search svg{color:var(--muted);flex:none}
+.nav__search input{border:none;outline:none;background:none;width:100%;font-size:.92rem;font-weight:600;color:var(--ink)}
+.nav__search input::placeholder{color:var(--muted)}
+.nav__links{display:flex;gap:26px;margin-left:auto}
+.nav__links a{font-family:var(--font-display);font-size:.96rem;font-weight:600;color:var(--ink-2);position:relative;transition:color .3s}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--green);border-radius:2px;transition:width .35s var(--ease)}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a:hover::after{width:100%}
+.nav__cta{display:flex;align-items:center;gap:12px;flex:none}
+.nav__cart{position:relative;width:42px;height:42px;border-radius:12px;border:1.5px solid var(--line-2);display:grid;place-items:center;color:var(--ink-2);transition:.3s}
+.nav__cart:hover{border-color:var(--green);color:var(--green-2);transform:translateY(-2px)}
+.nav__cart .count{position:absolute;top:-7px;right:-7px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--orange);color:#fff;font-size:.66rem;font-weight:800;display:grid;place-items:center;font-family:var(--font-body)}
+.nav__burger{display:none;flex-direction:column;gap:5px;padding:8px}
+.nav__burger span{width:24px;height:2px;background:var(--ink);border-radius:2px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:74px;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;width:100%}
+.hero__badge{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border:1px solid var(--line-2);border-radius:999px;background:rgba(255,255,255,.7);font-size:.82rem;font-weight:800;color:var(--green-2);margin-bottom:22px}
+.hero__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(47,168,79,.5);animation:pulse 2s infinite}
+.hero h1{margin:6px 0 20px}
+.hero h1 .line{display:block}
+.hero__searchbar{display:flex;align-items:center;gap:10px;padding:8px;background:var(--panel);border:1.5px solid var(--line);border-radius:18px;box-shadow:var(--shadow-soft);margin-top:6px;max-width:520px}
+.hero__searchbar .ico{flex:none;margin-left:10px;color:var(--muted)}
+.hero__searchbar input{flex:1;border:none;outline:none;background:none;font-size:1rem;font-weight:600;color:var(--ink);min-width:0}
+.hero__searchbar input::placeholder{color:var(--muted)}
+.hero__searchbar .btn{flex:none}
+.hero__trust{display:flex;gap:22px;margin-top:24px;flex-wrap:wrap}
+.hero__trust div{display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:700;color:var(--ink-2)}
+.hero__trust .tick{width:20px;height:20px;border-radius:50%;background:var(--green);display:grid;place-items:center;flex:none}
+
+/* HERO ART — превью «сепета» (карточка маркетплейса) */
+.hero__art{position:relative;height:clamp(360px,46vw,520px);display:flex;align-items:center;justify-content:center}
+.hero__panel{position:relative;width:min(370px,86%);background:var(--panel);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:22px;z-index:2}
+.hero__panel-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.hero__panel-cart{width:46px;height:46px;border-radius:13px;background:var(--green-soft);display:grid;place-items:center;flex:none}
+.hero__panel-head b{font-family:var(--font-display);font-weight:800;font-size:1.04rem;display:block;line-height:1.2}
+.hero__panel-head small{color:var(--muted);font-size:.82rem;font-weight:700}
+.hero__row{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;background:var(--bg-2);transition:border-color .3s,transform .3s var(--ease)}
+.hero__row:hover{border-color:var(--green);transform:translateX(3px)}
+.hero__row .ph{width:38px;height:38px;border-radius:10px;flex:none;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;color:#fff;font-size:.86rem}
+.hero__row .info{flex:1;min-width:0}
+.hero__row .info b{font-family:var(--font-display);font-weight:700;font-size:.94rem;display:block}
+.hero__row .info .stars{display:flex;gap:2px;margin-top:2px}
+.hero__row .amt{font-family:var(--font-display);font-weight:800;color:var(--green-2);font-size:.96rem;flex:none}
+.hero__panel-foot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line-2)}
+.hero__panel-foot span{font-weight:800;font-size:.88rem;color:var(--ink-2)}
+/* плавающие чипы поверх панели */
+.hero__chip{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:11px 15px;box-shadow:var(--shadow);font-family:var(--font-display);font-weight:800;font-size:.86rem;display:flex;align-items:center;gap:10px;z-index:3}
+.hero__chip small{display:block;font-family:var(--font-body);font-weight:700;font-size:.72rem;color:var(--muted)}
+.hero__chip--1{top:4%;right:-2%}
+.hero__chip--2{bottom:6%;left:-4%}
+.chip-ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none}
+.chip-ico--green{background:var(--green-soft);color:var(--green-2)}
+.chip-ico--orange{background:var(--orange-soft);color:var(--orange)}
+
+/* СТАТЫ (лента) */
+.stats{background:var(--ink);color:#fff}
+.stats__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{text-align:center;padding:10px}
+.stat__num{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4.2vw,3rem);line-height:1;color:#fff}
+.stat__num span{color:var(--green)}
+.stat__label{font-size:.85rem;color:rgba(255,255,255,.62);margin-top:8px;font-weight:700}
+
+/* ЧИПЫ-ФИЛЬТРЫ */
+.filters{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:34px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;border:1.5px solid var(--line-2);background:var(--panel);font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--ink-2);transition:.3s;will-change:transform}
+.chip svg{flex:none}
+.chip:hover{border-color:var(--green);color:var(--green-2)}
+.chip.is-active{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 12px 24px -12px rgba(47,168,79,.6)}
+.chip .c-dot{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+
+/* КАРТОЧКИ СРАВНЕНИЯ (фирменное) */
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.site{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow-soft);transition:transform .45s var(--ease),border-color .45s,box-shadow .45s;will-change:transform;display:flex;flex-direction:column}
+.site:hover{border-color:rgba(47,168,79,.4);box-shadow:var(--shadow)}
+.site--top{border-color:rgba(47,168,79,.45);box-shadow:0 22px 46px -26px rgba(47,168,79,.5)}
+.site__rank{position:absolute;top:-12px;left:24px;display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--font-display);font-weight:800;font-size:.78rem}
+.site--top .site__rank{background:var(--green)}
+.site__head{display:flex;align-items:center;gap:14px;margin:8px 0 16px}
+.site__logo{width:54px;height:54px;border-radius:14px;flex:none;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;color:#fff;font-size:1.1rem}
+.site__name{font-family:var(--font-display);font-weight:800;font-size:1.18rem;line-height:1.1}
+.site__rating{display:flex;align-items:center;gap:8px;margin-top:4px}
+.stars{display:inline-flex;gap:2px}
+.site__rating .score{font-weight:800;font-size:.86rem;color:var(--ink-2)}
+.site__rating .votes{font-size:.78rem;color:var(--muted);font-weight:700}
+.site__bonus{display:flex;align-items:baseline;gap:8px;padding:14px;border-radius:14px;background:var(--green-soft);margin-bottom:16px}
+.site__bonus .amt{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3vw,2rem);color:var(--green-2);line-height:1}
+.site__bonus .lbl{font-size:.84rem;font-weight:700;color:var(--ink-2)}
+.site__feats{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.site__feats li{display:flex;align-items:center;gap:9px;font-size:.9rem;font-weight:600;color:var(--ink-2)}
+.site__feats .fi{width:18px;height:18px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center;flex:none;color:var(--green-2)}
+.site__actions{display:flex;gap:10px;margin-top:auto}
+.site__actions .btn{flex:1}
+
+/* БОНУСЫ-МАРКЕТПЛЕЙС */
+.deals{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:18px}
+.deal{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;overflow:hidden;box-shadow:var(--shadow-soft);transition:transform .45s var(--ease),border-color .45s;will-change:transform;display:flex;flex-direction:column}
+.deal:hover{border-color:var(--orange)}
+.deal__badge{position:absolute;top:14px;right:14px;padding:5px 11px;border-radius:999px;background:var(--orange-soft);color:var(--orange);font-family:var(--font-display);font-weight:800;font-size:.7rem;letter-spacing:.04em}
+.deal__badge--hot{background:var(--ink);color:#fff}
+.deal__badge--new{background:var(--green-soft);color:var(--green-2)}
+.deal__ico{width:46px;height:46px;border-radius:13px;background:var(--panel-2);display:grid;place-items:center;color:var(--green-2);margin-bottom:14px}
+.deal__site{font-size:.78rem;font-weight:800;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.deal__amt{font-family:var(--font-display);font-weight:800;font-size:clamp(1.7rem,3vw,2.1rem);color:var(--ink);line-height:1.05;margin:4px 0 6px}
+.deal__amt span{color:var(--green)}
+.deal p{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+.deal .deal__add{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:12px;border:1.5px solid var(--line-2);font-family:var(--font-display);font-weight:700;font-size:.9rem;color:var(--ink);transition:.3s}
+.deal .deal__add:hover{background:var(--green);border-color:var(--green);color:#fff}
+
+/* КАМПАНИИ */
+.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.camp{position:relative;border-radius:22px;overflow:hidden;padding:26px;color:#fff;isolation:isolate;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .5s var(--ease),box-shadow .5s;will-change:transform}
+.camp::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--cg)}
+.camp::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(27,31,42,.05) 30%,rgba(27,31,42,.78))}
+.camp:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.camp__tag{position:absolute;top:18px;left:18px;z-index:1;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);font-family:var(--font-display);font-weight:700;font-size:.74rem}
+.camp__ico{position:absolute;top:16px;right:16px;z-index:1;opacity:.9}
+.camp h3{font-size:1.32rem;margin-bottom:6px}
+.camp p{font-size:.9rem;color:rgba(255,255,255,.85);font-weight:600;margin-bottom:14px;max-width:34ch}
+.camp .camp__link{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-display);font-weight:700;font-size:.92rem;color:#fff}
+.camp .camp__link svg{transition:transform .3s var(--ease)}
+.camp:hover .camp__link svg{transform:translateX(4px)}
+
+/* NASIL ÇALIŞIR */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:30px 26px;box-shadow:var(--shadow-soft);transition:transform .45s var(--ease),border-color .45s;will-change:transform}
+.step:hover{border-color:rgba(47,168,79,.4);transform:translateY(-4px)}
+.step__num{font-family:var(--font-display);font-weight:800;font-size:1rem;width:42px;height:42px;border-radius:13px;background:var(--green-soft);color:var(--green-2);display:grid;place-items:center;margin-bottom:18px}
+.step__ico{position:absolute;top:30px;right:26px;color:var(--line-2)}
+.step h3{font-size:1.18rem;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.94rem}
+.step__line{position:absolute;top:51px;right:-20px;width:20px;height:2px;background:var(--line-2);z-index:1}
+
+/* SSS */
+.faq{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:var(--panel);overflow:hidden;transition:border-color .3s,box-shadow .3s}
+.faq-item.open{border-color:rgba(47,168,79,.4);box-shadow:var(--shadow-soft)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 22px;text-align:left;font-family:var(--font-display);font-weight:700;font-size:1.04rem;transition:color .3s}
+.faq-q:hover{color:var(--green-2)}
+.faq-q .plus{flex:none;width:26px;height:26px;position:relative;transition:transform .4s var(--ease)}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--green);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-q .plus::before{width:14px;height:2px}.faq-q .plus::after{width:2px;height:14px;transition:transform .4s var(--ease)}
+.faq-item.open .plus{transform:rotate(180deg)}.faq-item.open .plus::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{overflow:hidden;height:0}
+.faq-a p{padding:0 22px 22px;color:var(--muted);max-width:68ch}
+
+/* CTA-рассылка */
+.cta-band{text-align:center;border-radius:28px;background:var(--green);color:#fff;padding:clamp(46px,7vw,82px) 24px;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% -10%,rgba(255,255,255,.16),transparent 52%)}
+.cta-band h2,.cta-band .lead,.cta-band .eyebrow{position:relative;color:#fff}
+.cta-band .eyebrow{color:rgba(255,255,255,.85)}
+.cta-band .lead{margin:14px auto 28px;opacity:.94;max-width:50ch}
+.cta-form{position:relative;display:flex;gap:10px;max-width:480px;margin:0 auto;background:#fff;padding:8px;border-radius:16px;box-shadow:0 20px 40px -20px rgba(0,0,0,.4)}
+.cta-form input{flex:1;border:none;outline:none;background:none;padding:0 14px;font-size:1rem;font-weight:600;color:var(--ink);min-width:0}
+.cta-form input::placeholder{color:var(--muted)}
+.cta-form .btn{flex:none}
+.cta-note{position:relative;margin-top:14px;font-size:.82rem;color:rgba(255,255,255,.8);font-weight:600}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--line);padding:60px 0 36px;background:var(--bg-2)}
+.footer__grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:40px;margin-bottom:42px}
+.footer__brand p{color:var(--muted);font-size:.92rem;margin:16px 0;max-width:36ch}
+.footer h4{font-family:var(--font-display);font-weight:800;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:16px}
+.footer__col a{display:block;color:var(--muted);font-size:.92rem;padding:6px 0;transition:color .3s}
+.footer__col a:hover{color:var(--green-2)}
+.pays{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pay{padding:7px 12px;background:var(--panel);border:1px solid var(--line);border-radius:9px;font-size:.76rem;font-weight:800;color:var(--ink-2)}
+.socials{display:flex;gap:10px;margin-top:18px}
+.social{width:40px;height:40px;border-radius:12px;border:1px solid var(--line-2);display:grid;place-items:center;transition:.3s;color:var(--ink-2)}
+.social:hover{border-color:var(--green);color:var(--green-2);transform:translateY(-2px)}
+.footer__bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.age{display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:.84rem;max-width:60ch}
+.age b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:2px solid var(--orange);color:var(--orange);font-weight:800;font-size:.76rem;flex:none;font-family:var(--font-display)}
+.copyright{color:var(--muted);font-size:.84rem}
+
+/* BACK PILL */
+.back{position:fixed;left:18px;bottom:18px;z-index:1001;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:1px solid var(--line-2);font-family:var(--font-display);font-size:.84rem;font-weight:700;color:var(--ink-2);transition:.3s;box-shadow:0 8px 20px -10px rgba(27,31,42,.4)}
+.back:hover{color:var(--green-2);border-color:var(--green);transform:translateY(-2px)}
+
+/* keyframes */
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,168,79,.5)}70%{box-shadow:0 0 0 9px rgba(47,168,79,0)}100%{box-shadow:0 0 0 0 rgba(47,168,79,0)}}
+
+/* reveal */
+.js [data-reveal]{opacity:0}
+.js.reveal-all [data-reveal]{opacity:1;transform:none;transition:opacity .6s,transform .6s}
+
+/* адаптив */
+@media (max-width:980px){
+  .nav__links{display:none}
+  .nav__search{max-width:none}
+}
+@media (max-width:860px){
+  .nav__burger{display:flex}
+  .nav__search{display:none}
+  .hero__grid{grid-template-columns:1fr;text-align:center;gap:12px}
+  .hero__art{order:-1;height:clamp(330px,70vw,400px)}
+  .hero__searchbar,.lead{margin-left:auto;margin-right:auto}
+  .hero__trust{justify-content:center}
+  .hero__badge{margin-left:auto;margin-right:auto}
+  .stats__grid{grid-template-columns:repeat(2,1fr);gap:28px 16px}
+  .steps{grid-template-columns:1fr}
+  .step__line{display:none}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:30px}
+}
+@media (max-width:520px){
+  .footer__grid{grid-template-columns:1fr}
+  .footer__bottom{flex-direction:column;align-items:flex-start}
+  .hero__chip{display:none}
+  .hero__searchbar{flex-wrap:wrap}
+  .hero__searchbar .btn{width:100%}
+  .cta-form{flex-direction:column}
+  .cta-form .btn{width:100%}
+  .site__actions{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .js [data-reveal]{opacity:1!important;transform:none!important}html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="glow glow--green"></div>
+<div class="glow glow--orange"></div>
+
+<!-- ===== ОБЩИЙ SVG-ЗНАК: корзина покупок (Sepeti) + мяч-товар внутри — стиль дека ===== -->
+<!-- финальный вектор позже -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="bs-cart">
+    <!-- ручка корзины -->
+    <path d="M34 31 L40 16 A5 5 0 0 1 44.6 13 H55.4 A5 5 0 0 1 60 16 L66 31"
+          fill="none" stroke="#1B1F2A" stroke-width="5.5" stroke-linecap="round"/>
+    <!-- корпус корзины (трапеция, скруглённая) -->
+    <path d="M22 31 H78 A4 4 0 0 1 81.9 35.9 L75.5 73 A8 8 0 0 1 67.6 80 H32.4 A8 8 0 0 1 24.5 73 L18.1 35.9 A4 4 0 0 1 22 31 Z"
+          fill="#2FA84F"/>
+    <!-- рёбра корзины -->
+    <path d="M37 40 L41 71 M50 40 L50 71 M63 40 L59 71" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" opacity=".55"/>
+    <!-- мяч-«товар» в корзине (акцент) -->
+    <circle cx="50" cy="34" r="11" fill="#FF8A1F" stroke="#FFFFFF" stroke-width="2.4"/>
+    <path d="M50 34 l4 -2.6 4 2.6 -1.5 4.6 -5 0 z" fill="#FFFFFF" opacity=".9"/>
+  </g>
+
+  <!-- звезда рейтинга (один путь, переиспользуем) -->
+  <path id="bs-star" d="M12 2.6l2.7 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6.3 19.7l1.4-6.3-4.8-4.3 6.4-.6z"/>
+</defs></svg>
+
+<!-- НАВ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="logo" href="#" aria-label="BetSepeti ana sayfa">
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#bs-cart"/></svg>
+      <span>
+        <span class="logo__text">Bet<b>Sepeti</b></span>
+        <span class="logo__sub">TÜRKİYE'NİN BAHİS SEPETİ</span>
+      </span>
+    </a>
+
+    <label class="nav__search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="search" placeholder="Bahis sitesi veya bonus ara…" aria-label="Ara" />
+    </label>
+
+    <nav class="nav__links">
+      <a href="#siteler">Siteler</a>
+      <a href="#bonuslar">Bonuslar</a>
+      <a href="#kampanyalar">Kampanyalar</a>
+      <a href="#nasil">Nasıl Çalışır</a>
+      <a href="#sss">SSS</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="nav__cart" href="#bonuslar" aria-label="Sepetim (3 ürün)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h14l-1.2 10.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 7Z"/><path d="M8.5 7V6a3.5 3.5 0 0 1 7 0v1"/></svg>
+        <span class="count">3</span>
+      </a>
+      <a class="btn btn--primary btn--sm" href="#cta">Üye Ol</a>
+      <button class="nav__burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="hero__badge" data-reveal><span class="dot"></span>EN İYİ BONUSLAR TEK SEPETTE</span>
+      <h1 class="display">
+        <span class="line" data-reveal>Tüm bonuslar,</span>
+        <span class="line green-text" data-reveal>tek sepette.</span>
+      </h1>
+      <p class="lead" data-reveal>En iyi bahis siteleri, bonuslar ve kampanyalar — karşılaştır, seç, kazan. Türkiye'nin bahis pazarını tek çatı altında topladık.</p>
+
+      <div class="hero__searchbar" data-reveal>
+        <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+        <input type="search" placeholder="Site, bonus ya da kampanya ara…" aria-label="Site veya bonus ara" />
+        <a class="btn btn--primary" href="#siteler">Karşılaştır</a>
+      </div>
+
+      <div class="hero__trust" data-reveal>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> Bağımsız karşılaştırma</div>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> Güncel bonuslar</div>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> Gerçek kullanıcı puanları</div>
+      </div>
+    </div>
+
+    <!-- ART: превью «сепета» с мини-карточками сравнения -->
+    <div class="hero__art" data-reveal>
+      <div class="hero__panel" id="heroCart">
+        <div class="hero__panel-head">
+          <span class="hero__panel-cart">
+            <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"><use href="#bs-cart"/></svg>
+          </span>
+          <span>
+            <b>Sepetim</b>
+            <small>3 bahis sitesi karşılaştırılıyor</small>
+          </span>
+        </div>
+
+        <div class="hero__row">
+          <span class="ph" style="background:#2FA84F">GS</span>
+          <span class="info"><b>GolBet</b>
+            <span class="stars" aria-label="4.9 / 5 puan">
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+            </span>
+          </span>
+          <span class="amt">%200</span>
+        </div>
+
+        <div class="hero__row">
+          <span class="ph" style="background:#FF8A1F">MX</span>
+          <span class="info"><b>MaçX</b>
+            <span class="stars" aria-label="4.7 / 5 puan">
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--line-2)"><use href="#bs-star"/></svg>
+            </span>
+          </span>
+          <span class="amt">2500₺</span>
+        </div>
+
+        <div class="hero__row">
+          <span class="ph" style="background:#1B1F2A">SP</span>
+          <span class="info"><b>SporPlus</b>
+            <span class="stars" aria-label="4.6 / 5 puan">
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              <svg width="13" viewBox="0 0 24 24" fill="var(--line-2)"><use href="#bs-star"/></svg>
+            </span>
+          </span>
+          <span class="amt">150 FS</span>
+        </div>
+
+        <div class="hero__panel-foot">
+          <span>En iyi seçim hazır</span>
+          <a class="btn btn--orange btn--sm" href="#siteler">Sepeti İncele</a>
+        </div>
+      </div>
+
+      <div class="hero__chip hero__chip--1">
+        <span class="chip-ico chip-ico--green"><svg width="18" viewBox="0 0 24 24" fill="currentColor"><use href="#bs-star"/></svg></span>
+        <span>4.8 / 5<small>12.400+ değerlendirme</small></span>
+      </div>
+      <div class="hero__chip hero__chip--2">
+        <span class="chip-ico chip-ico--orange"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3h2l2.4 12.3a2 2 0 0 0 2 1.7h8.2a2 2 0 0 0 2-1.6L23 7H6"/><circle cx="10" cy="20" r="1.4" fill="currentColor"/><circle cx="18" cy="20" r="1.4" fill="currentColor"/></svg></span>
+        <span>48 site<small>tek sepette karşılaştırıldı</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- СТАТЫ -->
+<section class="stats" style="padding:52px 0">
+  <div class="wrap stats__grid">
+    <div class="stat" data-reveal><div class="stat__num" data-count="48" data-mode="plus">0</div><div class="stat__label">Karşılaştırılan site</div></div>
+    <div class="stat" data-reveal><div class="stat__num" data-count="320" data-mode="plus">0</div><div class="stat__label">Güncel bonus</div></div>
+    <div class="stat" data-reveal><div class="stat__num" data-count="12400" data-mode="plus">0</div><div class="stat__label">Kullanıcı puanı</div></div>
+    <div class="stat" data-reveal><div class="stat__num" data-mode="free">%100</div><div class="stat__label">Bağımsız &amp; ücretsiz</div></div>
+  </div>
+</section>
+
+<!-- ЧИПЫ-ФИЛЬТРЫ + КАРТОЧКИ СРАВНЕНИЯ -->
+<section id="siteler">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Karşılaştırma</span>
+      <h2 class="h2" data-reveal>En İyi Bahis Siteleri</h2>
+      <p class="lead" data-reveal>Bonus, puan ve özelliklere göre dizdik. Filtreyle seç, karşılaştır ve favorini sepete ekle — kararı sen ver.</p>
+    </div>
+
+    <!-- чипы-фильтры (демо, чисто визуальные) -->
+    <div class="filters" role="tablist" aria-label="Kategori filtresi" data-reveal>
+      <button class="chip is-active" role="tab" aria-selected="true"><span class="c-dot"></span>Tümü</button>
+      <button class="chip" role="tab" aria-selected="false">
+        <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>Spor
+      </button>
+      <button class="chip" role="tab" aria-selected="false">
+        <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M8 12h.01M16 12h.01"/></svg>Casino
+      </button>
+      <button class="chip" role="tab" aria-selected="false">
+        <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Canlı
+      </button>
+      <button class="chip" role="tab" aria-selected="false">
+        <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.4 5.8 6.1.5-4.6 4 1.4 6L12 16.9 6.7 19.3l1.4-6-4.6-4 6.1-.5z"/></svg>Yeni
+      </button>
+    </div>
+
+    <div class="compare">
+      <!-- #1 — топ -->
+      <article class="site site--top" data-reveal>
+        <span class="site__rank">
+          <svg width="13" viewBox="0 0 24 24" fill="currentColor"><use href="#bs-star"/></svg> 1. Sırada
+        </span>
+        <div class="site__head">
+          <span class="site__logo" style="background:#2FA84F">GB</span>
+          <div>
+            <div class="site__name">GolBet</div>
+            <div class="site__rating">
+              <span class="stars" aria-label="4.9 / 5 puan">
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+              </span>
+              <span class="score">4.9</span><span class="votes">(3.210)</span>
+            </div>
+          </div>
+        </div>
+        <div class="site__bonus">
+          <span class="amt">%200</span><span class="lbl">'e kadar hoş geldin bonusu</span>
+        </div>
+        <ul class="site__feats">
+          <li><span class="fi"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Hızlı para çekme (12 dk)</li>
+          <li><span class="fi"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Geniş canlı bahis menüsü</li>
+          <li><span class="fi"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>7/24 Türkçe destek</li>
+        </ul>
+        <div class="site__actions">
+          <a class="btn btn--ghost btn--sm" href="#">İncele</a>
+          <a class="btn btn--primary btn--sm" href="#" data-add>Sepete Ekle</a>
+        </div>
+      </article>
+
+      <!-- #2 -->
+      <article class="site" data-reveal>
+        <span class="site__rank">2. Sırada</span>
+        <div class="site__head">
+          <span class="site__logo" style="background:#FF8A1F">MX</span>
+          <div>
+            <div class="site__name">MaçX</div>
+            <div class="site__rating">
+              <span class="stars" aria-label="4.7 / 5 puan">
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--line-2)"><use href="#bs-star"/></svg>
+              </span>
+              <span class="score">4.7</span><span class="votes">(2.640)</span>
+            </div>
+          </div>
+        </div>
+        <div class="site__bonus">
+          <span class="amt">2500₺</span><span class="lbl">deneme + 150 free spin</span>
+        </div>
+        <ul class="site__feats">
+          <li><span class="fi"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Yüksek futbol oranları</li>
+          <li><span class="fi"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Papara &amp; kripto ödeme</li>
+          <li><span class="fi"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Mobil uygulama</li>
+        </ul>
+        <div class="site__actions">
+          <a class="btn btn--ghost btn--sm" href="#">İncele</a>
+          <a class="btn btn--primary btn--sm" href="#" data-add>Sepete Ekle</a>
+        </div>
+      </article>
+
+      <!-- #3 -->
+      <article class="site" data-reveal>
+        <span class="site__rank">3. Sırada</span>
+        <div class="site__head">
+          <span class="site__logo" style="background:#1B1F2A">SP</span>
+          <div>
+            <div class="site__name">SporPlus</div>
+            <div class="site__rating">
+              <span class="stars" aria-label="4.6 / 5 puan">
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
+                <svg width="15" viewBox="0 0 24 24" fill="var(--line-2)"><use href="#bs-star"/></svg>
+              </span>
+              <span class="score">4.6</span><span class="votes">(1.980)</span>
+            </div>
+          </div>
+        </div>
+        <div class="site__bonus">
+          <span class="amt">%100</span><span class="lbl">+ 50₺ kayıp iadesi</span>
+        </div>
+        <ul class="site__feats">
+          <li><span class="fi"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Canlı casino &amp; slot</li>
+          <li><span class="fi"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Düşük çevrim şartı</li>
+          <li><span class="fi"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span>Hızlı üyelik</li>
+        </ul>
+        <div class="site__actions">
+          <a class="btn btn--ghost btn--sm" href="#">İncele</a>
+          <a class="btn btn--primary btn--sm" href="#" data-add>Sepete Ekle</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BONUSLAR (маркетплейс-сетка с бейджами-deal) -->
+<section id="bonuslar">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Bonus Pazarı</span>
+      <h2 class="h2" data-reveal>Sepete eklenecek bonuslar</h2>
+      <p class="lead" data-reveal>Farklı sitelerden en iyi teklifleri tek yerde topladık. Beğendiğini sepete ekle, dilediğin zaman karşılaştır.</p>
+    </div>
+
+    <div class="deals">
+      <article class="deal" data-reveal>
+        <span class="deal__badge deal__badge--hot">FIRSAT</span>
+        <span class="deal__ico"><svg width="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7S8 7 8 4.5 12 3 12 7 16 7 16 4.5 12 7 12 7z"/></svg></span>
+        <span class="deal__site">GolBet</span>
+        <div class="deal__amt"><span>%200</span> Hoş Geldin</div>
+        <p>İlk yatırıma %200'e kadar bonus + 100 free spin. Sepetin en çok tercih edilen teklifi.</p>
+        <a class="deal__add" href="#" data-add>
+          <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Sepete Ekle
+        </a>
+      </article>
+
+      <article class="deal" data-reveal>
+        <span class="deal__badge deal__badge--new">YENİ</span>
+        <span class="deal__ico"><svg width="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3.5"/></svg></span>
+        <span class="deal__site">MaçX</span>
+        <div class="deal__amt"><span>150</span> Free Spin</div>
+        <p>Seçili slotlarda 150 ücretsiz dönüş. Yeni üyelere özel, çevrim şartı düşük.</p>
+        <a class="deal__add" href="#" data-add>
+          <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Sepete Ekle
+        </a>
+      </article>
+
+      <article class="deal" data-reveal>
+        <span class="deal__badge">POPÜLER</span>
+        <span class="deal__ico"><svg width="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <span class="deal__site">SporPlus</span>
+        <div class="deal__amt"><span>%15</span> Kayıp İadesi</div>
+        <p>Her hafta kayıplarının %15'i geri. Şanssız günler için güvenli bir teklif.</p>
+        <a class="deal__add" href="#" data-add>
+          <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Sepete Ekle
+        </a>
+      </article>
+
+      <article class="deal" data-reveal>
+        <span class="deal__badge deal__badge--hot">FIRSAT</span>
+        <span class="deal__ico"><svg width="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v6l9 4 9-4V7"/></svg></span>
+        <span class="deal__site">KupaBet</span>
+        <div class="deal__amt"><span>5000₺</span> Yatırım</div>
+        <p>İlk üç yatırıma kademeli %75 bonus. Yüksek limitli oyuncular için ideal.</p>
+        <a class="deal__add" href="#" data-add>
+          <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Sepete Ekle
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- KAMPANYALAR -->
+<section id="kampanyalar">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Kampanyalar</span>
+      <h2 class="h2" data-reveal>Sezonun öne çıkan kampanyaları</h2>
+      <p class="lead" data-reveal>Sınırlı süreli kampanyalar ve özel etkinlikler. Kaçırmadan sepetine ekle.</p>
+    </div>
+
+    <div class="camps">
+      <article class="camp" data-reveal style="--cg:linear-gradient(150deg,#1B5E2B,#2FA84F)">
+        <span class="camp__tag">Sınırlı süre</span>
+        <span class="camp__ico"><svg width="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <h3>Dünya Kupası Özel</h3>
+        <p>2026 maçlarına özel artırılmış oranlar ve günlük free bet ödülleri.</p>
+        <a class="camp__link" href="#">Kampanyayı gör <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="camp" data-reveal style="--cg:linear-gradient(150deg,#A85410,#FF8A1F)">
+        <span class="camp__tag">Her gün</span>
+        <span class="camp__ico"><svg width="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3.5"/></svg></span>
+        <h3>Günlük Çark Çevir</h3>
+        <p>Her gün ücretsiz çark hakkı. Free spin, bonus ve nakit ödüller kazan.</p>
+        <a class="camp__link" href="#">Katıl <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="camp" data-reveal style="--cg:linear-gradient(150deg,#222733,#1B1F2A)">
+        <span class="camp__tag">VIP</span>
+        <span class="camp__ico"><svg width="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M5 16l-2-9 6 4 3-7 3 7 6-4-2 9z"/><path d="M5 20h14"/></svg></span>
+        <h3>Sadakat Programı</h3>
+        <p>Sepetinden oynadıkça puan biriktir, seviye atla, özel ödüllerin kilidini aç.</p>
+        <a class="camp__link" href="#">Detaylar <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NASIL ÇALIŞIR -->
+<section id="nasil">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;align-items:center;margin-left:auto;margin-right:auto;margin-bottom:46px">
+      <span class="eyebrow" data-reveal>Nasıl Çalışır?</span>
+      <h2 class="h2" data-reveal>Üç adımda en iyisini bul</h2>
+    </div>
+
+    <div class="steps">
+      <article class="step" data-reveal>
+        <span class="step__line"></span>
+        <span class="step__num">1</span>
+        <span class="step__ico"><svg width="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+        <h3>Karşılaştır</h3>
+        <p>Bonusları, puanları ve özellikleri yan yana incele. Filtrele, en uygununu bul.</p>
+      </article>
+
+      <article class="step" data-reveal>
+        <span class="step__line"></span>
+        <span class="step__num">2</span>
+        <span class="step__ico"><svg width="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 7h14l-1.2 10.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 7Z"/><path d="M8.5 7V6a3.5 3.5 0 0 1 7 0v1"/><path d="M9.5 12l1.6 1.6 3.4-3.4"/></svg></span>
+        <h3>Sepete Ekle</h3>
+        <p>Beğendiğin teklifleri sepetine at, dilediğin zaman tek ekranda karşılaştır.</p>
+      </article>
+
+      <article class="step" data-reveal>
+        <span class="step__num">3</span>
+        <span class="step__ico"><svg width="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 5.8 6.1.5-4.6 4 1.4 6L12 16.9 6.7 19.3l1.4-6-4.6-4 6.1-.5z"/></svg></span>
+        <h3>Seç &amp; Kazan</h3>
+        <p>En iyi seçimle siteye geç, bonusunu al ve kazanmaya başla. Karar her zaman senin.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SSS -->
+<section id="sss">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;align-items:center;margin-left:auto;margin-right:auto;margin-bottom:42px">
+      <span class="eyebrow" data-reveal>Sıkça Sorulan Sorular</span>
+      <h2 class="h2" data-reveal>Merak ettiklerin</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">BetSepeti bir bahis sitesi mi?<span class="plus"></span></button><div class="faq-a"><p>Hayır. BetSepeti bir karşılaştırma platformudur — yani bahis sitelerinin, bonusların ve kampanyaların bir araya geldiği bir pazar yeri. Biz bahis kabul etmeyiz; sana en iyi seçenekleri yan yana sunarız.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Siteleri neye göre sıralıyorsunuz?<span class="plus"></span></button><div class="faq-a"><p>Bonus büyüklüğü, gerçek kullanıcı puanları, ödeme hızı, destek kalitesi ve oyun çeşitliliği gibi kriterleri birlikte değerlendiriyoruz. Sıralama bağımsızdır ve düzenli olarak güncellenir.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">"Sepete Ekle" ne işe yarar?<span class="plus"></span></button><div class="faq-a"><p>Beğendiğin bonus ve siteleri sepetine ekleyerek tek ekranda kolayca karşılaştırabilirsin. Bu bir alışveriş değildir — sadece favorilerini düzenli tutmanın pratik bir yolu.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Hizmetiniz ücretli mi?<span class="plus"></span></button><div class="faq-a"><p>BetSepeti tamamen ücretsizdir. Karşılaştırma yapmak, puanları görmek ve kampanyaları takip etmek için herhangi bir ücret ödemezsin.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Bonus bilgileri güncel mi?<span class="plus"></span></button><div class="faq-a"><p>Teklifleri düzenli olarak kontrol ediyoruz, ancak son koşullar için her zaman ilgili sitenin kampanya sayfasını incelemeni öneririz. Bonuslar zamanla değişebilir.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA-РАССЫЛКА -->
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-band" data-reveal>
+      <span class="eyebrow">Bültene Katıl</span>
+      <h2 class="display" style="font-size:clamp(2rem,5.5vw,3.8rem);margin-top:12px">En iyi fırsatlar e-postanda</h2>
+      <p class="lead">Yeni bonuslar ve sınırlı süreli kampanyalar yayınlandığında ilk sen haberdar ol. Spam yok, sadece fırsat.</p>
+      <form class="cta-form" onsubmit="return false">
+        <label for="cta-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-posta adresi</label>
+        <input id="cta-email" type="email" placeholder="E-posta adresin" autocomplete="email" />
+        <button class="btn btn--orange" type="submit">Abone Ol</button>
+      </form>
+      <p class="cta-note">Kaydolarak gizlilik politikasını kabul etmiş olursun.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="#">
+          <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#bs-cart"/></svg>
+          <span><span class="logo__text">Bet<b>Sepeti</b></span><span class="logo__sub">TÜRKİYE'NİN BAHİS SEPETİ</span></span>
+        </a>
+        <p>Bahis sitelerini, bonusları ve kampanyaları tek çatı altında karşılaştıran bağımsız Türk pazar yeri. Karşılaştır, seç, kazan.</p>
+        <div class="pays"><span class="pay">Papara</span><span class="pay">Havale/EFT</span><span class="pay">Kripto</span><span class="pay">Visa</span></div>
+        <div class="socials">
+          <a class="social" href="#" aria-label="Instagram"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="social" href="#" aria-label="X"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6z"/></svg></a>
+          <a class="social" href="#" aria-label="Telegram"><svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 3L2 11l6 2 2 7 3-4 5 4 4-17z"/></svg></a>
+          <a class="social" href="#" aria-label="YouTube"><svg width="18" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="var(--bg-2)"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>Keşfet</h4><a href="#siteler">Bahis Siteleri</a><a href="#bonuslar">Bonuslar</a><a href="#kampanyalar">Kampanyalar</a><a href="#nasil">Nasıl Çalışır</a></div>
+      <div class="footer__col"><h4>Kategoriler</h4><a href="#">Spor Bahisleri</a><a href="#">Casino</a><a href="#">Canlı Bahis</a><a href="#">Yeni Siteler</a></div>
+      <div class="footer__col"><h4>Kurumsal</h4><a href="#">Hakkımızda</a><a href="#">Değerlendirme Kriterleri</a><a href="#">SSS</a><a href="#">İletişim</a></div>
+    </div>
+    <div class="footer__bottom">
+      <span class="age"><b>18+</b> Sorumlu oyun. 18 yaş altı oynayamaz. BetSepeti bahis kabul etmez, yalnızca karşılaştırma sunar. Kumar bağımlılık yapabilir.</span>
+      <span class="copyright">© 2026 BetSepeti — Konsept tasarım.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="back" href="../../" aria-label="Konsept galerisine dön">← Galeri</a>
+
+<script type="module">
+  import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+  window.__motionReady = true;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* навбар-scrolled */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 30);
+  onScroll(); addEventListener('scroll', onScroll, { passive:true });
+
+  if (!reduce) {
+    /* inView-reveal со stagger по группам-родителям */
+    const groups = new Map();
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      const k = el.parentElement;
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(el);
+    });
+    groups.forEach(items => items.forEach((el, i) => {
+      inView(el, () => {
+        animate(el, { opacity:[0,1], transform:['translateY(26px)','translateY(0)'] },
+          { duration:.7, delay: Math.min(i*0.07,.4), ease:[.22,1,.36,1] });
+      }, { amount:.15, margin:'0px 0px -8% 0px' });
+    }));
+
+    /* count-up */
+    const fmt = (v, el) => {
+      const m = el.dataset.mode;
+      if (m === 'plus') return Math.round(v).toLocaleString('tr-TR') + '+';
+      return Math.round(v).toLocaleString('tr-TR');
+    };
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const t = +el.dataset.count;
+      inView(el, () => animate(0, t, { duration:1.8, ease:'easeOut', onUpdate:v => {
+        el.textContent = fmt(v, el);
+        if (el.dataset.mode === 'plus') {
+          el.innerHTML = el.textContent.replace(/(\+)$/, '<span>$1</span>');
+        }
+      }}), { amount:.6 });
+    });
+  }
+
+  /* hover-спринги для карточек */
+  const spring = { type:'spring', stiffness:320, damping:22 };
+  document.querySelectorAll('.site, .deal, .camp, .step, .chip').forEach(el => {
+    el.addEventListener('pointerenter', () => { if(!reduce) animate(el, { scale:1.02 }, spring); });
+    el.addEventListener('pointerleave', () => { if(!reduce) animate(el, { scale:1 }, spring); });
+  });
+
+  /* фирменная микро-анимация: «прыжок корзины» в hero + при «Sepete Ekle» */
+  const cartIcon = document.querySelector('#heroCart .hero__panel-cart svg');
+  const bounceCart = () => {
+    if (reduce || !cartIcon) return;
+    animate(cartIcon, { transform:['translateY(0) rotate(0deg)','translateY(-8px) rotate(-7deg)','translateY(0) rotate(0deg)'] },
+      { duration:.6, ease:[.22,1,.36,1] });
+  };
+  /* периодический лёгкий «прыжок», пока hero на экране */
+  if (!reduce && cartIcon) {
+    let timer;
+    inView(document.querySelector('#heroCart'), () => {
+      bounceCart();
+      timer = setInterval(bounceCart, 4200);
+      return () => { clearInterval(timer); };
+    });
+  }
+
+  /* счётчик корзины + прыжок при «Sepete Ekle» (демо, без бэкенда) */
+  const cartCount = document.querySelector('.nav__cart .count');
+  document.querySelectorAll('[data-add]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      bounceCart();
+      if (cartCount) {
+        cartCount.textContent = (+cartCount.textContent || 0) + 1;
+        if (!reduce) animate(cartCount, { scale:[1,1.5,1] }, { duration:.4, ease:[.22,1,.36,1] });
+      }
+      if (!reduce) animate(e.currentTarget, { scale:[1,.94,1] }, { duration:.3 });
+    });
+  });
+
+  /* чипы-фильтры (визуальное переключение active) */
+  const chips = document.querySelectorAll('.filters .chip');
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    chips.forEach(c => { c.classList.remove('is-active'); c.setAttribute('aria-selected','false'); });
+    chip.classList.add('is-active'); chip.setAttribute('aria-selected','true');
+    if (!reduce) animate(chip, { scale:[1,.93,1] }, { duration:.3 });
+  }));
+
+  /* FAQ-аккордеон на Motion */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open);
+      if (reduce){ a.style.height = open ? 'auto' : '0'; return; }
+      a.style.height = 'auto';
+      const h = a.offsetHeight;
+      if (open) animate(a, { height:[0,h] }, { duration:.45, ease:[.22,1,.36,1] }).finished.then(()=>a.style.height='auto');
+      else animate(a, { height:[h,0] }, { duration:.35, ease:[.22,1,.36,1] });
+    });
+  });
+
+  /* бургер — анимация (меню статично в концепте) */
+  document.querySelector('.nav__burger')?.addEventListener('click', e => animate(e.currentTarget, { rotate:[0,90,0] }, { duration:.5 }));
+</script>
+</body>
+</html>

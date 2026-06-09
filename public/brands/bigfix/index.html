@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="tr" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Big Fix — Slot · Casino · Jackpot</title>
+<meta name="description" content="The Big Fix — büyük vuruş seni bekliyor. Neon slotlar, canlı casino ve dakika dakika büyüyen jackpot havuzu. Yüksek roller'ların kulübü." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet" />
+
+<script>
+  /* js-флаг: если Motion успел стартовать — он сам всё откроет; иначе фолбэк ниже */
+  document.documentElement.classList.replace('no-js','js');
+  window.__motionReady = false;
+  setTimeout(function(){ if(!window.__motionReady) document.documentElement.classList.add('reveal-all'); }, 1500);
+</script>
+
+<style>
+/* ===== ТОКЕНЫ — нео-нуар The Big Fix ===== */
+:root{
+  --bg:#07090C;            /* near-black фон */
+  --bg-2:#0B0F14;          /* панель темнее */
+  --panel:#0E141B;         /* карточка */
+  --panel-2:#121A23;       /* карточка hover */
+  --ink:#F2F6FB;           /* основной текст (почти белый) */
+  --ink-2:#AEB8C4;         /* вторичный текст */
+  --muted:#6B7682;         /* приглушённый */
+  --green:#15F5A3;         /* неон-зелёный — основной */
+  --green-d:#0FBE7F;       /* зелёный темнее */
+  --mag:#FF2E97;           /* горячая маджента — акцент */
+  --cyan:#21D4FD;          /* электрик-циан — вторичный акцент */
+  --line:rgba(174,184,196,.12);
+  --line-2:rgba(174,184,196,.20);
+  --font-display:'Space Grotesk',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'Space Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --shadow:0 30px 70px -36px rgba(0,0,0,.9);
+  --maxw:1200px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;font-weight:500;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+svg{display:block}
+ul{list-style:none}
+::selection{background:var(--green);color:#04130C}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:8px}
+
+/* ===== атмосфера: грейн (тайловый data-URI) + дешёвые radial-glow без filter:blur ===== */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.05;mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* лёгкая «развёртка» сканлайнов поверх — фирменный нуар, очень дёшево */
+.scan{position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.4;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px)}
+.glow{position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+.glow--green{width:60vw;height:60vw;background:radial-gradient(circle,rgba(21,245,163,.14),transparent 68%);top:-22vw;left:-14vw}
+.glow--mag{width:52vw;height:52vw;background:radial-gradient(circle,rgba(255,46,151,.13),transparent 70%);top:-8vw;right:-16vw}
+.glow--cyan{width:46vw;height:46vw;background:radial-gradient(circle,rgba(33,212,253,.10),transparent 72%);bottom:-14vw;left:6vw}
+
+/* ===== типографика ===== */
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.02;letter-spacing:-.02em}
+.display{font-size:clamp(2.8rem,8vw,6.4rem)}
+.h2{font-size:clamp(2rem,4.8vw,3.6rem)}
+.eyebrow{font-family:var(--font-body);font-weight:800;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--green)}
+.lead{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--ink-2);max-width:56ch}
+.grad-g{color:var(--green);text-shadow:0 0 22px rgba(21,245,163,.45)}
+.grad-m{color:var(--mag);text-shadow:0 0 22px rgba(255,46,151,.45)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+section{position:relative;padding:clamp(64px,9vw,132px) 0}
+.section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:48px;max-width:64ch}
+
+/* ===== кнопки ===== */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:13px;font-weight:800;font-size:.96rem;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s}
+.btn--primary{background:var(--green);color:#04130C;box-shadow:0 0 0 1px rgba(21,245,163,.5),0 16px 38px -14px rgba(21,245,163,.65)}
+.btn--primary::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-130%);transition:transform .7s var(--ease)}
+.btn--primary:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(21,245,163,.8),0 22px 48px -12px rgba(21,245,163,.85)}
+.btn--primary:hover::after{transform:translateX(130%)}
+.btn--ghost{border:1.5px solid var(--line-2);color:var(--ink);background:rgba(255,255,255,.02)}
+.btn--ghost:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px)}
+.btn--lg{padding:18px 38px;font-size:1.04rem}
+.btn .arr{transition:transform .4s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* ===== лого-знак (см. inline SVG #bf-mark): неоновый ромб-джекпот с «7» + молнией. */
+/* финальный вектор позже */
+.mark{flex:none}
+.mark .neon-g{filter:drop-shadow(0 0 4px rgba(21,245,163,.9))}
+.mark .neon-m{filter:drop-shadow(0 0 4px rgba(255,46,151,.9))}
+
+/* ===== НАВ ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(7,9,12,.78);backdrop-filter:blur(14px);border-color:var(--line)}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:78px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .mark{width:40px;height:40px}
+.logo__text{font-family:var(--font-display);font-weight:700;font-size:1.34rem;letter-spacing:.02em;line-height:1;text-shadow:0 0 18px rgba(21,245,163,.35)}
+.logo__text b{color:var(--green);font-weight:700}
+.logo__sub{display:block;font-family:var(--font-body);font-weight:700;font-size:.5rem;letter-spacing:.36em;color:var(--muted);margin-top:4px}
+.nav__links{display:flex;gap:28px}
+.nav__links a{font-size:.92rem;font-weight:600;color:var(--ink-2);position:relative;transition:color .3s}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--green);box-shadow:0 0 8px var(--green);transition:width .35s var(--ease)}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a:hover::after{width:100%}
+.nav__cta{display:flex;align-items:center;gap:14px}
+.nav__login{font-weight:700;font-size:.92rem}
+.nav__login:hover{color:var(--green)}
+.nav__burger{display:none;flex-direction:column;gap:5px;padding:8px}
+.nav__burger span{width:24px;height:2px;background:var(--ink);border-radius:2px}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:78px;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;width:100%}
+.hero__badge{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border:1px solid var(--line-2);border-radius:999px;background:rgba(255,255,255,.02);font-size:.8rem;font-weight:700;color:var(--cyan);margin-bottom:26px}
+.hero__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(33,212,253,.5);animation:pulse-c 2s infinite}
+.hero h1{margin:8px 0 24px}
+.hero h1 .line{display:block}
+
+/* глитч-текст в hero — фирменное, на CSS, без тяжёлых фильтров */
+.glitch{position:relative;display:inline-block;color:var(--ink)}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;overflow:hidden;pointer-events:none}
+.glitch::before{color:var(--mag);transform:translate(-2px,0);clip-path:inset(0 0 62% 0);animation:glitch-a 3.6s infinite steps(2,end)}
+.glitch::after{color:var(--cyan);transform:translate(2px,0);clip-path:inset(58% 0 0 0);animation:glitch-b 3.2s infinite steps(2,end)}
+
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.hero__trust{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap}
+.hero__trust div{display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;color:var(--ink-2)}
+.hero__trust .tick{width:20px;height:20px;border-radius:50%;background:var(--green);display:grid;place-items:center;flex:none;box-shadow:0 0 12px rgba(21,245,163,.5)}
+
+/* hero-арт: барабан слота (вращающийся ромб-знак за стеклом) */
+.hero__art{position:relative;height:clamp(360px,46vw,560px);display:flex;align-items:center;justify-content:center}
+.hero__halo{position:absolute;width:92%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(21,245,163,.16),rgba(255,46,151,.08) 45%,transparent 70%)}
+.hero__ring{position:absolute;width:104%;aspect-ratio:1;border:1.5px dashed rgba(33,212,253,.32);border-radius:50%;animation:spin 50s linear infinite}
+.hero__ring--2{width:80%;border-color:rgba(255,46,151,.26);animation:spin 38s linear infinite reverse}
+.hero__bigmark{position:relative;width:58%;max-width:330px}
+
+/* мини-«барабан слота» — три неоновых символа, центральный крутится */
+.hero__chip{position:absolute;background:rgba(14,20,27,.92);border:1px solid var(--line-2);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);font-weight:800;font-size:.86rem;display:flex;align-items:center;gap:10px;backdrop-filter:blur(6px)}
+.hero__chip small{display:block;font-weight:600;font-size:.72rem;color:var(--muted)}
+.hero__chip--1{top:6%;right:-2%}
+.hero__chip--2{bottom:8%;left:-3%}
+.chip-ico{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.04);display:grid;place-items:center;flex:none}
+
+/* мини слот-барабан, плавает снизу по центру арта */
+.reel{position:absolute;bottom:2%;left:50%;transform:translateX(-50%);display:flex;gap:8px;padding:10px;border-radius:16px;background:rgba(11,15,20,.92);border:1px solid var(--line-2);box-shadow:var(--shadow)}
+.reel__cell{width:46px;height:58px;border-radius:10px;background:#070A0E;border:1px solid var(--line);overflow:hidden;position:relative;display:grid;place-items:center}
+.reel__strip{display:flex;flex-direction:column;will-change:transform}
+.reel__sym{height:58px;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:1.7rem}
+.s-green{color:var(--green);text-shadow:0 0 12px rgba(21,245,163,.7)}
+.s-mag{color:var(--mag);text-shadow:0 0 12px rgba(255,46,151,.7)}
+.s-cyan{color:var(--cyan);text-shadow:0 0 12px rgba(33,212,253,.7)}
+
+/* ===== JACKPOT COUNTER ===== */
+.jackpot{background:linear-gradient(180deg,var(--bg-2),var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.jp{position:relative;text-align:center;border-radius:26px;padding:clamp(40px,6vw,72px) 24px;overflow:hidden;background:radial-gradient(circle at 50% 0%,rgba(21,245,163,.10),transparent 60%),var(--panel);border:1px solid var(--line-2)}
+.jp__label{display:inline-flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:.78rem;color:var(--cyan)}
+.jp__label .dot{width:8px;height:8px;border-radius:50%;background:var(--mag);box-shadow:0 0 10px var(--mag);animation:pulse-m 1.6s infinite}
+.jp__num{font-family:var(--font-mono);font-weight:700;font-size:clamp(2.6rem,9vw,6.2rem);line-height:1;margin:18px 0 6px;letter-spacing:.01em;color:#fff;text-shadow:0 0 30px rgba(21,245,163,.5),0 0 60px rgba(21,245,163,.25)}
+.jp__num .cur{color:var(--green);text-shadow:0 0 26px rgba(21,245,163,.7)}
+.jp__sub{color:var(--ink-2);font-size:.96rem;max-width:48ch;margin:0 auto}
+.jp__row{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.jp__stat{text-align:center}
+.jp__stat b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(1.4rem,3.4vw,2.1rem);color:var(--ink)}
+.jp__stat b span{color:var(--mag)}
+.jp__stat small{color:var(--muted);font-size:.8rem;font-weight:600;letter-spacing:.04em}
+
+/* ===== SLOTLAR — неоновые карточки игр ===== */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:16px}
+.tile{position:relative;aspect-ratio:3/4;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff;isolation:isolate;border:1px solid var(--line);transition:transform .5s var(--ease),box-shadow .5s,border-color .5s;will-change:transform;background:var(--panel)}
+.tile::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--g);opacity:.9}
+.tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,12,.1) 30%,rgba(7,9,12,.92))}
+.tile:hover{transform:translateY(-7px);border-color:var(--c,var(--green));box-shadow:0 0 0 1px var(--c,var(--green)),0 26px 50px -22px var(--c,var(--green))}
+.tile__ico{position:absolute;top:16px;left:16px;width:40px;height:40px;opacity:.95}
+.tile__rtp{position:absolute;top:16px;right:16px;font-family:var(--font-mono);font-size:.66rem;font-weight:700;color:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:3px 7px;backdrop-filter:blur(4px)}
+.tile__tag{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--c,var(--green));text-shadow:0 0 10px currentColor}
+.tile__name{font-weight:700;font-size:1.06rem;font-family:var(--font-display);margin-top:3px}
+.tile__play{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .4s}
+.tile__play span{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(7,9,12,.5);border:1.5px solid var(--c,var(--green));box-shadow:0 0 18px var(--c,var(--green));backdrop-filter:blur(4px)}
+.tile:hover .tile__play{opacity:1}
+
+/* ===== CANLI CASINO — живые столы ===== */
+.tables{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.table{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;overflow:hidden;transition:transform .45s var(--ease),border-color .45s,box-shadow .45s;will-change:transform}
+.table:hover{border-color:rgba(255,46,151,.4);box-shadow:0 0 0 1px rgba(255,46,151,.3),0 24px 46px -24px rgba(255,46,151,.5)}
+.table__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.tag-live{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:.76rem;letter-spacing:.06em;color:var(--mag)}
+.tag-live .dot{width:7px;height:7px;border-radius:50%;background:var(--mag);box-shadow:0 0 8px var(--mag);animation:pulse-m 1.4s infinite}
+.table__cat{font-size:.78rem;color:var(--muted);font-weight:700}
+.table__name{font-family:var(--font-display);font-weight:700;font-size:1.22rem;margin-bottom:6px}
+.table__dealer{color:var(--ink-2);font-size:.86rem;margin-bottom:18px}
+.table__dealer b{color:var(--cyan);font-weight:700}
+.table__foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px}
+.table__seats{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--ink-2);font-weight:600}
+.seatbar{width:64px;height:6px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.seatbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--green),var(--cyan))}
+.table__limit{font-family:var(--font-mono);font-size:.82rem;font-weight:700;color:var(--green)}
+
+/* ===== BONUSLAR ===== */
+.bonuses{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+.bonus{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:30px;overflow:hidden;transition:transform .45s var(--ease),border-color .45s,box-shadow .45s}
+.bonus:hover{border-color:var(--green)}
+.bonus--feat{background:linear-gradient(165deg,rgba(21,245,163,.10),rgba(33,212,253,.05)),var(--panel);border-color:rgba(21,245,163,.4)}
+.bonus__ribbon{position:absolute;top:18px;right:-34px;transform:rotate(45deg);background:var(--mag);color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.06em;padding:6px 44px;box-shadow:0 6px 18px -6px rgba(255,46,151,.7)}
+.bonus__amt{font-family:var(--font-display);font-weight:700;font-size:clamp(2.4rem,4.8vw,3.1rem);line-height:1;margin:6px 0;color:var(--green);text-shadow:0 0 22px rgba(21,245,163,.4)}
+.bonus--alt .bonus__amt{color:var(--mag);text-shadow:0 0 22px rgba(255,46,151,.4)}
+.bonus--alt2 .bonus__amt{color:var(--cyan);text-shadow:0 0 22px rgba(33,212,253,.4)}
+.bonus__name{font-weight:800;font-size:1.06rem;margin-bottom:10px}
+.bonus p{color:var(--ink-2);font-size:.92rem;margin-bottom:22px}
+.bonus .btn{width:100%;justify-content:center}
+
+/* ===== VIP / YÜKSEK ROLLER ===== */
+.vip{position:relative;border-radius:30px;overflow:hidden;background:linear-gradient(160deg,#0A0E13,#0E141B);border:1px solid var(--line-2)}
+.vip::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 12%,rgba(255,46,151,.16),transparent 46%),radial-gradient(circle at 8% 92%,rgba(21,245,163,.12),transparent 50%);pointer-events:none}
+.vip__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;padding:clamp(36px,5vw,66px);position:relative;z-index:1}
+.vip h2{color:#fff}
+.vip .lead{color:var(--ink-2)}
+.vip__tiers{display:flex;flex-direction:column;gap:12px;margin-top:26px}
+.tier{display:flex;align-items:center;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02);transition:.35s}
+.tier:hover{border-color:var(--c);background:rgba(255,255,255,.04);transform:translateX(4px)}
+.tier__badge{width:46px;height:46px;flex:none;border-radius:12px;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:#04130C;background:var(--c);box-shadow:0 0 18px -2px var(--c)}
+.tier b{display:block;font-weight:800;font-size:1rem}
+.tier span{color:var(--muted);font-size:.84rem}
+.vip__perks{display:flex;flex-direction:column;gap:14px}
+.perk{display:flex;gap:14px;align-items:flex-start}
+.perk__ico{width:44px;height:44px;flex:none;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line);display:grid;place-items:center}
+.perk b{display:block;font-weight:800;font-size:.98rem}
+.perk span{color:var(--ink-2);font-size:.88rem}
+
+/* ===== MOBILE ===== */
+.app__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center}
+.phone{position:relative;width:252px;height:516px;margin:0 auto;border-radius:42px;background:#04060A;padding:12px;box-shadow:var(--shadow),0 0 0 1px var(--line-2),0 0 60px -20px rgba(21,245,163,.5)}
+.phone__screen{width:100%;height:100%;border-radius:32px;background:radial-gradient(circle at 50% 18%,rgba(21,245,163,.14),transparent 55%),#06090D;overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px;text-align:center}
+.phone__notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:86px;height:20px;background:#04060A;border-radius:0 0 13px 13px;z-index:2}
+.app__features{display:flex;flex-direction:column;gap:16px;margin:24px 0 28px}
+.feat{display:flex;gap:14px;align-items:flex-start}
+.feat__ico{width:44px;height:44px;flex:none;border-radius:12px;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center}
+.feat b{display:block;font-weight:800}
+.feat span{color:var(--ink-2);font-size:.9rem}
+.stores{display:flex;gap:12px;flex-wrap:wrap}
+.store{display:flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid var(--line-2);border-radius:13px;background:var(--panel);font-weight:800;font-size:.92rem;transition:.3s}
+.store:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
+.store small{display:block;font-weight:600;font-size:.68rem;color:var(--muted)}
+.store:hover small{color:var(--green-d)}
+
+/* ===== SSS ===== */
+.faq{max-width:800px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 4px;text-align:left;font-weight:800;font-size:1.05rem;transition:color .3s}
+.faq-q:hover{color:var(--green)}
+.faq-q .plus{flex:none;width:26px;height:26px;position:relative;transition:transform .4s var(--ease)}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--green);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 8px var(--green)}
+.faq-q .plus::before{width:14px;height:2px}.faq-q .plus::after{width:2px;height:14px;transition:transform .4s var(--ease)}
+.faq-item.open .plus{transform:rotate(180deg)}.faq-item.open .plus::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{overflow:hidden;height:0}
+.faq-a p{padding:0 4px 24px;color:var(--ink-2);max-width:68ch}
+
+/* ===== CTA ===== */
+.cta-band{text-align:center;border-radius:28px;background:radial-gradient(circle at 50% -20%,rgba(21,245,163,.22),transparent 55%),linear-gradient(160deg,#0B1016,#0E141B);color:#fff;padding:clamp(48px,7vw,90px) 24px;position:relative;overflow:hidden;border:1px solid var(--line-2)}
+.cta-band::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 120%,rgba(255,46,151,.16),transparent 50%);pointer-events:none}
+.cta-band h2,.cta-band .lead{position:relative;color:#fff}
+.cta-band .lead{margin:16px auto 30px;color:var(--ink-2)}
+
+/* ===== FOOTER ===== */
+.footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--bg-2)}
+.footer__grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:40px;margin-bottom:46px}
+.footer__brand p{color:var(--ink-2);font-size:.92rem;margin:16px 0;max-width:36ch}
+.footer h4{font-family:var(--font-body);font-weight:800;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:18px}
+.footer__col a{display:block;color:var(--muted);font-size:.92rem;padding:6px 0;transition:color .3s}
+.footer__col a:hover{color:var(--green)}
+.pays{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pay{padding:7px 12px;background:var(--panel);border:1px solid var(--line);border-radius:9px;font-size:.74rem;font-weight:800;color:var(--ink-2)}
+.socials{display:flex;gap:10px;margin-top:18px}
+.social{width:40px;height:40px;border-radius:11px;border:1px solid var(--line-2);display:grid;place-items:center;transition:.3s;color:var(--ink-2)}
+.social:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px);box-shadow:0 0 16px -4px var(--green)}
+.footer__bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.age{display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:.84rem;max-width:62ch}
+.age b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:2px solid var(--mag);color:var(--mag);font-weight:800;font-size:.74rem;flex:none}
+.copyright{color:var(--muted);font-size:.84rem}
+
+/* ===== BACK PILL ===== */
+.back{position:fixed;left:18px;bottom:18px;z-index:1001;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(14,20,27,.8);backdrop-filter:blur(10px);border:1px solid var(--line-2);font-size:.82rem;font-weight:800;color:var(--ink-2);transition:.3s;box-shadow:var(--shadow)}
+.back:hover{color:var(--green);border-color:var(--green);transform:translateY(-2px)}
+
+/* ===== keyframes ===== */
+@keyframes pulse-c{0%{box-shadow:0 0 0 0 rgba(33,212,253,.5)}70%{box-shadow:0 0 0 10px rgba(33,212,253,0)}100%{box-shadow:0 0 0 0 rgba(33,212,253,0)}}
+@keyframes pulse-m{0%{box-shadow:0 0 0 0 rgba(255,46,151,.5)}70%{box-shadow:0 0 0 9px rgba(255,46,151,0)}100%{box-shadow:0 0 0 0 rgba(255,46,151,0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* неон-флик логотипа-знака */
+@keyframes flicker{0%,100%{opacity:1}48%{opacity:1}49%{opacity:.55}50%{opacity:1}71%{opacity:1}72%{opacity:.7}73%{opacity:1}}
+.flick{animation:flicker 5.5s infinite}
+/* глитч hero */
+@keyframes glitch-a{0%,86%,100%{transform:translate(-2px,0)}88%{transform:translate(-5px,1px)}90%{transform:translate(2px,-1px)}92%{transform:translate(-3px,0)}}
+@keyframes glitch-b{0%,84%,100%{transform:translate(2px,0)}86%{transform:translate(5px,-1px)}89%{transform:translate(-2px,1px)}93%{transform:translate(3px,0)}}
+
+/* ===== reveal (js-флаг + reveal-all фолбэк) ===== */
+.js [data-reveal]{opacity:0}
+.js.reveal-all [data-reveal]{opacity:1;transform:none;transition:opacity .6s,transform .6s}
+
+/* ===== адаптив ===== */
+@media (max-width:980px){
+  .hero__grid{grid-template-columns:1fr;text-align:center;gap:14px}
+  .hero__art{order:-1;height:320px}.hero__cta,.hero__trust{justify-content:center}
+  .lead{margin-left:auto;margin-right:auto}
+  .vip__grid,.app__grid{grid-template-columns:1fr;gap:38px}
+  .vip__art{order:-1}
+}
+@media (max-width:900px){
+  .nav__links{display:none}.nav__burger{display:flex}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:30px}
+}
+@media (max-width:520px){
+  .nav__login{display:none}.footer__grid{grid-template-columns:1fr}
+  .footer__bottom{flex-direction:column;align-items:flex-start}
+  .hero__chip{display:none}
+  .jp__num{word-break:break-word}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .js [data-reveal]{opacity:1!important;transform:none!important}
+  html{scroll-behavior:auto}
+  .glitch::before,.glitch::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="scan"></div>
+<div class="glow glow--green"></div>
+<div class="glow glow--mag"></div>
+<div class="glow glow--cyan"></div>
+
+<!-- ===== общий SVG-знак: неоновый ромб-джекпот с «7» + молнией (контур + дешёвое свечение через drop-shadow) ===== -->
+<!-- финальный вектор позже -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="bf-mark">
+    <!-- внешний неоновый ромб -->
+    <path class="neon-g" d="M50 5 L93 50 L50 95 L7 50 Z" fill="none" stroke="#15F5A3" stroke-width="3.2" stroke-linejoin="round"/>
+    <!-- внутренний ромб (маджента) -->
+    <path class="neon-m" d="M50 18 L80 50 L50 82 L20 50 Z" fill="none" stroke="#FF2E97" stroke-width="2.2" stroke-linejoin="round" opacity=".9"/>
+    <!-- стилизованная «7» внутри -->
+    <path class="neon-g" d="M38 36 H62 L49 70" fill="none" stroke="#15F5A3" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- молния-акцент (циан) -->
+    <path d="M56 30 L46 50 L53 50 L44 68" fill="none" stroke="#21D4FD" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+  </g>
+</defs></svg>
+
+<!-- ===== НАВ ===== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="logo" href="#" aria-label="The Big Fix ana sayfa">
+      <svg class="mark flick" viewBox="0 0 100 100" aria-hidden="true"><use href="#bf-mark"/></svg>
+      <span>
+        <span class="logo__text">THE BIG <b>FIX</b></span>
+        <span class="logo__sub">SLOT · CASINO · JACKPOT</span>
+      </span>
+    </a>
+    <nav class="nav__links" aria-label="Ana menü">
+      <a href="#slotlar">Slotlar</a><a href="#canli">Canlı Casino</a><a href="#bonus">Bonuslar</a>
+      <a href="#vip">VIP</a><a href="#mobil">Mobil</a><a href="#sss">SSS</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="nav__login" href="#">Giriş</a>
+      <a class="btn btn--primary" href="#kayit">Kayıt Ol</a>
+      <button class="nav__burger" aria-label="Menüyü aç"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="hero__badge" data-reveal><span class="dot"></span>HIT THE BIG ONE · Büyük Vuruş</span>
+      <h1 class="display">
+        <span class="line" data-reveal><span class="glitch" data-text="Büyük vuruş">Büyük vuruş</span></span>
+        <span class="line grad-g" data-reveal>seni bekliyor.</span>
+      </h1>
+      <p class="lead" data-reveal>Neon slotlar, canlı casino masaları ve dakika dakika büyüyen jackpot havuzu — hepsi tek ekranda. The Big Fix'te her dönüş, büyük vuruşa bir adım daha yakın. Yüksek roller'lar burada oynar.</p>
+      <div class="hero__cta" data-reveal>
+        <a class="btn btn--primary btn--lg" href="#kayit">Hemen Oyna <span class="arr">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="#slotlar">Slotları Keşfet</a>
+      </div>
+      <div class="hero__trust" data-reveal>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#04130C" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> Lisanslı &amp; güvenli</div>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#04130C" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> Anında çekim</div>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#04130C" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> 7/24 destek</div>
+      </div>
+    </div>
+    <div class="hero__art" data-reveal>
+      <div class="hero__halo"></div>
+      <div class="hero__ring"></div>
+      <div class="hero__ring hero__ring--2"></div>
+      <svg class="hero__bigmark flick" viewBox="0 0 100 100" aria-hidden="true"><use href="#bf-mark"/></svg>
+
+      <div class="hero__chip hero__chip--1">
+        <span class="chip-ico"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="#15F5A3" stroke-width="2.4"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6-6.3 4.6L9.9 13.8 4 9.4h7.6z"/></svg></span>
+        <span>Mega Win<small>2 dk önce · ₺184.500</small></span>
+      </div>
+      <div class="hero__chip hero__chip--2">
+        <span class="chip-ico"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="#21D4FD" stroke-width="2.4"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span>
+        <span>Anında<small>Ortalama ödeme</small></span>
+      </div>
+
+      <!-- мини слот-барабан: центральный символ крутится (Motion) -->
+      <div class="reel" aria-hidden="true">
+        <div class="reel__cell"><div class="reel__strip" data-reel="0"><span class="reel__sym s-green">7</span></div></div>
+        <div class="reel__cell"><div class="reel__strip" data-reel="1"><span class="reel__sym s-mag">7</span></div></div>
+        <div class="reel__cell"><div class="reel__strip" data-reel="2"><span class="reel__sym s-cyan">7</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JACKPOT COUNTER ===== -->
+<section class="jackpot" id="jackpot" style="padding:clamp(56px,7vw,96px) 0">
+  <div class="wrap">
+    <div class="jp" data-reveal>
+      <span class="jp__label"><span class="dot"></span>Canlı Jackpot Havuzu</span>
+      <div class="jp__num"><span class="cur">₺</span><span data-count="48275940" data-mode="money">0</span></div>
+      <p class="jp__sub">Mega jackpot her saniye büyüyor. Bugün düşebilir — belki de senin dönüşünle.</p>
+      <div class="jp__row">
+        <div class="jp__stat"><b data-count="312" data-mode="plus">0</b><small>BUGÜN KAZANAN</small></div>
+        <div class="jp__stat"><b data-count="1850" data-mode="plus">0</b><small>NEON SLOT</small></div>
+        <div class="jp__stat"><b><span data-count="98" data-mode="pct">0</span></b><small>ORTALAMA RTP</small></div>
+        <div class="jp__stat"><b data-mode="raw">7/24</b><small>CANLI DESTEK</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SLOTLAR ===== -->
+<section id="slotlar">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Neon Slotlar</span>
+      <h2 class="h2" data-reveal>Barabanları döndür, <span class="grad-g">büyük vur</span></h2>
+      <p class="lead" data-reveal>Binlerce yüksek volatiliteli slot, özel jackpot oyunları ve The Big Fix'e özgü neon masalar. Her makarada büyük çarpan, her dönüşte büyük heyecan.</p>
+    </div>
+    <div class="tiles">
+      <a class="tile" data-reveal href="#kayit" style="--g:linear-gradient(160deg,#06281C,#0B5F40);--c:#15F5A3">
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="#15F5A3"><path d="M12 2l2.6 7.6H22l-6.1 4.6 2.3 7.8L12 17.8 5.8 22l2.3-7.8L2 9.6h7.4z"/></svg>
+        <span class="tile__rtp">RTP 97.4</span>
+        <span class="tile__play"><span><svg width="20" viewBox="0 0 24 24" fill="#15F5A3"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="tile__tag">Özel · Jackpot</span><span class="tile__name">Neon Heist</span>
+      </a>
+      <a class="tile" data-reveal href="#kayit" style="--g:linear-gradient(160deg,#3A0A23,#A01660);--c:#FF2E97">
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="#FF2E97"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>
+        <span class="tile__rtp">RTP 96.8</span>
+        <span class="tile__play"><span><svg width="20" viewBox="0 0 24 24" fill="#FF2E97"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="tile__tag">Popüler</span><span class="tile__name">Voltage 7s</span>
+      </a>
+      <a class="tile" data-reveal href="#kayit" style="--g:linear-gradient(160deg,#062734,#0E7FA0);--c:#21D4FD">
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="#21D4FD"><circle cx="12" cy="12" r="9"/></svg>
+        <span class="tile__rtp">RTP 96.2</span>
+        <span class="tile__play"><span><svg width="20" viewBox="0 0 24 24" fill="#21D4FD"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="tile__tag">Yeni</span><span class="tile__name">Midnight Vault</span>
+      </a>
+      <a class="tile" data-reveal href="#kayit" style="--g:linear-gradient(160deg,#06281C,#0B5F40);--c:#15F5A3">
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="#15F5A3"><path d="M3 7l4 3 5-6 5 6 4-3-2 12H5z"/></svg>
+        <span class="tile__rtp">RTP 98.1</span>
+        <span class="tile__play"><span><svg width="20" viewBox="0 0 24 24" fill="#15F5A3"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="tile__tag">Mega Jackpot</span><span class="tile__name">Gold Circuit</span>
+      </a>
+      <a class="tile" data-reveal href="#kayit" style="--g:linear-gradient(160deg,#3A0A23,#A01660);--c:#FF2E97">
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="#FF2E97"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
+        <span class="tile__rtp">RTP 95.9</span>
+        <span class="tile__play"><span><svg width="20" viewBox="0 0 24 24" fill="#FF2E97"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="tile__tag">Hot Drop</span><span class="tile__name">Pink Casino</span>
+      </a>
+      <a class="tile" data-reveal href="#kayit" style="--g:linear-gradient(160deg,#062734,#0E7FA0);--c:#21D4FD">
+        <svg class="tile__ico" viewBox="0 0 24 24" fill="#21D4FD"><path d="M12 2C8 8 5 10 5 14a7 7 0 0014 0c0-4-3-6-7-12z"/></svg>
+        <span class="tile__rtp">RTP 97.0</span>
+        <span class="tile__play"><span><svg width="20" viewBox="0 0 24 24" fill="#21D4FD"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="tile__tag">Canlı Drop</span><span class="tile__name">Cyan Inferno</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CANLI CASINO ===== -->
+<section id="canli">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Canlı Casino</span>
+      <h2 class="h2" data-reveal>Gerçek krupiyeler, <span class="grad-m">canlı masalar</span></h2>
+      <p class="lead" data-reveal>HD yayın, profesyonel krupiyeler ve gerçek zamanlı aksiyon. Rulet, blackjack, baccarat ve The Big Fix imzalı oyun show'ları — masaya otur, büyük oyna.</p>
+    </div>
+    <div class="tables">
+      <article class="table" data-reveal>
+        <div class="table__top"><span class="tag-live"><span class="dot"></span>CANLI</span><span class="table__cat">Rulet</span></div>
+        <h3 class="table__name">Neon Lightning Roulette</h3>
+        <p class="table__dealer">Krupiye: <b>Selin</b> · 500x'e kadar çarpan</p>
+        <div class="table__foot">
+          <span class="table__seats"><span class="seatbar"><i style="width:72%"></i></span>Dolu</span>
+          <span class="table__limit">₺50 – ₺250K</span>
+        </div>
+      </article>
+      <article class="table" data-reveal>
+        <div class="table__top"><span class="tag-live"><span class="dot"></span>CANLI</span><span class="table__cat">Blackjack</span></div>
+        <h3 class="table__name">VIP Blackjack Noir</h3>
+        <p class="table__dealer">Krupiye: <b>Emre</b> · Yüksek limit masası</p>
+        <div class="table__foot">
+          <span class="table__seats"><span class="seatbar"><i style="width:43%"></i></span>3 koltuk boş</span>
+          <span class="table__limit">₺500 – ₺1M</span>
+        </div>
+      </article>
+      <article class="table" data-reveal>
+        <div class="table__top"><span class="tag-live"><span class="dot"></span>CANLI</span><span class="table__cat">Oyun Show</span></div>
+        <h3 class="table__name">Big Fix Wheel</h3>
+        <p class="table__dealer">Sunucu: <b>Deniz</b> · Dev neon çark</p>
+        <div class="table__foot">
+          <span class="table__seats"><span class="seatbar"><i style="width:88%"></i></span>Yoğun</span>
+          <span class="table__limit">₺20 – ₺120K</span>
+        </div>
+      </article>
+      <article class="table" data-reveal>
+        <div class="table__top"><span class="tag-live"><span class="dot"></span>CANLI</span><span class="table__cat">Baccarat</span></div>
+        <h3 class="table__name">Speed Baccarat Cyan</h3>
+        <p class="table__dealer">Krupiye: <b>Ayça</b> · Hızlı tempo</p>
+        <div class="table__foot">
+          <span class="table__seats"><span class="seatbar"><i style="width:55%"></i></span>Açık</span>
+          <span class="table__limit">₺100 – ₺500K</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BONUSLAR ===== -->
+<section id="bonus">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Bonuslar &amp; Promosyonlar</span>
+      <h2 class="h2" data-reveal>Büyük başla, <span class="grad-g">büyük vur</span></h2>
+    </div>
+    <div class="bonuses">
+      <article class="bonus bonus--feat" data-reveal>
+        <span class="bonus__ribbon">EN BÜYÜK</span>
+        <div class="bonus__amt">%250</div><div class="bonus__name">Hoş Geldin Paketi</div>
+        <p>İlk yatırımına %250'ye kadar bonus + 200 free spin. The Big Fix kulübüne tam gaz giriş yap.</p>
+        <a class="btn btn--primary" href="#kayit">Bonusu Al</a>
+      </article>
+      <article class="bonus bonus--alt" data-reveal>
+        <div class="bonus__amt">%20</div><div class="bonus__name">Haftalık Kayıp İadesi</div>
+        <p>Her hafta net kaybının %20'si geri hesabında. Şanssız hafta artık daha hafif.</p>
+        <a class="btn btn--ghost" href="#kayit">Detaylar</a>
+      </article>
+      <article class="bonus bonus--alt2" data-reveal>
+        <div class="bonus__amt">500 FS</div><div class="bonus__name">Jackpot Free Spin</div>
+        <p>Seçili neon slotlarda 500 ücretsiz dönüş. Makarayı çevir, büyük vuruşu yakala.</p>
+        <a class="btn btn--ghost" href="#kayit">Katıl</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIP / YÜKSEK ROLLER ===== -->
+<section id="vip">
+  <div class="wrap">
+    <div class="vip">
+      <div class="vip__grid">
+        <div>
+          <span class="eyebrow" data-reveal style="color:var(--mag)">Yüksek Roller · VIP Kulüp</span>
+          <h2 class="h2" data-reveal style="margin:12px 0 16px">Büyük oynayanlar <span class="grad-m">burada</span></h2>
+          <p class="lead" data-reveal>The Big Fix VIP Kulübü, büyük oynayanlar için tasarlandı: kişisel hesap yöneticisi, yüksek çekim limitleri, özel jackpot turnuvaları ve sıfır bekleme. Seviye atla, ödülleri kilidini aç.</p>
+          <div class="vip__tiers">
+            <div class="tier" data-reveal style="--c:#21D4FD"><span class="tier__badge" style="color:#04130C">S</span><div><b>Silver</b><span>Hızlandırılmış çekim · haftalık cashback</span></div></div>
+            <div class="tier" data-reveal style="--c:#15F5A3"><span class="tier__badge">G</span><div><b>Gold</b><span>Kişisel yönetici · özel free spin yağmuru</span></div></div>
+            <div class="tier" data-reveal style="--c:#FF2E97"><span class="tier__badge">B</span><div><b>Black Diamond</b><span>Sınırsız limit · davetli jackpot turnuvaları</span></div></div>
+          </div>
+        </div>
+        <div class="vip__art">
+          <div class="vip__perks">
+            <div class="perk" data-reveal><div class="perk__ico"><svg width="22" viewBox="0 0 24 24" fill="none" stroke="#15F5A3" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6-6.3 4.6L9.9 13.8 4 9.4h7.6z"/></svg></div><div><b>Kişisel yönetici</b><span>Sana özel 7/24 VIP host, anında çözüm.</span></div></div>
+            <div class="perk" data-reveal><div class="perk__ico"><svg width="22" viewBox="0 0 24 24" fill="none" stroke="#21D4FD" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><div><b>Yüksek limitler</b><span>Büyük yatır, büyük çek — sınır seninle büyür.</span></div></div>
+            <div class="perk" data-reveal><div class="perk__ico"><svg width="22" viewBox="0 0 24 24" fill="none" stroke="#FF2E97" stroke-width="2"><path d="M6 9V5a6 6 0 0112 0v4"/><rect x="4" y="9" width="16" height="12" rx="2"/></svg></div><div><b>Özel turnuvalar</b><span>Sadece davetlilere açık jackpot yarışları.</span></div></div>
+            <div class="perk" data-reveal><div class="perk__ico"><svg width="22" viewBox="0 0 24 24" fill="none" stroke="#15F5A3" stroke-width="2"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div><div><b>Lüks ödüller</b><span>Etkinlik davetleri, geziler ve sürpriz hediyeler.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MOBILE ===== -->
+<section id="mobil">
+  <div class="wrap app__grid">
+    <div class="phone" data-reveal>
+      <div class="phone__notch"></div>
+      <div class="phone__screen">
+        <svg width="62" viewBox="0 0 100 100" class="flick" aria-hidden="true"><use href="#bf-mark"/></svg>
+        <div class="logo__text" style="font-size:1.4rem">THE BIG <b style="color:var(--green)">FIX</b></div>
+        <p style="color:var(--ink-2);font-size:.86rem">Cebinde jackpot,<br>tek dokunuşla büyük vuruş.</p>
+        <a class="btn btn--primary" href="#" style="transform:scale(.92)">Uygulamayı Aç</a>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow" data-reveal>Mobil Uygulama</span>
+      <h2 class="h2" data-reveal style="margin:12px 0 16px">Cebinde <span class="grad-g">The Big Fix</span></h2>
+      <p class="lead" data-reveal>iOS ve Android için tasarlanan uygulamayla nerede olursan ol jackpot havuzunu takip et, makaraları çevir ve canlı masalara anında otur.</p>
+      <div class="app__features">
+        <div class="feat" data-reveal><div class="feat__ico"><svg width="22" viewBox="0 0 24 24" fill="none" stroke="#15F5A3" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><div><b>Anlık oyun</b><span>Saniyeler içinde slot ve canlı masa, kesintisiz akış.</span></div></div>
+        <div class="feat" data-reveal><div class="feat__ico"><svg width="22" viewBox="0 0 24 24" fill="none" stroke="#21D4FD" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21h4"/></svg></div><div><b>Jackpot uyarıları</b><span>Havuz büyüdüğünde ve drop yaklaştığında anında haber.</span></div></div>
+        <div class="feat" data-reveal><div class="feat__ico"><svg width="22" viewBox="0 0 24 24" fill="none" stroke="#FF2E97" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div><div><b>Güvenli ödeme</b><span>Papara, havale ve kripto ile anında çekim.</span></div></div>
+      </div>
+      <div class="stores" data-reveal>
+        <a class="store" href="#"><svg width="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 2c0 1.4-.6 2.7-1.5 3.6-1 1-2.4 1.7-3.6 1.6-.1-1.4.6-2.8 1.4-3.6C13.2 2.6 14.8 1.9 16 2zm3.5 16.4c-.6 1.4-1 2-1.7 3.2-1 1.7-2.4 3.8-4.1 3.8-1.5 0-1.9-1-4-1-2 0-2.5 1-3.9 1-1.7 0-3-1.9-4-3.6-2.8-4.3-3-9.4-1.4-12.1 1.2-2 3-3.1 4.8-3.1 1.8 0 2.9 1 4.4 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.9 2.1-3.2 7.5.6 9.6z"/></svg><span><small>İndir</small>App Store</span></a>
+        <a class="store" href="#"><svg width="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3l11 9L3 21V3zm13 7l4 2.2c.8.5.8 1.6 0 2L16 16l-3-3 3-3z"/></svg><span><small>İndir</small>Google Play</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SSS ===== -->
+<section id="sss">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;align-items:center;margin:0 auto 48px">
+      <span class="eyebrow" data-reveal>Sıkça Sorulan Sorular</span>
+      <h2 class="h2" data-reveal>Aklındaki her şey</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">The Big Fix'e nasıl üye olurum?<span class="plus"></span></button><div class="faq-a"><p>"Kayıt Ol" butonuna tıkla, birkaç bilgini gir ve dakikalar içinde hesabın hazır. İlk yatırımında %250'ye kadar hoş geldin bonusu ve 200 free spin seni bekliyor.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Jackpot havuzu nasıl çalışır?<span class="plus"></span></button><div class="faq-a"><p>Mega jackpot havuzu, oynanan her oyunla gerçek zamanlı büyür ve rastgele bir anda düşer. Uygun jackpot slotlarında oynayan herkes büyük vuruşa adaydır — kazanan anında ödenir.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Para yatırma ve çekme yöntemleri neler?<span class="plus"></span></button><div class="faq-a"><p>Papara, banka havalesi/EFT, kredi kartı ve popüler kripto para birimleriyle hızlı ve güvenli işlem yapabilirsin. Çoğu çekim anında hesabına geçer.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">VIP / Yüksek Roller kulübüne nasıl girilir?<span class="plus"></span></button><div class="faq-a"><p>Oynadıkça VIP puanı kazanır ve seviye atlarsın. Belirli bir seviyeye ulaşınca kişisel yöneticin atanır; Black Diamond davetliler ise özel jackpot turnuvalarına ve sınırsız limitlere erişir.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Oyunlar adil mi?<span class="plus"></span></button><div class="faq-a"><p>Tüm slotlar ve masalar bağımsız olarak test edilmiş RNG (rastgele sayı üreteci) ve denetlenen RTP oranlarıyla çalışır. The Big Fix yalnızca eğlence ve büyük kazançlar için tasarlanmış lisanslı bir platformdur.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Mobil uygulama var mı?<span class="plus"></span></button><div class="faq-a"><p>Evet, hem iOS hem Android için The Big Fix uygulamasını indirip jackpot havuzunu, slotları ve canlı masaları cebinden takip edebilirsin.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="kayit">
+  <div class="wrap">
+    <div class="cta-band" data-reveal>
+      <span class="eyebrow" style="color:var(--green)">The Big Fix Kulübüne Katıl</span>
+      <h2 class="display" style="font-size:clamp(2.2rem,6vw,4.6rem);margin-top:14px">Büyük vuruşa <span class="grad-g">hazır mısın?</span></h2>
+      <p class="lead">%250 hoş geldin bonusu, 200 free spin ve dakika dakika büyüyen jackpot havuzu. İlk dönüşünü yap — belki de büyük olan senin.</p>
+      <a class="btn btn--primary btn--lg" href="#">Hemen Oyna <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="#" aria-label="The Big Fix">
+          <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#bf-mark"/></svg>
+          <span><span class="logo__text">THE BIG <b>FIX</b></span><span class="logo__sub">SLOT · CASINO · JACKPOT</span></span>
+        </a>
+        <p>Neon slotlar, canlı casino ve büyüyen jackpot havuzuyla yüksek roller'ların kulübü. Sadece eğlence, sadece büyük kazançlar.</p>
+        <div class="pays"><span class="pay">Papara</span><span class="pay">Havale/EFT</span><span class="pay">Kripto</span><span class="pay">Visa</span></div>
+        <div class="socials">
+          <a class="social" href="#" aria-label="Instagram"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="social" href="#" aria-label="X"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6z"/></svg></a>
+          <a class="social" href="#" aria-label="Telegram"><svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 3L2 11l6 2 2 7 3-4 5 4 4-17z"/></svg></a>
+          <a class="social" href="#" aria-label="YouTube"><svg width="18" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="var(--bg-2)"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>Casino</h4><a href="#slotlar">Slotlar</a><a href="#canli">Canlı Casino</a><a href="#jackpot">Jackpot</a><a href="#">Masa Oyunları</a></div>
+      <div class="footer__col"><h4>Kulüp</h4><a href="#vip">VIP / Yüksek Roller</a><a href="#bonus">Bonuslar</a><a href="#">Turnuvalar</a><a href="#mobil">Mobil</a></div>
+      <div class="footer__col"><h4>Kurumsal</h4><a href="#">Hakkımızda</a><a href="#sss">SSS</a><a href="#">Sorumlu Oyun</a><a href="#">İletişim</a></div>
+    </div>
+    <div class="footer__bottom">
+      <span class="age"><b>18+</b> Sorumlu oyun. 18 yaş altı oynayamaz. Kumar bağımlılık yapabilir; lütfen sorumlu oyna. Bu bir konsept tasarımdır.</span>
+      <span class="copyright">© 2026 The Big Fix — Konsept tasarım.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="back" href="../../" aria-label="Konsept galerisine dön">← Galeri</a>
+
+<script type="module">
+  import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+  window.__motionReady = true;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* навбар-scrolled */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 30);
+  onScroll(); addEventListener('scroll', onScroll, { passive:true });
+
+  if (!reduce) {
+    /* reveal по группам (stagger внутри родителя) */
+    const groups = new Map();
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      const k = el.parentElement;
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(el);
+    });
+    groups.forEach(items => items.forEach((el, i) => {
+      inView(el, () => {
+        animate(el, { opacity:[0,1], transform:['translateY(28px)','translateY(0)'] },
+          { duration:.7, delay: Math.min(i*0.07,.42), ease:[.22,1,.36,1] });
+      }, { amount:.15, margin:'0px 0px -8% 0px' });
+    }));
+
+    /* count-up для статов и джекпота */
+    const fmt = (v, el) => {
+      const m = el.dataset.mode;
+      if (m === 'money') return Math.round(v).toLocaleString('tr-TR');
+      if (m === 'plus')  return Math.round(v).toLocaleString('tr-TR') + '+';
+      if (m === 'pct')   return Math.round(v) + '%';
+      return Math.round(v);
+    };
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const t = +el.dataset.count;
+      const dur = el.dataset.mode === 'money' ? 2.4 : 1.8;
+      inView(el, () => animate(0, t, { duration:dur, ease:'easeOut',
+        onUpdate:v => { el.textContent = fmt(v, el); } }), { amount:.6 });
+    });
+
+    /* живой джекпот: после count-up продолжает медленно расти */
+    const jpEl = document.querySelector('.jp__num [data-count="48275940"]');
+    if (jpEl) {
+      let live = +jpEl.dataset.count;
+      inView(jpEl, () => {
+        setTimeout(() => {
+          setInterval(() => {
+            live += Math.floor(Math.random()*240) + 40;
+            jpEl.textContent = live.toLocaleString('tr-TR');
+          }, 1600);
+        }, 2600);
+      }, { amount:.6 });
+    }
+
+    /* анимация кручения барабана слота (фирменное) */
+    const syms = ['7','★','◆','7','BAR','7'];
+    document.querySelectorAll('[data-reel]').forEach((strip, idx) => {
+      const colors = ['s-green','s-mag','s-cyan'];
+      const cls = colors[idx % 3];
+      /* строим длинную ленту символов */
+      strip.innerHTML = '';
+      for (let i=0;i<14;i++){
+        const s = document.createElement('span');
+        s.className = 'reel__sym ' + cls;
+        s.textContent = syms[i % syms.length];
+        strip.appendChild(s);
+      }
+      const cell = 58;            // высота ячейки
+      const total = 14 * cell;
+      const spin = () => {
+        strip.style.transform = 'translateY(0)';
+        animate(strip,
+          { transform:[`translateY(0px)`, `translateY(-${total - cell}px)`] },
+          { duration: 1.4 + idx*0.25, ease:[.2,.7,.2,1] }
+        ).finished.then(() => {
+          strip.style.transform = 'translateY(0)';
+          setTimeout(spin, 1400 + idx*300);
+        });
+      };
+      setTimeout(spin, 600 + idx*260);
+    });
+  }
+
+  /* hover-спринги для карточек */
+  const spring = { type:'spring', stiffness:320, damping:22 };
+  document.querySelectorAll('.tile, .table, .bonus, .store, .tier').forEach(el => {
+    el.addEventListener('pointerenter', () => { if(!reduce) animate(el, { scale:1.02 }, spring); });
+    el.addEventListener('pointerleave', () => { if(!reduce) animate(el, { scale:1 }, spring); });
+  });
+
+  /* FAQ-аккордеон на Motion (анимация высоты) */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open);
+      if (reduce){ a.style.height = open ? 'auto' : '0'; return; }
+      a.style.height = 'auto';
+      const h = a.offsetHeight;
+      if (open) animate(a, { height:[0,h] }, { duration:.45, ease:[.22,1,.36,1] }).finished.then(()=>a.style.height='auto');
+      else animate(a, { height:[h,0] }, { duration:.35, ease:[.22,1,.36,1] });
+    });
+  });
+
+  /* бургер — лёгкий отклик */
+  document.querySelector('.nav__burger')?.addEventListener('click', e => animate(e.currentTarget, { rotate:[0,90,0] }, { duration:.5 }));
+</script>
+</body>
+</html>

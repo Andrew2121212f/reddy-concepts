@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="tr" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Altın Günü — Türkiye'nin Altın Dünyası</title>
+<meta name="description" content="Altın Günü — kazanmanın altın değeri. Birikim, fırsat ve güven bir arada. Türkiye'nin altın dünyasına hoş geldin." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script>
+  /* no-js → js + страховочный фолбэк, если Motion не загрузится с CDN */
+  document.documentElement.classList.replace('no-js','js');
+  window.__motionReady = false;
+  setTimeout(function(){ if(!window.__motionReady) document.documentElement.classList.add('reveal-all'); }, 1500);
+</script>
+
+<style>
+/* ===== ТОКЕНЫ (реальная палитра Altın Günü — p16) ===== */
+:root{
+  --gold:#E0A82E;            /* основной акцент — золото */
+  --gold-2:#F2C75B;          /* светлое золото / блик */
+  --gold-3:#B8821B;          /* глубокое золото / тень */
+  --navy:#0E1B3A;            /* фон / тёмные секции */
+  --navy-2:#0A1530;          /* глубже навы */
+  --navy-3:#16284E;          /* приподнятые панели на навы */
+  --cream:#F7EFD8;           /* кремовый */
+  --cream-2:#FBF6E8;         /* светлее кремового */
+  --white:#FFFFFF;
+  --ink:#0B1226;             /* текст на светлом */
+  --on-navy:#EAEFFA;         /* основной текст на навы */
+  --muted:rgba(234,239,250,.62);   /* приглушённый на навы */
+  --muted-ink:#5B6378;             /* приглушённый на кремовом */
+  --line:rgba(224,168,46,.16);     /* золотая линия на навы */
+  --line-2:rgba(224,168,46,.30);
+  --line-ink:rgba(11,18,38,.12);   /* линия на светлом */
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Manrope',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --shadow:0 30px 60px -32px rgba(0,0,0,.65);
+  --shadow-gold:0 24px 50px -24px rgba(224,168,46,.45);
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--navy);color:var(--on-navy);line-height:1.6;overflow-x:hidden;font-weight:500;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+svg{display:block}
+ul{list-style:none}
+::selection{background:var(--gold);color:var(--navy)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* ===== АТМОСФЕРА ===== */
+/* грейн — тайловый data-URI noise (как в эталоне), НЕ полноэкранный feTurbulence */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* glow — radial-gradient БЕЗ filter:blur */
+.glow{position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+.glow--gold{width:58vw;height:58vw;background:radial-gradient(circle,rgba(224,168,46,.20),transparent 68%);top:-20vw;right:-14vw}
+.glow--warm{width:48vw;height:48vw;background:radial-gradient(circle,rgba(242,199,91,.12),transparent 70%);bottom:-14vw;left:-12vw}
+
+/* ===== ТИПОГРАФИКА ===== */
+h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.04;letter-spacing:-.01em}
+.display{font-size:clamp(2.7rem,7.2vw,5.8rem);font-weight:900}
+.h2{font-size:clamp(2rem,4.6vw,3.5rem)}
+.eyebrow{font-family:var(--font-body);font-weight:800;font-size:.76rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.gold-text{color:var(--gold)}
+.lead{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--muted);max-width:56ch}
+
+/* фирменный золотой shimmer-sweep по заголовкам */
+.shimmer{
+  background:linear-gradient(100deg,var(--gold) 0%,var(--gold) 38%,var(--gold-2) 50%,var(--gold) 62%,var(--gold) 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:shimmer 6.5s var(--ease) infinite;
+}
+@keyframes shimmer{0%,18%{background-position:160% 0}60%,100%{background-position:-60% 0}}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+section{position:relative;padding:clamp(64px,9vw,130px) 0}
+.section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:48px;max-width:64ch}
+
+/* секция на кремовом фоне (инверсия темы) */
+.section--cream{background:var(--cream);color:var(--ink)}
+.section--cream .lead{color:var(--muted-ink)}
+.section--cream .eyebrow{color:var(--gold-3)}
+
+/* tezhip-разделитель (тонкая орнаментальная линия) */
+.tezhip{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold);opacity:.9;margin:0 auto}
+.tezhip svg{width:min(360px,72vw);height:22px}
+
+/* ===== КНОПКИ ===== */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:14px;font-weight:800;font-size:.96rem;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.btn--primary{background:linear-gradient(135deg,var(--gold-2),var(--gold) 55%,var(--gold-3));color:var(--navy);box-shadow:0 16px 34px -14px rgba(224,168,46,.75)}
+.btn--primary::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-130%);transition:transform .7s var(--ease)}
+.btn--primary:hover{transform:translateY(-3px);box-shadow:0 22px 44px -12px rgba(224,168,46,.9)}
+.btn--primary:hover::after{transform:translateX(130%)}
+.btn--ghost{border:1.5px solid var(--line-2);color:var(--on-navy);background:rgba(224,168,46,.05)}
+.btn--ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.section--cream .btn--ghost{color:var(--ink);border-color:var(--line-ink)}
+.section--cream .btn--ghost:hover{border-color:var(--gold-3);color:var(--gold-3)}
+.btn--lg{padding:18px 38px;font-size:1.04rem}
+
+/* ===== ЛОГО-ЗНАК: корзина золота с монетами + полумесяц + звезда ===== */
+/* финальный вектор/PNG позже — пока точный inline SVG по реальной айдентике (p16) */
+.mark{flex:none}
+
+/* ===== НАВ ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(14,27,58,.82);backdrop-filter:blur(14px);border-color:var(--line)}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:78px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .mark{width:42px;height:42px}
+.logo__text{font-family:var(--font-display);font-weight:800;font-size:1.5rem;letter-spacing:-.01em;line-height:1;color:var(--white)}
+.logo__text b{color:var(--gold);font-weight:800}
+.logo__sub{display:block;font-family:var(--font-body);font-weight:700;font-size:.5rem;letter-spacing:.32em;color:var(--muted);margin-top:4px}
+.nav__links{display:flex;gap:28px}
+.nav__links a{font-size:.92rem;font-weight:700;color:var(--muted);position:relative;transition:color .3s}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--gold);transition:width .35s var(--ease)}
+.nav__links a:hover{color:var(--on-navy)}
+.nav__links a:hover::after{width:100%}
+.nav__cta{display:flex;align-items:center;gap:14px}
+.nav__login{font-weight:800;font-size:.92rem;color:var(--on-navy)}
+.nav__burger{display:none;flex-direction:column;gap:5px;padding:8px}
+.nav__burger span{width:24px;height:2px;background:var(--gold);border-radius:2px}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:78px;overflow:hidden;background:
+  radial-gradient(900px 600px at 78% 18%,rgba(224,168,46,.10),transparent 60%),
+  linear-gradient(180deg,var(--navy),var(--navy-2))}
+.hero__grid{display:grid;grid-template-columns:1.06fr .94fr;gap:44px;align-items:center;width:100%}
+.hero__badge{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border:1px solid var(--line-2);border-radius:999px;background:rgba(224,168,46,.06);font-size:.82rem;font-weight:800;color:var(--gold);margin-bottom:24px}
+.hero__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(224,168,46,.5);animation:pulse 2s infinite}
+.hero h1{margin:8px 0 22px}
+.hero h1 .line{display:block}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hero__trust{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap}
+.hero__trust div{display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:700;color:var(--on-navy)}
+.hero__trust .tick{width:20px;height:20px;border-radius:50%;background:var(--gold);display:grid;place-items:center;flex:none}
+
+/* HERO АРТ — светящийся полумесяц + стопка золотых монет (count-up) */
+.hero__art{position:relative;height:clamp(360px,46vw,560px);display:flex;align-items:center;justify-content:center}
+.hero__halo{position:absolute;width:88%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(242,199,91,.28),rgba(224,168,46,.10) 45%,transparent 68%)}
+.hero__ring{position:absolute;width:96%;aspect-ratio:1;border:1.5px dashed rgba(224,168,46,.30);border-radius:50%;animation:spin 52s linear infinite}
+.hero__ring--2{width:74%;border-style:dotted;border-color:rgba(242,199,91,.22);animation-duration:38s;animation-direction:reverse}
+.hero__moon{position:relative;width:62%;max-width:330px;filter:drop-shadow(0 18px 36px rgba(224,168,46,.40))}
+/* пульс свечения вокруг полумесяца */
+.hero__moonglow{position:absolute;width:42%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(242,199,91,.45),transparent 65%);animation:breathe 5s var(--ease) infinite;top:30%;left:33%}
+.hero__chip{position:absolute;background:var(--navy-3);border:1px solid var(--line-2);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);font-weight:800;font-size:.9rem;display:flex;align-items:center;gap:11px;color:var(--white)}
+.hero__chip small{display:block;font-weight:600;font-size:.72rem;color:var(--muted)}
+.hero__chip--1{top:7%;right:-2%}
+.hero__chip--2{bottom:9%;left:-4%}
+.hero__chip .num{color:var(--gold)}
+.chip-ico{width:36px;height:36px;border-radius:10px;background:rgba(224,168,46,.12);display:grid;place-items:center;flex:none}
+
+/* ===== СТАТЫ (count-up) ===== */
+.stats{background:var(--navy-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{text-align:center;padding:10px;position:relative}
+.stat:not(:last-child)::after{content:"";position:absolute;right:-12px;top:18%;height:64%;width:1px;background:var(--line)}
+.stat__num{font-family:var(--font-display);font-weight:800;font-size:clamp(2.1rem,4.4vw,3.3rem);line-height:1;color:var(--white)}
+.stat__num span{color:var(--gold)}
+.stat__label{font-size:.85rem;color:var(--muted);margin-top:10px;font-weight:600}
+
+/* ===== TRADITION (Altın Günü Geleneği) — на кремовом ===== */
+.trad__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center}
+.trad__art{position:relative;display:flex;justify-content:center;align-items:center;min-height:340px}
+.trad__plate{position:relative;width:min(420px,100%);aspect-ratio:1;border-radius:50%;background:
+  radial-gradient(circle at 50% 42%,var(--cream-2),var(--cream) 60%,#EFE2BE 100%);
+  box-shadow:inset 0 0 0 1.5px rgba(224,168,46,.35),0 30px 60px -34px rgba(184,130,27,.55);
+  display:grid;place-items:center}
+.trad__ringline{position:absolute;width:84%;aspect-ratio:1;border:1.5px dashed rgba(184,130,27,.35);border-radius:50%;animation:spin 60s linear infinite}
+.trad__basket{width:54%;max-width:230px;filter:drop-shadow(0 14px 26px rgba(184,130,27,.40))}
+.trad__points{display:flex;flex-direction:column;gap:22px;margin-top:30px}
+.trad__pt{display:flex;gap:16px;align-items:flex-start}
+.trad__pt .n{flex:none;width:42px;height:42px;border-radius:12px;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:1.1rem}
+.trad__pt b{display:block;font-weight:800;color:var(--ink);font-size:1.06rem;margin-bottom:3px}
+.trad__pt span{color:var(--muted-ink);font-size:.94rem}
+
+/* ===== VALUE (Değer & Birikim) — карточки на навы ===== */
+.value__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:18px}
+.vcard{position:relative;background:linear-gradient(180deg,var(--navy-3),rgba(22,40,78,.55));border:1px solid var(--line);border-radius:20px;padding:30px;overflow:hidden;transition:transform .45s var(--ease),border-color .45s,box-shadow .45s;will-change:transform}
+.vcard::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 200px at 100% 0,rgba(224,168,46,.10),transparent 60%);opacity:0;transition:opacity .5s}
+.vcard:hover{border-color:var(--line-2);box-shadow:var(--shadow-gold)}
+.vcard:hover::before{opacity:1}
+.vcard__ico{width:54px;height:54px;border-radius:14px;background:rgba(224,168,46,.12);border:1px solid var(--line-2);display:grid;place-items:center;margin-bottom:20px;color:var(--gold)}
+.vcard h3{font-size:1.24rem;color:var(--white);margin-bottom:10px}
+.vcard p{color:var(--muted);font-size:.94rem}
+
+/* ===== FIRSATLAR (spor / casino как возможности) ===== */
+.opps{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.opp{position:relative;border-radius:24px;overflow:hidden;padding:clamp(28px,4vw,46px);min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;border:1px solid var(--line);transition:transform .5s var(--ease),box-shadow .5s;will-change:transform}
+.opp::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--g)}
+.opp::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,27,58,.30) 0%,rgba(10,21,48,.86) 88%)}
+.opp:hover{box-shadow:var(--shadow-gold)}
+.opp__ico{position:absolute;top:26px;left:26px;width:52px;height:52px;border-radius:14px;background:rgba(14,27,58,.55);border:1px solid var(--line-2);display:grid;place-items:center;color:var(--gold);backdrop-filter:blur(6px)}
+.opp__tag{font-size:.74rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px}
+.opp h3{font-size:clamp(1.4rem,2.6vw,1.9rem);color:var(--white);margin-bottom:10px}
+.opp p{color:rgba(234,239,250,.78);font-size:.95rem;max-width:42ch}
+.opp__link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-weight:800;font-size:.9rem;color:var(--gold)}
+.opp__link svg{transition:transform .35s var(--ease)}
+.opp:hover .opp__link svg{transform:translateX(5px)}
+
+/* ===== BONUSLAR (золотые награды) ===== */
+.bonuses{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:20px}
+.bonus{position:relative;background:linear-gradient(180deg,var(--navy-3),rgba(16,28,58,.6));border:1px solid var(--line);border-radius:22px;padding:32px;overflow:hidden;transition:transform .45s var(--ease),border-color .45s,box-shadow .45s;will-change:transform}
+.bonus:hover{border-color:var(--line-2);box-shadow:var(--shadow-gold)}
+.bonus--feat{background:linear-gradient(165deg,#13254B,#0C1A3A);border-color:var(--line-2)}
+.bonus--feat::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 240px at 0 0,rgba(224,168,46,.14),transparent 58%);pointer-events:none}
+.bonus__ribbon{position:absolute;top:18px;right:-34px;transform:rotate(45deg);background:linear-gradient(135deg,var(--gold-2),var(--gold-3));color:var(--navy);font-size:.68rem;font-weight:800;letter-spacing:.06em;padding:6px 44px}
+.bonus__ico{width:48px;height:48px;border-radius:12px;background:rgba(224,168,46,.12);border:1px solid var(--line-2);display:grid;place-items:center;color:var(--gold);margin-bottom:18px;position:relative}
+.bonus__amt{font-family:var(--font-display);font-weight:900;font-size:clamp(2.3rem,4.6vw,3rem);line-height:1;margin:6px 0;color:var(--gold);position:relative}
+.bonus__name{font-weight:800;font-size:1.08rem;margin-bottom:10px;color:var(--white);position:relative}
+.bonus p{color:var(--muted);font-size:.92rem;margin-bottom:22px;position:relative}
+.bonus .btn{width:100%;justify-content:center;position:relative}
+
+/* ===== TOPLULUK & GÜVEN ===== */
+.comm{position:relative;border-radius:30px;overflow:hidden;border:1px solid var(--line-2);background:linear-gradient(160deg,#13254B,#0A1530)}
+.comm::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 320px at 88% 8%,rgba(224,168,46,.16),transparent 60%);pointer-events:none}
+.comm__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center;padding:clamp(36px,5vw,68px);position:relative}
+.comm__art{display:flex;justify-content:center}
+.comm__emblem{width:min(280px,76%);filter:drop-shadow(0 22px 44px rgba(224,168,46,.45))}
+.comm h2{color:var(--white)}
+.comm .lead{color:rgba(234,239,250,.74)}
+.comm__feats{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.cchip{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid var(--line-2);border-radius:12px;font-weight:700;font-size:.9rem;background:rgba(224,168,46,.05);color:var(--on-navy)}
+.cchip .d{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+
+/* ===== SSS (аккордеон) ===== */
+.faq{max-width:800px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 4px;text-align:left;font-family:var(--font-display);font-weight:700;font-size:1.12rem;color:var(--on-navy);transition:color .3s}
+.faq-q:hover{color:var(--gold)}
+.faq-q .plus{flex:none;width:26px;height:26px;position:relative;transition:transform .4s var(--ease)}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--gold);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-q .plus::before{width:14px;height:2px}.faq-q .plus::after{width:2px;height:14px;transition:transform .4s var(--ease)}
+.faq-item.open .plus{transform:rotate(180deg)}.faq-item.open .plus::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{overflow:hidden;height:0}
+.faq-a p{padding:0 4px 24px;color:var(--muted);max-width:70ch}
+
+/* ===== CTA ===== */
+.cta-band{text-align:center;border-radius:30px;background:linear-gradient(135deg,var(--gold-2),var(--gold) 52%,var(--gold-3));color:var(--navy);padding:clamp(48px,7vw,90px) 24px;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% -12%,rgba(255,255,255,.30),transparent 50%)}
+.cta-band .eyebrow{color:rgba(14,27,58,.7)}
+.cta-band h2{position:relative;color:var(--navy)}
+.cta-band .lead{position:relative;color:rgba(14,27,58,.82);margin:16px auto 30px;max-width:50ch}
+.cta-band .btn--dark{background:var(--navy);color:var(--gold)}
+.cta-band .btn--dark:hover{transform:translateY(-3px);box-shadow:0 22px 44px -14px rgba(14,27,58,.6)}
+
+/* ===== FOOTER ===== */
+.footer{border-top:1px solid var(--line);padding:64px 0 38px;background:var(--navy-2)}
+.footer__grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:40px;margin-bottom:46px}
+.footer__brand p{color:var(--muted);font-size:.92rem;margin:18px 0;max-width:36ch}
+.footer h4{font-family:var(--font-body);font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy);margin-bottom:18px}
+.footer__col a{display:block;color:var(--muted);font-size:.92rem;padding:6px 0;transition:color .3s}
+.footer__col a:hover{color:var(--gold)}
+.pays{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pay{padding:7px 12px;background:rgba(224,168,46,.06);border:1px solid var(--line);border-radius:9px;font-size:.76rem;font-weight:800;color:var(--on-navy)}
+.socials{display:flex;gap:10px;margin-top:20px}
+.social{width:40px;height:40px;border-radius:11px;border:1px solid var(--line-2);display:grid;place-items:center;transition:.3s;color:var(--muted)}
+.social:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.footer__bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.age{display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:.84rem;max-width:62ch}
+.age b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:2px solid var(--gold);color:var(--gold);font-weight:800;font-size:.78rem;flex:none}
+.copyright{color:var(--muted);font-size:.84rem}
+
+/* ===== BACK PILL ===== */
+.back{position:fixed;left:18px;bottom:18px;z-index:1001;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(14,27,58,.78);backdrop-filter:blur(10px);border:1px solid var(--line-2);font-size:.82rem;font-weight:800;color:var(--on-navy);transition:.3s;box-shadow:0 8px 20px -10px rgba(0,0,0,.6)}
+.back:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-2px)}
+
+/* ===== KEYFRAMES ===== */
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,168,46,.5)}70%{box-shadow:0 0 0 10px rgba(224,168,46,0)}100%{box-shadow:0 0 0 0 rgba(224,168,46,0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes breathe{0%,100%{opacity:.5;transform:scale(.92)}50%{opacity:1;transform:scale(1.06)}}
+
+/* ===== REVEAL ===== */
+.js [data-reveal]{opacity:0}
+.js.reveal-all [data-reveal]{opacity:1;transform:none;transition:opacity .6s,transform .6s}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width:980px){
+  .trad__grid,.opps,.comm__grid{grid-template-columns:1fr}
+  .comm__art,.trad__art{order:-1}
+}
+@media (max-width:900px){
+  .nav__links{display:none}.nav__burger{display:flex}
+  .hero__grid{grid-template-columns:1fr;text-align:center;gap:10px}
+  .hero__art{order:-1;height:320px}.hero__cta,.hero__trust{justify-content:center}
+  .lead{margin-left:auto;margin-right:auto}
+  .stats__grid{grid-template-columns:repeat(2,1fr);gap:32px 16px}
+  .stat:not(:last-child)::after{display:none}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:30px}
+}
+@media (max-width:520px){
+  .nav__login{display:none}.footer__grid{grid-template-columns:1fr}
+  .footer__bottom{flex-direction:column;align-items:flex-start}
+  .hero__chip{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .js [data-reveal]{opacity:1!important;transform:none!important}
+  html{scroll-behavior:auto}
+  .shimmer{-webkit-text-fill-color:var(--gold);color:var(--gold)}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="glow glow--gold"></div>
+<div class="glow glow--warm"></div>
+
+<!-- ===== ОБЩИЕ SVG-ЗНАКИ (корзина золота + полумесяц + звезда) ===== -->
+<!-- финальный вектор/PNG позже — пока inline по реальной айдентике p16 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="ag-gold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#F2C75B"/><stop offset=".55" stop-color="#E0A82E"/><stop offset="1" stop-color="#B8821B"/>
+  </linearGradient>
+  <linearGradient id="ag-gold-v" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F2C75B"/><stop offset="1" stop-color="#C28F1E"/>
+  </linearGradient>
+
+  <!-- основной знак: полумесяц + звезда над корзиной с монетами -->
+  <g id="ag-mark">
+    <!-- полумесяц -->
+    <path d="M70 18 a20 20 0 1 0 0 33 a15.5 15.5 0 1 1 0 -33 Z" fill="url(#ag-gold)"/>
+    <!-- звезда -->
+    <path d="M80 22 l2.4 5 5.5 .7 -4 3.8 1 5.4 -4.9 -2.6 -4.9 2.6 1 -5.4 -4 -3.8 5.5 -.7 Z" fill="url(#ag-gold-v)"/>
+    <!-- корзина: тело -->
+    <path d="M22 56 h56 l-6 30 a8 8 0 0 1 -7.9 6.6 H35.9 A8 8 0 0 1 28 86 Z" fill="url(#ag-gold-v)"/>
+    <!-- плетёные вертикали корзины -->
+    <g stroke="#9A6E12" stroke-width="1.6" opacity=".55">
+      <path d="M34 58 l-2 28"/><path d="M46 58 l-1 30"/><path d="M58 58 l1 30"/><path d="M70 58 l2 28"/>
+    </g>
+    <!-- ободок корзины -->
+    <rect x="18" y="51" width="64" height="9" rx="4.5" fill="url(#ag-gold)"/>
+    <!-- монеты, выглядывающие из корзины -->
+    <circle cx="40" cy="49" r="9" fill="url(#ag-gold)" stroke="#9A6E12" stroke-width="1.4"/>
+    <circle cx="58" cy="47" r="10" fill="url(#ag-gold)" stroke="#9A6E12" stroke-width="1.4"/>
+    <circle cx="49" cy="52" r="8" fill="url(#ag-gold-v)" stroke="#9A6E12" stroke-width="1.2"/>
+    <path d="M58 41 v12 M53 47 h10" stroke="#9A6E12" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- стопка монет (для hero/чипов/бонусов) -->
+  <g id="ag-coins">
+    <ellipse cx="32" cy="56" rx="22" ry="8" fill="url(#ag-gold-v)" stroke="#9A6E12" stroke-width="1.4"/>
+    <ellipse cx="32" cy="48" rx="22" ry="8" fill="url(#ag-gold)" stroke="#9A6E12" stroke-width="1.4"/>
+    <ellipse cx="32" cy="40" rx="22" ry="8" fill="url(#ag-gold-v)" stroke="#9A6E12" stroke-width="1.4"/>
+    <ellipse cx="32" cy="32" rx="22" ry="8" fill="url(#ag-gold)" stroke="#9A6E12" stroke-width="1.4"/>
+    <path d="M32 24 v15 M25 31 h14" stroke="#9A6E12" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+</defs></svg>
+
+<!-- ===== НАВ ===== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="logo" href="#" aria-label="Altın Günü">
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#ag-mark"/></svg>
+      <span>
+        <span class="logo__text">Altın<b>Günü</b></span>
+        <span class="logo__sub">TÜRKİYE'NİN ALTIN DÜNYASI</span>
+      </span>
+    </a>
+    <nav class="nav__links">
+      <a href="#gelenek">Gelenek</a><a href="#deger">Değer</a><a href="#firsatlar">Fırsatlar</a>
+      <a href="#bonus">Bonuslar</a><a href="#topluluk">Topluluk</a><a href="#sss">SSS</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="nav__login" href="#">Giriş</a>
+      <a class="btn btn--primary" href="#katil">Hemen Katıl</a>
+      <button class="nav__burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="hero__badge" data-reveal><span class="dot"></span>Türkiye'nin altın topluluğu</span>
+      <h1 class="display">
+        <span class="line" data-reveal>Altın,</span>
+        <span class="line shimmer" data-reveal>Türkiye'yi birleştirir.</span>
+      </h1>
+      <p class="lead" data-reveal>Kazanmanın altın değeri — birikim, fırsat ve güven bir arada. Altın Günü, geleneği bugüne taşıyan sıcak bir topluluk.</p>
+      <div class="hero__cta" data-reveal>
+        <a class="btn btn--primary btn--lg" href="#katil">Topluluğa Katıl →</a>
+        <a class="btn btn--ghost btn--lg" href="#gelenek">Geleneği Keşfet</a>
+      </div>
+      <div class="hero__trust" data-reveal>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#0E1B3A" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> Güvenli &amp; şeffaf</div>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#0E1B3A" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> Hızlı işlem</div>
+        <div><span class="tick"><svg width="11" viewBox="0 0 24 24" fill="none" stroke="#0E1B3A" stroke-width="3.5"><path d="M20 6L9 17l-5-5"/></svg></span> 7/24 destek</div>
+      </div>
+    </div>
+    <div class="hero__art" data-reveal>
+      <div class="hero__halo"></div>
+      <div class="hero__ring"></div>
+      <div class="hero__ring hero__ring--2"></div>
+      <div class="hero__moonglow"></div>
+      <!-- светящийся полумесяц + стопка монет -->
+      <svg class="hero__moon" viewBox="0 0 200 200" aria-hidden="true">
+        <path d="M132 24 a76 76 0 1 0 0 152 a60 60 0 1 1 0 -152 Z" fill="url(#ag-gold)"/>
+        <path d="M150 36 l4.6 9.6 10.6 1.3 -7.7 7.4 1.9 10.5 -9.4 -5 -9.4 5 1.9 -10.5 -7.7 -7.4 10.6 -1.3 Z" fill="url(#ag-gold-v)"/>
+      </svg>
+      <div class="hero__chip hero__chip--1">
+        <span class="chip-ico"><svg width="22" viewBox="0 0 64 64" aria-hidden="true"><use href="#ag-coins"/></svg></span>
+        <span><span class="num" data-count="2400000" data-mode="m">0</span><small>topluluk üyesi</small></span>
+      </div>
+      <div class="hero__chip hero__chip--2">
+        <span class="chip-ico"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="#E0A82E" stroke-width="2.2"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6-6.3 4.6L9.9 13.8 4 9.4h7.6z"/></svg></span>
+        <span><span class="num">4.9</span> / 5<small>memnuniyet</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== СТАТЫ (count-up) ===== -->
+<section class="stats" style="padding:56px 0">
+  <div class="wrap stats__grid">
+    <div class="stat" data-reveal><div class="stat__num" data-count="2400000" data-mode="m">0</div><div class="stat__label">Topluluk üyesi</div></div>
+    <div class="stat" data-reveal><div class="stat__num" data-count="850" data-mode="mtl">0</div><div class="stat__label">Aylık ödül havuzu</div></div>
+    <div class="stat" data-reveal><div class="stat__num" data-count="12" data-mode="yr">0</div><div class="stat__label">Yıllık güven</div></div>
+    <div class="stat" data-reveal><div class="stat__num" data-mode="support">7/24</div><div class="stat__label">Canlı destek</div></div>
+  </div>
+</section>
+
+<!-- ===== GELENEK (Altın Günü Geleneği) — кремовая секция ===== -->
+<section id="gelenek" class="section--cream">
+  <div class="wrap">
+    <div class="trad__grid">
+      <div class="trad__art" data-reveal>
+        <div class="trad__plate">
+          <div class="trad__ringline"></div>
+          <svg class="trad__basket" viewBox="0 0 100 100" aria-hidden="true"><use href="#ag-mark"/></svg>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow" data-reveal>Altın Günü Geleneği</span>
+        <h2 class="h2" data-reveal style="margin:12px 0 16px">Bir araya gelmenin<br>altın değeri</h2>
+        <p class="lead" data-reveal>Altın günü; sadece bir buluşma değil, güvenin, paylaşmanın ve birlikte biriktirmenin adıdır. Biz bu sıcak geleneği dijitale taşıdık — herkesin yeri olan bir topluluğa.</p>
+        <div class="trad__points">
+          <div class="trad__pt" data-reveal><span class="n">01</span><div><b>Güven</b><span>Şeffaf kurallar, açık kayıt ve her zaman yanında olan bir destek ekibi.</span></div></div>
+          <div class="trad__pt" data-reveal><span class="n">02</span><div><b>Paylaşım</b><span>Birlikte kutlanan kazançlar, topluluk ödülleri ve sıcak bir çevre.</span></div></div>
+          <div class="trad__pt" data-reveal><span class="n">03</span><div><b>Birikim</b><span>Küçük adımlarla büyüyen değer — geleneğin getirdiği sabır ve disiplin.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- tezhip-разделитель -->
+<div class="wrap" style="padding:14px 24px 0">
+  <div class="tezhip" aria-hidden="true">
+    <svg viewBox="0 0 360 22" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M2 11 H150"/><path d="M210 11 H358"/>
+      <path d="M168 11 a8 8 0 0 1 12 -6 a8 8 0 0 1 12 6 a8 8 0 0 1 -12 6 a8 8 0 0 1 -12 -6 Z"/>
+      <circle cx="180" cy="11" r="2.2" fill="currentColor" stroke="none"/>
+      <circle cx="150" cy="11" r="2" fill="currentColor" stroke="none"/><circle cx="210" cy="11" r="2" fill="currentColor" stroke="none"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== DEĞER & BİRİKİM ===== -->
+<section id="deger">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Değer &amp; Birikim</span>
+      <h2 class="h2" data-reveal>Kazanmak, biriktirmenin <span class="gold-text">altın</span> hâli</h2>
+      <p class="lead" data-reveal>Altın Günü'nde her hareket bir değer taşır. Fırsatları takip et, ödülleri biriktir, topluluğun gücüyle güvenle büyü.</p>
+    </div>
+    <div class="value__grid">
+      <article class="vcard" data-reveal>
+        <div class="vcard__ico"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9l7-5 7 5M5 9v8a2 2 0 002 2h10a2 2 0 002-2V9"/></svg></div>
+        <h3>Birikim Sistemi</h3>
+        <p>Topladığın puanlar zamanla değere dönüşür. Sabırla biriktir, fırsatları altın bir an için sakla.</p>
+      </article>
+      <article class="vcard" data-reveal>
+        <div class="vcard__ico"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Anında Fırsatlar</h3>
+        <p>Gün boyu yenilenen ödüller ve etkinlikler. Doğru anı yakala, değerini katla.</p>
+      </article>
+      <article class="vcard" data-reveal>
+        <div class="vcard__ico"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h3>Güvence</h3>
+        <p>Lisanslı altyapı, şeffaf işlemler ve korunan bakiyeler. Güven her zaman önce gelir.</p>
+      </article>
+      <article class="vcard" data-reveal>
+        <div class="vcard__ico"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>Topluluk Gücü</h3>
+        <p>Yalnız değilsin. Binlerce kişiyle paylaş, öğren ve birlikte daha fazlasını başar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIRSATLAR (spor / casino как возможности) ===== -->
+<section id="firsatlar">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Fırsatlar</span>
+      <h2 class="h2" data-reveal>İki dünya, tek topluluk</h2>
+      <p class="lead" data-reveal>Spor heyecanı ve oyun keyfi — her ikisi de kazanmanın değerini paylaşan birer fırsat. Sana uygun olanı seç.</p>
+    </div>
+    <div class="opps">
+      <article class="opp" data-reveal style="--g:linear-gradient(160deg,#16284E,#0E1B3A)">
+        <span class="opp__ico"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14 14 0 000 20M12 2a14 14 0 010 20M2 12h20"/></svg></span>
+        <span class="opp__tag">Spor</span>
+        <h3>Maçın heyecanı,<br>fırsatın değeri</h3>
+        <p>Süper Lig'den dünya kupalarına — tahminlerinle topluluğun bir parçası ol, kazancın değerini birlikte kutla.</p>
+        <a class="opp__link" href="#katil">Spor fırsatları <svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="opp" data-reveal style="--g:linear-gradient(160deg,#1B2C58,#0C1A3A)">
+        <span class="opp__ico"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="15.5" cy="15.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span>
+        <span class="opp__tag">Oyun</span>
+        <h3>Eğlencenin<br>altın anları</h3>
+        <p>Seçkin oyunlar, canlı masalar ve sürpriz ödüller. Keyifli vakit geçir, fırsatları değere çevir.</p>
+        <a class="opp__link" href="#katil">Oyun fırsatları <svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BONUSLAR (золотые награды) ===== -->
+<section id="bonus" class="section--cream">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Bonuslar &amp; Ödüller</span>
+      <h2 class="h2" data-reveal>Altın ödüllerle başla</h2>
+      <p class="lead" data-reveal>Topluluğa katılanları altın değerinde avantajlar karşılar. Hoş geldin ödülünü al, biriktirmeye hemen başla.</p>
+    </div>
+    <div class="bonuses">
+      <article class="bonus bonus--feat" data-reveal>
+        <span class="bonus__ribbon">EN DEĞERLİSİ</span>
+        <div class="bonus__ico"><svg width="22" viewBox="0 0 64 64" aria-hidden="true"><use href="#ag-coins"/></svg></div>
+        <div class="bonus__amt">%200</div><div class="bonus__name">Hoş Geldin Ödülü</div>
+        <p>İlk adımına %200'e kadar değer ve ekstra topluluk puanı. Altın Günü ailesine güçlü bir başlangıç.</p>
+        <a class="btn btn--primary" href="#katil">Ödülü Al</a>
+      </article>
+      <article class="bonus" data-reveal>
+        <div class="bonus__ico"><svg width="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9l7-5 7 5M5 9v8a2 2 0 002 2h10a2 2 0 002-2V9"/></svg></div>
+        <div class="bonus__amt">%15</div><div class="bonus__name">Birikim İadesi</div>
+        <p>Her hafta değerinin %15'i hesabına geri. Geleneğin getirdiği güvence, her zaman yanında.</p>
+        <a class="btn btn--ghost" href="#katil">Detaylar</a>
+      </article>
+      <article class="bonus" data-reveal>
+        <div class="bonus__ico"><svg width="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6-6.3 4.6L9.9 13.8 4 9.4h7.6z"/></svg></div>
+        <div class="bonus__amt">5.000</div><div class="bonus__name">Topluluk Puanı</div>
+        <p>Aktif üyelere her ay altın puan. Biriktir, seviye atla, ayrıcalıkların kilidini aç.</p>
+        <a class="btn btn--ghost" href="#katil">Katıl</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOPLULUK & GÜVEN ===== -->
+<section id="topluluk">
+  <div class="wrap">
+    <div class="comm">
+      <div class="comm__grid">
+        <div class="comm__art" data-reveal>
+          <svg class="comm__emblem" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="92" fill="none" stroke="url(#ag-gold)" stroke-width="2.5" opacity=".55"/>
+            <circle cx="100" cy="100" r="80" fill="rgba(224,168,46,.05)"/>
+            <g transform="translate(50 48) scale(1)"><use href="#ag-mark"/></g>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow" data-reveal>Topluluk &amp; Güven</span>
+          <h2 class="h2" data-reveal style="margin:12px 0 16px">Sıcak bir aile,<br>sağlam bir güven</h2>
+          <p class="lead" data-reveal>Altın Günü bir topluluktur — paylaşan, destekleyen ve birlikte büyüyen. Her üye değerlidir; her kazanç birlikte kutlanır. Güven, bizim altın kuralımız.</p>
+          <div class="comm__feats">
+            <span class="cchip" data-reveal><span class="d"></span>Şeffaf kurallar</span>
+            <span class="cchip" data-reveal><span class="d"></span>Sadakat seviyeleri</span>
+            <span class="cchip" data-reveal><span class="d"></span>Topluluk etkinlikleri</span>
+            <span class="cchip" data-reveal><span class="d"></span>7/24 sıcak destek</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SSS ===== -->
+<section id="sss">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;align-items:center;margin:0 auto 48px">
+      <span class="eyebrow" data-reveal>Sıkça Sorulan Sorular</span>
+      <h2 class="h2" data-reveal>Aklındaki her şey</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Altın Günü topluluğuna nasıl katılırım?<span class="plus"></span></button><div class="faq-a"><p>"Hemen Katıl" butonuna tıkla, birkaç bilgini gir ve dakikalar içinde topluluğun bir parçası ol. İlk adımında %200'e kadar hoş geldin ödülü seni bekliyor.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">"Birikim" ve "değer" tam olarak ne demek?<span class="plus"></span></button><div class="faq-a"><p>Altın Günü'nde topladığın topluluk puanları zamanla ayrıcalıklara ve ödüllere dönüşür. Amacımız anlık değil, sabırla büyüyen bir değer kültürü oluşturmak.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">İşlemler güvenli mi?<span class="plus"></span></button><div class="faq-a"><p>Evet. Lisanslı altyapı, şeffaf kurallar ve korunan bakiyelerle çalışıyoruz. Güven, topluluğumuzun altın kuralıdır.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Hangi fırsatlar var?<span class="plus"></span></button><div class="faq-a"><p>Spor heyecanından seçkin oyunlara kadar, kazanmanın değerini paylaşan birçok fırsat seni bekliyor. Sana uygun olanı seçip topluluğun gücüyle değerlendir.</p></div></div>
+      <div class="faq-item" data-reveal><button class="faq-q" aria-expanded="false">Destek ekibine nasıl ulaşırım?<span class="plus"></span></button><div class="faq-a"><p>7/24 canlı destek ekibimiz her zaman yanında. Aklına takılan her şey için anında, sıcak ve çözüm odaklı yardım alırsın.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="katil">
+  <div class="wrap">
+    <div class="cta-band" data-reveal>
+      <span class="eyebrow">Altın Günü Ailesine Katıl</span>
+      <h2 class="display" style="font-size:clamp(2.2rem,6vw,4.4rem);margin-top:14px">Altın değerin seni bekliyor</h2>
+      <p class="lead">%200'e kadar hoş geldin ödülü ve topluluk puanlarıyla ilk adımını at. Türkiye'nin altın dünyasında yerini al.</p>
+      <a class="btn btn--dark btn--lg" href="#">Hemen Başla →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="#" aria-label="Altın Günü">
+          <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#ag-mark"/></svg>
+          <span><span class="logo__text">Altın<b>Günü</b></span><span class="logo__sub">TÜRKİYE'NİN ALTIN DÜNYASI</span></span>
+        </a>
+        <p>Geleneği bugüne taşıyan, güvene ve birikime dayalı sıcak bir Türk topluluğu.</p>
+        <div class="pays"><span class="pay">Papara</span><span class="pay">Havale/EFT</span><span class="pay">Kripto</span><span class="pay">Visa</span></div>
+        <div class="socials">
+          <a class="social" href="#" aria-label="Instagram"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="social" href="#" aria-label="X"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6z"/></svg></a>
+          <a class="social" href="#" aria-label="Telegram"><svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 3L2 11l6 2 2 7 3-4 5 4 4-17z"/></svg></a>
+          <a class="social" href="#" aria-label="YouTube"><svg width="18" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="var(--navy-2)"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>Topluluk</h4><a href="#gelenek">Gelenek</a><a href="#topluluk">Hakkımızda</a><a href="#deger">Değerlerimiz</a><a href="#">İletişim</a></div>
+      <div class="footer__col"><h4>Fırsatlar</h4><a href="#firsatlar">Spor</a><a href="#firsatlar">Oyun</a><a href="#bonus">Bonuslar</a><a href="#bonus">Ödüller</a></div>
+      <div class="footer__col"><h4>Kurumsal</h4><a href="#">Güvenlik</a><a href="#sss">SSS</a><a href="#">Sorumlu Oyun</a><a href="#">Gizlilik</a></div>
+    </div>
+    <div class="footer__bottom">
+      <span class="age"><b>18+</b> Sorumlu oyun. 18 yaş altı katılamaz. Eğlence amaçlıdır; kontrolünü elden bırakma.</span>
+      <span class="copyright">© 2026 Altın Günü — Konsept tasarım.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="back" href="../../" aria-label="Konsept galerisine dön">← Galeri</a>
+
+<script type="module">
+  import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+  window.__motionReady = true;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* навбар-scrolled */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 30);
+  onScroll(); addEventListener('scroll', onScroll, { passive:true });
+
+  if (!reduce) {
+    /* inView-reveal со stagger по группам (родитель) */
+    const groups = new Map();
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      const k = el.parentElement;
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(el);
+    });
+    groups.forEach(items => items.forEach((el, i) => {
+      inView(el, () => {
+        animate(el, { opacity:[0,1], transform:['translateY(26px)','translateY(0)'] },
+          { duration:.7, delay: Math.min(i*0.07,.4), ease:[.22,1,.36,1] });
+      }, { amount:.15, margin:'0px 0px -8% 0px' });
+    }));
+
+    /* count-up (стопка / счёт золотых монет) */
+    const fmt = (v, el) => {
+      const m = el.dataset.mode;
+      if (m === 'm')   return (v/1000000).toFixed(1).replace('.0','') + 'M+';
+      if (m === 'mtl') return '₺' + Math.round(v) + 'K';
+      if (m === 'yr')  return Math.round(v) + ' yıl';
+      return Math.round(v);
+    };
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const t = +el.dataset.count;
+      inView(el, () => animate(0, t, { duration:1.8, ease:'easeOut', onUpdate:v => {
+        el.textContent = fmt(v, el);
+        if (el.dataset.mode === 'yr' || el.dataset.mode === 'mtl') {
+          el.innerHTML = el.textContent.replace(/(\D+)$/, '<span>$1</span>');
+        }
+      }}), { amount:.6 });
+    });
+  }
+
+  /* hover-спринги на карточках */
+  const spring = { type:'spring', stiffness:320, damping:22 };
+  document.querySelectorAll('.vcard, .opp, .bonus').forEach(el => {
+    el.addEventListener('pointerenter', () => { if(!reduce) animate(el, { scale:1.02 }, spring); });
+    el.addEventListener('pointerleave', () => { if(!reduce) animate(el, { scale:1 }, spring); });
+  });
+
+  /* FAQ-аккордеон на Motion */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open);
+      if (reduce){ a.style.height = open ? 'auto' : '0'; return; }
+      a.style.height = 'auto';
+      const h = a.offsetHeight;
+      if (open) animate(a, { height:[0,h] }, { duration:.45, ease:[.22,1,.36,1] }).finished.then(()=>a.style.height='auto');
+      else animate(a, { height:[h,0] }, { duration:.35, ease:[.22,1,.36,1] });
+    });
+  });
+
+  document.querySelector('.nav__burger')?.addEventListener('click', e => animate(e.currentTarget, { rotate:[0,90,0] }, { duration:.5 }));
+</script>
+</body>
+</html>
