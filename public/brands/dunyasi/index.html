@@ -127,7 +127,9 @@ section{position:relative;padding:clamp(64px,9vw,130px) 0}
 .hero__art{position:relative;height:clamp(380px,46vw,560px);display:flex;align-items:center;justify-content:center}
 .hero__panel{position:absolute;inset:6% 2%;border-radius:24px;background:linear-gradient(150deg,var(--panel),var(--bg-2));border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
 .hero__panel::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 18%,rgba(42,135,224,.28),transparent 55%),radial-gradient(circle at 16% 88%,rgba(226,59,59,.2),transparent 55%)}
-.hero__bigmark{position:relative;width:46%;max-width:240px;filter:drop-shadow(0 18px 34px rgba(42,135,224,.4))}
+/* реальный логотип — центральный фокус hero, на тонкой тёмной плашке/диске */
+.hero__logoplate{position:relative;z-index:2;display:grid;place-items:center;width:78%;max-width:400px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 42%,rgba(21,32,58,.92),rgba(13,19,32,.82) 68%,rgba(13,19,32,0));box-shadow:0 30px 70px -30px rgba(0,0,0,.75),inset 0 0 0 1px var(--line);filter:drop-shadow(0 14px 30px rgba(42,135,224,.35))}
+.hero__logo{display:block;width:82%;max-width:360px;height:auto;margin:0 auto}
 .hero__chip{position:absolute;background:var(--panel);border:1px solid var(--line-2);border-radius:15px;padding:13px 16px;box-shadow:var(--shadow);font-weight:800;font-size:.86rem;display:flex;align-items:center;gap:11px;z-index:2}
 .hero__chip small{display:block;font-weight:600;font-size:.72rem;color:var(--muted)}
 .hero__chip--1{top:11%;right:-2%}
@@ -461,7 +463,7 @@ section{position:relative;padding:clamp(64px,9vw,130px) 0}
           <i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:78%"></i><i style="height:55%"></i><i style="height:88%"></i><i style="height:60%"></i><i style="height:72%"></i><i style="height:45%"></i><i style="height:66%"></i><i style="height:52%"></i><i style="height:80%"></i>
         </div>
       </div>
-      <svg class="hero__bigmark" viewBox="0 0 100 100" aria-hidden="true"><use href="#dunyasi-mark"/></svg>
+      <span class="hero__logoplate"><img src="logo.svg" alt="Dünyası" class="hero__logo"></span>
       <div class="hero__chip hero__chip--1">
         <span class="chip-ico chip-ico--blue"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="#4BA0F2" stroke-width="2.4"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span>
         <span>Canlı skor<small>1.200+ maç / hafta</small></span>

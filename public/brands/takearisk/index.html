@@ -160,6 +160,10 @@ section{position:relative;padding:clamp(64px,9vw,128px) 0}
 .hero__chips{position:absolute;z-index:5;left:-6px;bottom:-18px;display:flex;gap:8px;flex-wrap:wrap;max-width:280px}
 .minichip{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;background:var(--paper);border:1px solid var(--line);border-radius:11px;font-size:.74rem;font-weight:800;color:var(--ink-2);box-shadow:var(--shadow-soft);letter-spacing:.04em}
 .minichip .d{width:6px;height:6px;border-radius:50%;background:var(--orange)}
+/* тёмная плашка-обёртка под реальный логотип (белый вордмарк читается на петроли) */
+.hero__logocard{position:relative;display:flex;align-items:center;justify-content:center;width:min(380px,82%);aspect-ratio:3/4.05;padding:32px;border-radius:28px;background:linear-gradient(165deg,var(--teal),var(--teal-2) 60%,var(--teal-3));box-shadow:var(--shadow);border:1px solid var(--line-on-dark);transform:rotate(2.2deg);transition:transform .6s var(--ease);will-change:transform;isolation:isolate}
+.hero__art:hover .hero__logocard{transform:rotate(0deg) translateY(-6px) scale(1.015)}
+.hero__logo{display:block;width:80%;max-width:300px;height:auto;margin:0 auto}
 
 /* ===== СТАТ-ПОЛОСА (тёмно-бирюзовая) ===== */
 .stripband{background:var(--teal);color:var(--cream)}
@@ -416,31 +420,10 @@ section{position:relative;padding:clamp(64px,9vw,128px) 0}
       <div class="coin-float coin-float--2" style="animation:bob2 5.5s ease-in-out infinite">
         <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><use href="#ra-coin"/></svg>
       </div>
-      <article class="cover" aria-label="TAKE A RISK dergisi kapağı">
-        <!-- силуэт легенды (CSS/SVG, без фото) -->
-        <svg class="cover__legend" viewBox="0 0 300 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-          <defs><linearGradient id="sil" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#0E5663" stop-opacity=".0"/><stop offset="1" stop-color="#062A32" stop-opacity=".92"/>
-          </linearGradient></defs>
-          <!-- плечи + голова легенды -->
-          <path d="M150 96 C170 96 184 112 184 134 C184 150 176 160 166 166 C196 174 214 196 220 230 L300 252 V300 H0 V252 C8 214 36 188 80 178 C100 172 116 168 134 166 C124 160 116 150 116 134 C116 112 130 96 150 96 Z" fill="#1A2E33"/>
-          <!-- борода/тени -->
-          <path d="M128 150 C134 168 144 176 150 176 C156 176 166 168 172 150 C172 164 164 178 150 180 C136 178 128 164 128 150 Z" fill="#0E5663" opacity=".55"/>
-          <rect x="0" y="120" width="300" height="180" fill="url(#sil)"/>
-        </svg>
-        <div class="cover__barcode" aria-hidden="true"></div>
-        <div class="cover__masthead">
-          <div class="cover__kicker">Unravel the Mystery</div>
-          <div class="cover__title">Take a<span class="t2">Risk</span></div>
-        </div>
-        <div class="cover__foot">
-          <div class="cover__quote">If you risk,<br>you'll be happy.</div>
-          <div class="cover__by">
-            <span style="font-size:.6rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8)">Written&nbsp;by</span>
-            <span class="wordmark"><span class="wm-risk">RISK</span><span class="coin" style="width:.44em;height:.66em;align-self:center;margin:0 .03em;position:relative;top:-.04em"><svg viewBox="0 0 100 100" width="100%" height="100%"><use href="#ra-coin"/></svg></span><span class="wm-al">AL</span></span>
-          </div>
-        </div>
-      </article>
+      <!-- реальный логотип на тёмной петроль-плашке (фокус hero) -->
+      <div class="hero__logocard">
+        <img src="logo.svg" alt="Risk'Al" class="hero__logo">
+      </div>
       <div class="hero__chips">
         <span class="minichip"><span class="d"></span>18+ Lisanslı</span>
         <span class="minichip"><span class="d"></span>TR / EN</span>

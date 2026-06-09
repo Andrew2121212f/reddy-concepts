@@ -147,6 +147,12 @@ section{position:relative;padding:clamp(58px,8.5vw,120px) 0}
 .chip-ico--green{background:var(--green-soft);color:var(--green-2)}
 .chip-ico--orange{background:var(--orange-soft);color:var(--orange)}
 
+/* HERO — реальный логотип как фокус визуального блока (тёмный ink+зелёный на белой карточке) */
+.hero__logo-card{position:relative;z-index:2;width:min(420px,86%);background:var(--panel);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:clamp(30px,4vw,46px) clamp(24px,4vw,40px)}
+.hero__logo{display:block;width:82%;max-width:360px;height:auto;margin:0 auto}
+/* мини-бейдж корзины на карточке — сохраняет сигнатурный «прыжок корзины» как акцент */
+.hero__logo-badge{position:absolute;top:16px;left:16px;width:42px;height:42px;border-radius:12px;background:var(--green-soft);display:grid;place-items:center;color:var(--green-2)}
+
 /* СТАТЫ (лента) */
 .stats{background:var(--ink);color:#fff}
 .stats__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
@@ -394,63 +400,12 @@ section{position:relative;padding:clamp(58px,8.5vw,120px) 0}
 
     <!-- ART: превью «сепета» с мини-карточками сравнения -->
     <div class="hero__art" data-reveal>
-      <div class="hero__panel" id="heroCart">
-        <div class="hero__panel-head">
-          <span class="hero__panel-cart">
-            <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"><use href="#bs-cart"/></svg>
-          </span>
-          <span>
-            <b>Sepetim</b>
-            <small>3 bahis sitesi karşılaştırılıyor</small>
-          </span>
-        </div>
-
-        <div class="hero__row">
-          <span class="ph" style="background:#2FA84F">GS</span>
-          <span class="info"><b>GolBet</b>
-            <span class="stars" aria-label="4.9 / 5 puan">
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-            </span>
-          </span>
-          <span class="amt">%200</span>
-        </div>
-
-        <div class="hero__row">
-          <span class="ph" style="background:#FF8A1F">MX</span>
-          <span class="info"><b>MaçX</b>
-            <span class="stars" aria-label="4.7 / 5 puan">
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--line-2)"><use href="#bs-star"/></svg>
-            </span>
-          </span>
-          <span class="amt">2500₺</span>
-        </div>
-
-        <div class="hero__row">
-          <span class="ph" style="background:#1B1F2A">SP</span>
-          <span class="info"><b>SporPlus</b>
-            <span class="stars" aria-label="4.6 / 5 puan">
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--star)"><use href="#bs-star"/></svg>
-              <svg width="13" viewBox="0 0 24 24" fill="var(--line-2)"><use href="#bs-star"/></svg>
-            </span>
-          </span>
-          <span class="amt">150 FS</span>
-        </div>
-
-        <div class="hero__panel-foot">
-          <span>En iyi seçim hazır</span>
-          <a class="btn btn--orange btn--sm" href="#siteler">Sepeti İncele</a>
-        </div>
+      <!-- ФОКУС: реальный логотип на белой карточке; сигнатурные маркетплейс-эффекты — чипы вокруг -->
+      <div class="hero__logo-card" id="heroCart">
+        <span class="hero__panel-cart hero__logo-badge" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 100 100"><use href="#bs-cart"/></svg>
+        </span>
+        <img src="logo.svg" alt="SporSepeti" class="hero__logo" />
       </div>
 
       <div class="hero__chip hero__chip--1">

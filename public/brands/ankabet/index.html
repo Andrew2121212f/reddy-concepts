@@ -106,6 +106,7 @@ section{position:relative;padding:clamp(60px,9vw,128px) 0}
 .hero__disc{position:absolute;width:92%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.9),var(--panel-2) 70%);box-shadow:var(--shadow),inset 0 0 0 1px var(--line)}
 .hero__ring{position:absolute;width:104%;aspect-ratio:1;border:1.5px dashed rgba(181,113,58,.4);border-radius:50%;animation:spin 46s linear infinite}
 .hero__bigmark{position:relative;width:54%;max-width:300px;filter:drop-shadow(0 16px 30px rgba(195,32,39,.28))}
+.hero__logo{position:relative;width:56%;max-width:300px;height:auto;display:block;filter:drop-shadow(0 16px 30px rgba(195,32,39,.22))}
 .hero__chip{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);font-weight:800;font-size:.86rem;display:flex;align-items:center;gap:10px}
 .hero__chip small{display:block;font-weight:600;font-size:.72rem;color:var(--muted)}
 .hero__chip--1{top:8%;right:2%}
@@ -315,7 +316,7 @@ section{position:relative;padding:clamp(60px,9vw,128px) 0}
     <div class="hero__art" data-reveal>
       <div class="hero__ring"></div>
       <div class="hero__disc"></div>
-      <svg class="hero__bigmark" viewBox="0 0 100 100" aria-hidden="true"><use href="#anka-mark"/></svg>
+      <img src="logo.svg" alt="Ankabet" class="hero__logo">
       <div class="hero__chip hero__chip--1">
         <span class="chip-ico"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="#C32027" stroke-width="2.4"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6-6.3 4.6L9.9 13.8 4 9.4h7.6z"/></svg></span>
         <span>4.9 / 5<small>50.000+ yorum</small></span>
