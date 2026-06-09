@@ -96,6 +96,7 @@ section{position:relative;padding:clamp(64px,9vw,130px) 0}
 .nav.scrolled{background:rgba(13,19,32,.82);backdrop-filter:blur(16px);border-color:var(--line)}
 .nav__inner{display:flex;align-items:center;justify-content:space-between;height:78px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
 .logo{display:flex;align-items:center;gap:12px}
+.logo__img{height:36px;width:auto;display:block}
 .logo .mark{width:42px;height:42px}
 .logo__text{font-family:var(--font-display);font-weight:900;font-size:1.5rem;letter-spacing:-.02em;line-height:1;color:#fff}
 .logo__sub{display:block;font-family:var(--font-body);font-weight:700;font-size:.5rem;letter-spacing:.3em;color:var(--muted);margin-top:4px}
@@ -420,13 +421,7 @@ section{position:relative;padding:clamp(64px,9vw,130px) 0}
 <!-- НАВ -->
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a class="logo" href="#" aria-label="Dünyası ana sayfa">
-      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#dunyasi-mark"/></svg>
-      <span>
-        <span class="logo__text">Dünyası</span>
-        <span class="logo__sub">TÜRKİYE'NİN SPOR DÜNYASI</span>
-      </span>
-    </a>
+    <a class="logo" href="#" aria-label="Dünyası"><img src="logo.svg" alt="Dünyası" class="logo__img"></a>
     <nav class="nav__links" aria-label="Ana menü">
       <a href="#haberler">Haberler</a><a href="#maclar">Maçlar</a><a href="#istatistik">İstatistik</a>
       <a href="#topluluk">Topluluk</a><a href="#bahis">Bahis</a><a href="#sss">SSS</a>

@@ -76,6 +76,7 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:8p
 .card__idx{font-family:var(--display);font-weight:800;font-size:.86rem;opacity:.55;letter-spacing:.05em}
 .card__marker{width:18px;height:18px;opacity:.85}
 .card__wm{margin:22px 0 0;font-size:clamp(2rem,4.6vw,3.2rem);line-height:1;letter-spacing:-.01em}
+.card__logo{display:block;width:auto;height:54px;max-width:84%;margin:20px 0 14px}
 .card__tagline{margin-top:12px;font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
 .card__bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:26px}
 .card__desc{font-size:.96rem;font-weight:600;max-width:30ch;opacity:.92}
@@ -140,7 +141,7 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:8p
       <div class="card__top"><span class="card__idx">01</span>
         <svg class="card__marker" viewBox="0 0 24 24"><path d="M12 2l10 20H2z" fill="#C32027"/></svg></div>
       <div>
-        <div class="card__wm wm-ankabet">ANKA<span style="color:#C32027">BET</span></div>
+        <img class="card__logo" src="brands/ankabet/logo.svg" alt="Ankabet" style="height:96px" loading="lazy">
         <div class="card__tagline">Bahis · Casino · Güven</div>
       </div>
       <div class="card__bottom">
@@ -151,12 +152,12 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:8p
 
     <!-- 2 Meydan -->
     <a class="card" href="brands/meydan/" data-reveal
-       style="--c-bg:#16284B;--c-fg:#FFFFFF">
+       style="--c-bg:#FFFFFF;--c-fg:#16284B;--c-line:rgba(22,40,75,.14)">
       <span class="card__sheen"></span>
       <div class="card__top"><span class="card__idx">02</span>
         <svg class="card__marker" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#D72D2A"/></svg></div>
       <div>
-        <div class="card__wm wm-meydan">MEYDAN</div>
+        <img class="card__logo" src="brands/meydan/logo.svg" alt="Meydan" style="height:88px" loading="lazy">
         <div class="card__tagline" style="color:#D72D2A;opacity:1">Spor · Canlı · Casino</div>
       </div>
       <div class="card__bottom">
@@ -172,7 +173,7 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:8p
       <div class="card__top"><span class="card__idx">03</span>
         <svg class="card__marker" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="#F0871D"/></svg></div>
       <div>
-        <div class="card__wm wm-riskal">RISK<span style="color:#F0871D">'</span>AL</div>
+        <img class="card__logo" src="brands/takearisk/logo.svg" alt="Risk'Al" loading="lazy">
         <div class="card__tagline" style="color:#F0871D;opacity:1">Cesaret · Karar · Zafer</div>
       </div>
       <div class="card__bottom">
@@ -188,7 +189,7 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:8p
       <div class="card__top"><span class="card__idx">04</span>
         <svg class="card__marker" viewBox="0 0 24 24" fill="none"><path d="M16 4a8 8 0 100 16 7 7 0 110-16z" fill="#E0A82E"/><path d="M19 8l1 2 2 .3-1.5 1.4.4 2-1.9-1-1.9 1 .4-2L16.5 10.3 19 10z" fill="#E0A82E"/></svg></div>
       <div>
-        <div class="card__wm wm-altin" style="color:#fff">Altın<span style="color:#E0A82E">Günü</span></div>
+        <img class="card__logo" src="brands/altingunu/logo.svg" alt="Altın Günü" loading="lazy">
         <div class="card__tagline" style="color:#E0A82E;opacity:1">Türkiye'nin Altın Dünyası</div>
       </div>
       <div class="card__bottom">
@@ -204,7 +205,7 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:8p
       <div class="card__top"><span class="card__idx">05</span>
         <svg class="card__marker" viewBox="0 0 24 24"><path d="M5 4h8a6 6 0 110 12H9v4H5z" fill="#2A87E0"/><path d="M11 8l4 2-4 2z" fill="#fff"/></svg></div>
       <div>
-        <div class="card__wm wm-dunyasi">Dünya<span style="color:#2A87E0">sı</span></div>
+        <img class="card__logo" src="brands/dunyasi/logo.svg" alt="Dünyası" loading="lazy">
         <div class="card__tagline" style="color:#2A87E0;opacity:1">Türkiye'nin Spor Dünyası</div>
       </div>
       <div class="card__bottom">
@@ -220,8 +221,8 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:8p
       <div class="card__top"><span class="card__idx">06</span>
         <svg class="card__marker" viewBox="0 0 24 24"><path d="M4 7h16l-1.5 10.5a2 2 0 01-2 1.5H7.5a2 2 0 01-2-1.5z" fill="#2FA84F"/><path d="M8 7a4 4 0 018 0" fill="none" stroke="#2FA84F" stroke-width="2"/></svg></div>
       <div>
-        <div class="card__wm wm-betsepeti">Bet<span style="color:#2FA84F">Sepeti</span></div>
-        <div class="card__tagline" style="color:#2FA84F;opacity:1">Türkiye'nin Bahis Sepeti</div>
+        <img class="card__logo" src="brands/betsepeti/logo.svg" alt="SporSepeti" loading="lazy">
+        <div class="card__tagline" style="color:#2FA84F;opacity:1">Karşılaştır · Seç · Kazan</div>
       </div>
       <div class="card__bottom">
         <span class="card__desc">Tüm bonuslar tek sepette — karşılaştır, seç, kazan.</span>

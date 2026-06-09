@@ -91,23 +91,25 @@ section{position:relative;padding:clamp(64px,9vw,128px) 0}
 .mark{flex:none}
 
 /* ===== НАВ ===== */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.4s;border-bottom:1px solid transparent}
-.nav.scrolled{background:rgba(244,239,231,.85);backdrop-filter:blur(14px);border-color:var(--line)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.4s;background:#0E5663;border-bottom:1px solid transparent}
+.nav.scrolled{background:#0E5663;border-color:var(--line-on-dark);box-shadow:0 10px 30px -18px rgba(6,42,50,.7)}
 .nav__inner{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
 .logo{display:flex;align-items:center;gap:11px}
 .logo .mark{width:38px;height:38px}
 .logo .wordmark{font-size:1.62rem}
 .logo .wm-risk{color:var(--teal)}
 .logo .wm-al{color:var(--ink)}
+.logo__img{height:34px;width:auto;display:block}
 .nav__links{display:flex;gap:28px}
-.nav__links a{font-size:.92rem;font-weight:700;color:var(--ink-2);position:relative;transition:color .3s}
+.nav__links a{font-size:.92rem;font-weight:700;color:rgba(255,255,255,.82);position:relative;transition:color .3s}
 .nav__links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--orange);transition:width .35s var(--ease)}
-.nav__links a:hover{color:var(--ink)}
+.nav__links a:hover{color:#fff}
 .nav__links a:hover::after{width:100%}
 .nav__cta{display:flex;align-items:center;gap:14px}
-.nav__login{font-family:var(--font-display);font-weight:800;font-size:1.02rem;text-transform:uppercase;letter-spacing:.02em}
+.nav__login{font-family:var(--font-display);font-weight:800;font-size:1.02rem;text-transform:uppercase;letter-spacing:.02em;color:#fff;transition:color .3s}
+.nav__login:hover{color:var(--orange-2)}
 .nav__burger{display:none;flex-direction:column;gap:5px;padding:8px}
-.nav__burger span{width:24px;height:2px;background:var(--ink);border-radius:2px}
+.nav__burger span{width:24px;height:2px;background:#fff;border-radius:2px}
 
 /* ===== HERO (СВЕТЛЫЙ кремовый editorial — см. p13) ===== */
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:96px;padding-bottom:40px;overflow:hidden;background:
@@ -370,10 +372,7 @@ section{position:relative;padding:clamp(64px,9vw,128px) 0}
 <!-- ===== НАВ ===== -->
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a class="logo" href="#" aria-label="Risk'Al ana sayfa">
-      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#ra-mark"/></svg>
-      <span class="wordmark" aria-hidden="true"><span class="wm-risk">RISK</span><span class="coin" style="width:.46em;height:.7em;align-self:center;margin:0 .04em;position:relative;top:-.06em"><svg viewBox="0 0 100 100" width="100%" height="100%"><use href="#ra-coin"/></svg></span><span class="wm-al">AL</span></span>
-    </a>
+    <a class="logo" href="#" aria-label="Risk'Al"><img src="logo.svg" alt="Risk'Al" class="logo__img"></a>
     <nav class="nav__links">
       <a href="#spor">Spor</a><a href="#efsane">Efsane</a><a href="#manifesto">Manifesto</a>
       <a href="#bonus">Bonuslar</a><a href="#kayit">Kayıt</a><a href="#sss">SSS</a>

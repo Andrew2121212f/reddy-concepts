@@ -80,6 +80,7 @@ section{position:relative;padding:clamp(60px,9vw,128px) 0}
 .logo__text{font-family:var(--font-display);font-weight:800;font-size:1.42rem;letter-spacing:-.01em;line-height:1}
 .logo__text b{color:var(--red);font-weight:800}
 .logo__sub{display:block;font-family:var(--font-body);font-weight:700;font-size:.5rem;letter-spacing:.34em;color:var(--muted);margin-top:3px}
+.logo__img{height:46px;width:auto;display:block}
 .nav__links{display:flex;gap:28px}
 .nav__links a{font-size:.92rem;font-weight:700;color:var(--ink-2);position:relative;transition:color .3s}
 .nav__links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .35s var(--ease)}
@@ -278,13 +279,7 @@ section{position:relative;padding:clamp(60px,9vw,128px) 0}
 <!-- НАВ -->
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a class="logo" href="#" aria-label="Ankabet">
-      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#anka-mark"/></svg>
-      <span>
-        <span class="logo__text">ANKA<b>BET</b></span>
-        <span class="logo__sub">BAHİS · CASINO · GÜVEN</span>
-      </span>
-    </a>
+    <a class="logo" href="#" aria-label="Ankabet"><img src="logo.svg" alt="Ankabet" class="logo__img"></a>
     <nav class="nav__links">
       <a href="#spor">Spor</a><a href="#spor">Canlı</a><a href="#casino">Casino</a>
       <a href="#bonus">Bonuslar</a><a href="#kanka">Kanka</a><a href="#sss">SSS</a>
